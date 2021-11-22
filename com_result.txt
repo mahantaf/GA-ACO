@@ -1,0 +1,2562 @@
+Analyzing Alloy Specification:
+/Users/mahantp/Desktop/Work/Lamasoo/Projects/alloy4example/resources/fs-new.als
+[]
+Formula :(no ((this/Root + this/Dir.remainder) & this/File) && (no (this/Root + this/Dir.remainder) || (some [v1: one (this/Root + this/Dir.remainder), v0: one (this/Root + this/Dir.remainder)] | ((v1 + v0) = (this/Root + this/Dir.remainder)))) && (no this/File || (some [v3: one this/File, v2: one this/File] | ((v3 + v2) = this/File))) && (all model_this: one (this/Root + this/Dir.remainder) | ((model_this . this/Dir.contents) in ((this/Root + this/Dir.remainder) + this/File))) && ((this/Dir.contents . univ) in (this/Root + this/Dir.remainder)) && no (this/Dir.contents . this/Root) && (((this/Root + this/Dir.remainder) + this/File) in (this/Root . (^this/Dir.contents + (iden & (((ints + String) + ((this/Root + this/Dir.remainder) + this/File)) -> univ))))) && (all model_obj: one ((this/Root + this/Dir.remainder) + this/File) | lone (this/Dir.contents . model_obj)) && some this/File && (Int/next = Int/next) && (seq/Int = seq/Int) && (String = String) && (this/Root = this/Root) && (this/Dir.remainder = this/Dir.remainder) && (this/File = this/File) && (this/Dir.contents = this/Dir.contents))
+Prepare KodKod Time: 3 ms.
+
+---STATS---
+p cnf 0 0
+primary variables: 0
+translation time: 154 ms
+solving time: 0 ms
+
+ --- Full Iteration Time: 329 ms.  -- 32
+ --- Address Chromosomes Data Time: 0 ms.  -- 32
+size ++ 32
+0 low|high 31
+0 low|high 29
+1 low|high 29
+1 low|high 28
+1 low|high 11
+2 low|high 11
+3 low|high 11
+4 low|high 11
+5 low|high 11
+5 low|high 10
+6 low|high 10
+6 low|high 9
+7 low|high 9
+7 low|high 8
+13 low|high 28
+13 low|high 27
+13 low|high 17
+14 low|high 17
+15 low|high 17
+16 low|high 17
+19 low|high 27
+20 low|high 27
+21 low|high 27
+22 low|high 27
+22 low|high 24
+23 low|high 24
+26 low|high 27
+ ------------- ------------- ------------- Iteration 1
+Iter1:Index0
+fitness-new:1.7343751192092896
+number of failed subformulas: 3
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$2]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 2:[[FSObject$0, Root$0], [FSObject$2, FSObject$2]]
+ 
+ 
+Iter1:Index1
+fitness-new:1.7625000476837158
+number of failed subformulas: 4
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$1]]
+this/File | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/Dir.contents | 3:[[Root$0, FSObject$2], [FSObject$0, FSObject$0], [FSObject$1, FSObject$1]]
+ 
+ 
+Iter1:Index2
+fitness-new:1.7625000476837158
+number of failed subformulas: 4
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$1], [FSObject$2]]
+this/File | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/Dir.contents | 1:[[FSObject$1, FSObject$0]]
+ 
+ 
+Iter1:Index3
+fitness-new:1.7625000476837158
+number of failed subformulas: 4
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$1], [FSObject$2]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 2:[[FSObject$1, Root$0], [FSObject$1, FSObject$2]]
+ 
+ 
+Iter1:Index4
+fitness-new:1.7625000476837158
+number of failed subformulas: 4
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$2]]
+this/File | 2:[[FSObject$1], [FSObject$2]]
+this/Dir.contents | 2:[[Root$0, FSObject$2], [FSObject$0, FSObject$2]]
+ 
+ 
+Iter1:Index5
+fitness-new:1.7625000476837158
+number of failed subformulas: 4
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$1]]
+this/File | 1:[[FSObject$2]]
+this/Dir.contents | 10:[[Root$0, Root$0], [Root$0, FSObject$0], [Root$0, FSObject$2], [FSObject$0, FSObject$0], [FSObject$0, FSObject$1], [FSObject$0, FSObject$2], [FSObject$1, Root$0], [FSObject$1, FSObject$0], [FSObject$1, FSObject$2], [FSObject$2, FSObject$0]]
+ 
+ 
+Iter1:Index6
+fitness-new:1.7625000476837158
+number of failed subformulas: 4
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$1]]
+this/File | 1:[[FSObject$2]]
+this/Dir.contents | 14:[[Root$0, Root$0], [Root$0, FSObject$1], [Root$0, FSObject$2], [FSObject$0, Root$0], [FSObject$0, FSObject$0], [FSObject$0, FSObject$1], [FSObject$0, FSObject$2], [FSObject$1, Root$0], [FSObject$1, FSObject$1], [FSObject$1, FSObject$2], [FSObject$2, Root$0], [FSObject$2, FSObject$0], [FSObject$2, FSObject$1], [FSObject$2, FSObject$2]]
+ 
+ 
+Iter1:Index7
+fitness-new:1.7625000476837158
+number of failed subformulas: 4
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$1]]
+this/File | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/Dir.contents | 1:[[Root$0, FSObject$0]]
+ 
+ 
+Iter1:Index8
+fitness-new:1.7625000476837158
+number of failed subformulas: 4
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$1]]
+this/File | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/Dir.contents | 1:[[Root$0, FSObject$0]]
+ 
+ 
+Iter1:Index9
+fitness-new:1.7906250953674316
+number of failed subformulas: 5
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$2]]
+this/File | 0:[]
+this/Dir.contents | 4:[[Root$0, Root$0], [Root$0, FSObject$0], [FSObject$2, Root$0], [FSObject$2, FSObject$0]]
+ 
+ 
+Iter1:Index10
+fitness-new:1.7906250953674316
+number of failed subformulas: 5
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$1]]
+this/File | 2:[[FSObject$1], [FSObject$2]]
+this/Dir.contents | 13:[[Root$0, Root$0], [Root$0, FSObject$0], [Root$0, FSObject$1], [FSObject$0, Root$0], [FSObject$0, FSObject$0], [FSObject$0, FSObject$2], [FSObject$1, Root$0], [FSObject$1, FSObject$0], [FSObject$1, FSObject$1], [FSObject$1, FSObject$2], [FSObject$2, FSObject$0], [FSObject$2, FSObject$1], [FSObject$2, FSObject$2]]
+ 
+ 
+Iter1:Index11
+fitness-new:1.7906250953674316
+number of failed subformulas: 5
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$2]]
+this/File | 1:[[FSObject$2]]
+this/Dir.contents | 3:[[Root$0, Root$0], [Root$0, FSObject$0], [Root$0, FSObject$1]]
+ 
+ 
+Iter1:Index12
+fitness-new:1.7906250953674316
+number of failed subformulas: 5
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$1]]
+this/File | 2:[[FSObject$1], [FSObject$2]]
+this/Dir.contents | 13:[[Root$0, FSObject$1], [Root$0, FSObject$2], [FSObject$0, Root$0], [FSObject$0, FSObject$0], [FSObject$0, FSObject$2], [FSObject$1, Root$0], [FSObject$1, FSObject$0], [FSObject$1, FSObject$1], [FSObject$1, FSObject$2], [FSObject$2, Root$0], [FSObject$2, FSObject$0], [FSObject$2, FSObject$1], [FSObject$2, FSObject$2]]
+ 
+ 
+Iter1:Index13
+fitness-new:1.7906250953674316
+number of failed subformulas: 5
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$1], [FSObject$2]]
+this/File | 2:[[FSObject$0], [FSObject$2]]
+this/Dir.contents | 11:[[Root$0, Root$0], [Root$0, FSObject$0], [Root$0, FSObject$1], [FSObject$0, Root$0], [FSObject$0, FSObject$1], [FSObject$1, FSObject$0], [FSObject$1, FSObject$2], [FSObject$2, Root$0], [FSObject$2, FSObject$0], [FSObject$2, FSObject$1], [FSObject$2, FSObject$2]]
+ 
+ 
+Iter1:Index14
+fitness-new:1.7906250953674316
+number of failed subformulas: 5
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$2]]
+this/File | 2:[[FSObject$0], [FSObject$1]]
+this/Dir.contents | 6:[[Root$0, Root$0], [Root$0, FSObject$2], [FSObject$0, Root$0], [FSObject$0, FSObject$0], [FSObject$0, FSObject$1], [FSObject$2, FSObject$2]]
+ 
+ 
+Iter1:Index15
+fitness-new:1.8187501430511475
+number of failed subformulas: 6
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$1]]
+this/File | 2:[[FSObject$0], [FSObject$1]]
+this/Dir.contents | 13:[[Root$0, Root$0], [Root$0, FSObject$0], [Root$0, FSObject$1], [Root$0, FSObject$2], [FSObject$0, Root$0], [FSObject$0, FSObject$1], [FSObject$1, Root$0], [FSObject$1, FSObject$0], [FSObject$1, FSObject$1], [FSObject$1, FSObject$2], [FSObject$2, Root$0], [FSObject$2, FSObject$1], [FSObject$2, FSObject$2]]
+ 
+ 
+Iter1:Index16
+fitness-new:1.8187501430511475
+number of failed subformulas: 6
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$2]]
+this/File | 1:[[FSObject$2]]
+this/Dir.contents | 14:[[Root$0, Root$0], [Root$0, FSObject$0], [Root$0, FSObject$1], [Root$0, FSObject$2], [FSObject$0, Root$0], [FSObject$0, FSObject$0], [FSObject$0, FSObject$1], [FSObject$0, FSObject$2], [FSObject$1, Root$0], [FSObject$1, FSObject$1], [FSObject$1, FSObject$2], [FSObject$2, Root$0], [FSObject$2, FSObject$1], [FSObject$2, FSObject$2]]
+ 
+ 
+Iter1:Index17
+fitness-new:1.8187501430511475
+number of failed subformulas: 6
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$2]]
+this/File | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/Dir.contents | 7:[[Root$0, Root$0], [Root$0, FSObject$0], [Root$0, FSObject$1], [Root$0, FSObject$2], [FSObject$0, FSObject$0], [FSObject$1, Root$0], [FSObject$1, FSObject$1]]
+ 
+ 
+Iter1:Index18
+fitness-new:1.8187501430511475
+number of failed subformulas: 6
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$2]]
+this/File | 0:[]
+this/Dir.contents | 15:[[Root$0, Root$0], [Root$0, FSObject$0], [Root$0, FSObject$1], [Root$0, FSObject$2], [FSObject$0, Root$0], [FSObject$0, FSObject$0], [FSObject$0, FSObject$1], [FSObject$1, Root$0], [FSObject$1, FSObject$0], [FSObject$1, FSObject$1], [FSObject$1, FSObject$2], [FSObject$2, Root$0], [FSObject$2, FSObject$0], [FSObject$2, FSObject$1], [FSObject$2, FSObject$2]]
+ 
+ 
+Iter1:Index19
+fitness-new:1.8187501430511475
+number of failed subformulas: 6
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$1]]
+this/File | 0:[]
+this/Dir.contents | 15:[[Root$0, Root$0], [Root$0, FSObject$0], [Root$0, FSObject$1], [Root$0, FSObject$2], [FSObject$0, Root$0], [FSObject$0, FSObject$0], [FSObject$0, FSObject$1], [FSObject$0, FSObject$2], [FSObject$1, Root$0], [FSObject$1, FSObject$1], [FSObject$1, FSObject$2], [FSObject$2, Root$0], [FSObject$2, FSObject$0], [FSObject$2, FSObject$1], [FSObject$2, FSObject$2]]
+ 
+ 
+Iter1:Index20
+fitness-new:1.8187501430511475
+number of failed subformulas: 6
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$1]]
+this/File | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/Dir.contents | 8:[[Root$0, FSObject$2], [FSObject$0, Root$0], [FSObject$0, FSObject$0], [FSObject$1, Root$0], [FSObject$2, Root$0], [FSObject$2, FSObject$0], [FSObject$2, FSObject$1], [FSObject$2, FSObject$2]]
+ 
+ 
+Iter1:Index21
+fitness-new:1.8187501430511475
+number of failed subformulas: 6
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$1]]
+this/File | 0:[]
+this/Dir.contents | 16:[[Root$0, Root$0], [Root$0, FSObject$0], [Root$0, FSObject$1], [Root$0, FSObject$2], [FSObject$0, Root$0], [FSObject$0, FSObject$0], [FSObject$0, FSObject$1], [FSObject$0, FSObject$2], [FSObject$1, Root$0], [FSObject$1, FSObject$0], [FSObject$1, FSObject$1], [FSObject$1, FSObject$2], [FSObject$2, Root$0], [FSObject$2, FSObject$0], [FSObject$2, FSObject$1], [FSObject$2, FSObject$2]]
+ 
+ 
+Iter1:Index22
+fitness-new:1.8187501430511475
+number of failed subformulas: 6
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$2]]
+this/File | 1:[[FSObject$2]]
+this/Dir.contents | 9:[[Root$0, FSObject$0], [Root$0, FSObject$2], [FSObject$0, FSObject$0], [FSObject$0, FSObject$1], [FSObject$0, FSObject$2], [FSObject$1, FSObject$1], [FSObject$2, Root$0], [FSObject$2, FSObject$0], [FSObject$2, FSObject$1]]
+ 
+ 
+Iter1:Index23
+fitness-new:1.8187501430511475
+number of failed subformulas: 6
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$1], [FSObject$2]]
+this/File | 2:[[FSObject$1], [FSObject$2]]
+this/Dir.contents | 15:[[Root$0, Root$0], [Root$0, FSObject$0], [Root$0, FSObject$1], [Root$0, FSObject$2], [FSObject$0, Root$0], [FSObject$0, FSObject$0], [FSObject$0, FSObject$1], [FSObject$0, FSObject$2], [FSObject$1, Root$0], [FSObject$1, FSObject$1], [FSObject$1, FSObject$2], [FSObject$2, Root$0], [FSObject$2, FSObject$0], [FSObject$2, FSObject$1], [FSObject$2, FSObject$2]]
+ 
+ 
+Iter1:Index24
+fitness-new:1.8468750715255737
+number of failed subformulas: 7
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$1], [FSObject$2]]
+this/File | 0:[]
+this/Dir.contents | 7:[[Root$0, Root$0], [Root$0, FSObject$2], [FSObject$0, Root$0], [FSObject$1, Root$0], [FSObject$1, FSObject$1], [FSObject$1, FSObject$2], [FSObject$2, FSObject$0]]
+ 
+ 
+Iter1:Index25
+fitness-new:1.8468750715255737
+number of failed subformulas: 7
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$2]]
+this/File | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/Dir.contents | 5:[[Root$0, FSObject$1], [FSObject$0, FSObject$2], [FSObject$1, FSObject$1], [FSObject$2, Root$0], [FSObject$2, FSObject$0]]
+ 
+ 
+Iter1:Index26
+fitness-new:1.8468750715255737
+number of failed subformulas: 7
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$1], [FSObject$2]]
+this/File | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/Dir.contents | 7:[[FSObject$0, FSObject$0], [FSObject$0, FSObject$2], [FSObject$1, Root$0], [FSObject$1, FSObject$0], [FSObject$1, FSObject$1], [FSObject$2, FSObject$0], [FSObject$2, FSObject$1]]
+ 
+ 
+Iter1:Index27
+fitness-new:1.8468750715255737
+number of failed subformulas: 7
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$2]]
+this/File | 0:[]
+this/Dir.contents | 7:[[Root$0, FSObject$0], [FSObject$0, Root$0], [FSObject$0, FSObject$0], [FSObject$1, Root$0], [FSObject$1, FSObject$2], [FSObject$2, FSObject$0], [FSObject$2, FSObject$1]]
+ 
+ 
+Iter1:Index28
+fitness-new:1.8468750715255737
+number of failed subformulas: 7
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$1], [FSObject$2]]
+this/File | 0:[]
+this/Dir.contents | 7:[[Root$0, Root$0], [Root$0, FSObject$2], [FSObject$0, Root$0], [FSObject$1, Root$0], [FSObject$1, FSObject$1], [FSObject$1, FSObject$2], [FSObject$2, FSObject$0]]
+ 
+ 
+Iter1:Index29
+fitness-new:1.8468750715255737
+number of failed subformulas: 7
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$2]]
+this/File | 0:[]
+this/Dir.contents | 7:[[Root$0, FSObject$0], [FSObject$0, Root$0], [FSObject$0, FSObject$0], [FSObject$1, Root$0], [FSObject$1, FSObject$2], [FSObject$2, FSObject$0], [FSObject$2, FSObject$1]]
+ 
+ 
+Iter1:Index30
+fitness-new:1.8468750715255737
+number of failed subformulas: 7
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$1]]
+this/File | 2:[[FSObject$0], [FSObject$1]]
+this/Dir.contents | 4:[[Root$0, Root$0], [FSObject$0, FSObject$0], [FSObject$0, FSObject$2], [FSObject$2, Root$0]]
+ 
+ 
+Iter1:Index31
+fitness-new:1.8468750715255737
+number of failed subformulas: 7
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$2]]
+this/File | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/Dir.contents | 5:[[Root$0, Root$0], [Root$0, FSObject$0], [FSObject$0, FSObject$0], [FSObject$1, FSObject$0], [FSObject$2, Root$0]]
+ 
+ 
+ ------------- ------------- ------------- 
+x number of mutation 9.239999999999998
+ numberOfMutation 35
+End GA Time: 41ms
+ --- Full Iteration Time: 109 ms.  -- 32
+ --- Address Chromosomes Data Time: 0 ms.  -- 32
+size ++ 32
+0 low|high 31
+1 low|high 31
+1 low|high 4
+2 low|high 4
+2 low|high 3
+6 low|high 31
+6 low|high 18
+7 low|high 18
+8 low|high 18
+9 low|high 18
+10 low|high 18
+11 low|high 18
+11 low|high 17
+12 low|high 17
+13 low|high 17
+14 low|high 17
+15 low|high 17
+16 low|high 17
+20 low|high 31
+20 low|high 25
+21 low|high 25
+22 low|high 25
+23 low|high 25
+24 low|high 25
+27 low|high 31
+28 low|high 31
+29 low|high 31
+30 low|high 31
+ ------------- ------------- ------------- Iteration 2
+Iter2:Index0
+fitness-new:1.7343751192092896
+number of failed subformulas: 3
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$2]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 2:[[FSObject$0, Root$0], [FSObject$2, FSObject$2]]
+ 
+ 
+Iter2:Index1
+fitness-new:1.7343751192092896
+number of failed subformulas: 3
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$1]]
+this/File | 0:[]
+this/Dir.contents | 0:[]
+ 
+ 
+Iter2:Index2
+fitness-new:1.7343751192092896
+number of failed subformulas: 3
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$2]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 2:[[FSObject$0, Root$0], [FSObject$2, FSObject$2]]
+ 
+ 
+Iter2:Index3
+fitness-new:1.7343751192092896
+number of failed subformulas: 3
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 1:[[FSObject$1]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 1:[[FSObject$1, FSObject$0]]
+ 
+ 
+Iter2:Index4
+fitness-new:1.7625000476837158
+number of failed subformulas: 4
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/File | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/Dir.contents | 2:[[FSObject$0, FSObject$1], [FSObject$1, FSObject$0]]
+ 
+ 
+Iter2:Index5
+fitness-new:1.7625000476837158
+number of failed subformulas: 4
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 0:[]
+this/File | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/Dir.contents | 4:[[Root$0, FSObject$2], [FSObject$0, FSObject$0], [FSObject$1, FSObject$1], [FSObject$2, Root$0]]
+ 
+ 
+Iter2:Index6
+fitness-new:1.7625000476837158
+number of failed subformulas: 4
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$1]]
+this/File | 1:[[FSObject$2]]
+this/Dir.contents | 14:[[Root$0, Root$0], [Root$0, FSObject$1], [Root$0, FSObject$2], [FSObject$0, Root$0], [FSObject$0, FSObject$0], [FSObject$0, FSObject$1], [FSObject$0, FSObject$2], [FSObject$1, Root$0], [FSObject$1, FSObject$1], [FSObject$1, FSObject$2], [FSObject$2, Root$0], [FSObject$2, FSObject$0], [FSObject$2, FSObject$1], [FSObject$2, FSObject$2]]
+ 
+ 
+Iter2:Index7
+fitness-new:1.7625000476837158
+number of failed subformulas: 4
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$1]]
+this/File | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/Dir.contents | 1:[[Root$0, FSObject$0]]
+ 
+ 
+Iter2:Index8
+fitness-new:1.7625000476837158
+number of failed subformulas: 4
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/File | 1:[[FSObject$2]]
+this/Dir.contents | 14:[[Root$0, Root$0], [Root$0, FSObject$1], [Root$0, FSObject$2], [FSObject$0, Root$0], [FSObject$0, FSObject$0], [FSObject$0, FSObject$1], [FSObject$0, FSObject$2], [FSObject$1, Root$0], [FSObject$1, FSObject$1], [FSObject$1, FSObject$2], [FSObject$2, Root$0], [FSObject$2, FSObject$0], [FSObject$2, FSObject$1], [FSObject$2, FSObject$2]]
+ 
+ 
+Iter2:Index9
+fitness-new:1.7625000476837158
+number of failed subformulas: 4
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$1]]
+this/File | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/Dir.contents | 1:[[Root$0, FSObject$0]]
+ 
+ 
+Iter2:Index10
+fitness-new:1.7625000476837158
+number of failed subformulas: 4
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$1]]
+this/File | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/Dir.contents | 1:[[Root$0, FSObject$0]]
+ 
+ 
+Iter2:Index11
+fitness-new:1.7625000476837158
+number of failed subformulas: 4
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$1]]
+this/File | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/Dir.contents | 3:[[Root$0, FSObject$2], [FSObject$0, FSObject$0], [FSObject$1, FSObject$1]]
+ 
+ 
+Iter2:Index12
+fitness-new:1.7625000476837158
+number of failed subformulas: 4
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$1]]
+this/File | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/Dir.contents | 0:[]
+ 
+ 
+Iter2:Index13
+fitness-new:1.7625000476837158
+number of failed subformulas: 4
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$1]]
+this/File | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/Dir.contents | 2:[[FSObject$0, FSObject$0], [FSObject$1, FSObject$1]]
+ 
+ 
+Iter2:Index14
+fitness-new:1.7625000476837158
+number of failed subformulas: 4
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$1], [FSObject$2]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 2:[[FSObject$1, Root$0], [FSObject$1, FSObject$2]]
+ 
+ 
+Iter2:Index15
+fitness-new:1.7625000476837158
+number of failed subformulas: 4
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$1], [FSObject$2]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 2:[[FSObject$1, Root$0], [FSObject$1, FSObject$2]]
+ 
+ 
+Iter2:Index16
+fitness-new:1.7625000476837158
+number of failed subformulas: 4
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$1], [FSObject$2]]
+this/File | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/Dir.contents | 1:[[FSObject$1, FSObject$0]]
+ 
+ 
+Iter2:Index17
+fitness-new:1.7906250953674316
+number of failed subformulas: 5
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$2]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 9:[[Root$0, Root$0], [Root$0, FSObject$0], [Root$0, FSObject$2], [FSObject$0, FSObject$0], [FSObject$0, FSObject$2], [FSObject$1, FSObject$1], [FSObject$2, Root$0], [FSObject$2, FSObject$0], [FSObject$2, FSObject$2]]
+ 
+ 
+Iter2:Index18
+fitness-new:1.7906250953674316
+number of failed subformulas: 5
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 1:[[FSObject$1]]
+this/File | 0:[]
+this/Dir.contents | 3:[[Root$0, FSObject$0], [FSObject$2, Root$0], [FSObject$2, FSObject$2]]
+ 
+ 
+Iter2:Index19
+fitness-new:1.7906250953674316
+number of failed subformulas: 5
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/File | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/Dir.contents | 7:[[Root$0, Root$0], [Root$0, FSObject$0], [Root$0, FSObject$1], [Root$0, FSObject$2], [FSObject$0, FSObject$0], [FSObject$1, Root$0], [FSObject$1, FSObject$1]]
+ 
+ 
+Iter2:Index20
+fitness-new:1.7906250953674316
+number of failed subformulas: 5
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/File | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/Dir.contents | 14:[[Root$0, Root$0], [Root$0, FSObject$0], [Root$0, FSObject$1], [Root$0, FSObject$2], [FSObject$0, Root$0], [FSObject$0, FSObject$1], [FSObject$0, FSObject$2], [FSObject$1, Root$0], [FSObject$1, FSObject$0], [FSObject$1, FSObject$1], [FSObject$1, FSObject$2], [FSObject$2, FSObject$0], [FSObject$2, FSObject$1], [FSObject$2, FSObject$2]]
+ 
+ 
+Iter2:Index21
+fitness-new:1.8187501430511475
+number of failed subformulas: 6
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$2]]
+this/File | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/Dir.contents | 7:[[Root$0, Root$0], [Root$0, FSObject$0], [Root$0, FSObject$1], [Root$0, FSObject$2], [FSObject$0, FSObject$0], [FSObject$1, Root$0], [FSObject$1, FSObject$1]]
+ 
+ 
+Iter2:Index22
+fitness-new:1.8187501430511475
+number of failed subformulas: 6
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$1], [FSObject$2]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 9:[[Root$0, Root$0], [Root$0, FSObject$0], [Root$0, FSObject$2], [FSObject$0, FSObject$0], [FSObject$0, FSObject$1], [FSObject$0, FSObject$2], [FSObject$1, Root$0], [FSObject$1, FSObject$2], [FSObject$2, FSObject$1]]
+ 
+ 
+Iter2:Index23
+fitness-new:1.8187501430511475
+number of failed subformulas: 6
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$1]]
+this/File | 0:[]
+this/Dir.contents | 16:[[Root$0, Root$0], [Root$0, FSObject$0], [Root$0, FSObject$1], [Root$0, FSObject$2], [FSObject$0, Root$0], [FSObject$0, FSObject$0], [FSObject$0, FSObject$1], [FSObject$0, FSObject$2], [FSObject$1, Root$0], [FSObject$1, FSObject$0], [FSObject$1, FSObject$1], [FSObject$1, FSObject$2], [FSObject$2, Root$0], [FSObject$2, FSObject$0], [FSObject$2, FSObject$1], [FSObject$2, FSObject$2]]
+ 
+ 
+Iter2:Index24
+fitness-new:1.8187501430511475
+number of failed subformulas: 6
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$2]]
+this/File | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/Dir.contents | 7:[[Root$0, Root$0], [Root$0, FSObject$0], [Root$0, FSObject$1], [Root$0, FSObject$2], [FSObject$0, FSObject$0], [FSObject$1, Root$0], [FSObject$1, FSObject$1]]
+ 
+ 
+Iter2:Index25
+fitness-new:1.8187501430511475
+number of failed subformulas: 6
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$2]]
+this/File | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/Dir.contents | 7:[[Root$0, Root$0], [Root$0, FSObject$0], [Root$0, FSObject$1], [Root$0, FSObject$2], [FSObject$0, FSObject$0], [FSObject$1, Root$0], [FSObject$1, FSObject$1]]
+ 
+ 
+Iter2:Index26
+fitness-new:1.8187501430511475
+number of failed subformulas: 6
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$1], [FSObject$2]]
+this/File | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/Dir.contents | 3:[[FSObject$0, Root$0], [FSObject$0, FSObject$0], [FSObject$2, FSObject$2]]
+ 
+ 
+Iter2:Index27
+fitness-new:1.8187501430511475
+number of failed subformulas: 6
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$1]]
+this/File | 0:[]
+this/Dir.contents | 15:[[Root$0, Root$0], [Root$0, FSObject$0], [Root$0, FSObject$1], [Root$0, FSObject$2], [FSObject$0, Root$0], [FSObject$0, FSObject$0], [FSObject$0, FSObject$1], [FSObject$0, FSObject$2], [FSObject$1, Root$0], [FSObject$1, FSObject$1], [FSObject$1, FSObject$2], [FSObject$2, Root$0], [FSObject$2, FSObject$0], [FSObject$2, FSObject$1], [FSObject$2, FSObject$2]]
+ 
+ 
+Iter2:Index28
+fitness-new:1.8187501430511475
+number of failed subformulas: 6
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$1], [FSObject$2]]
+this/File | 2:[[FSObject$1], [FSObject$2]]
+this/Dir.contents | 13:[[Root$0, Root$0], [Root$0, FSObject$0], [Root$0, FSObject$1], [Root$0, FSObject$2], [FSObject$0, Root$0], [FSObject$0, FSObject$1], [FSObject$1, Root$0], [FSObject$1, FSObject$0], [FSObject$1, FSObject$1], [FSObject$1, FSObject$2], [FSObject$2, Root$0], [FSObject$2, FSObject$1], [FSObject$2, FSObject$2]]
+ 
+ 
+Iter2:Index29
+fitness-new:1.8187501430511475
+number of failed subformulas: 6
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$1]]
+this/File | 0:[]
+this/Dir.contents | 15:[[Root$0, Root$0], [Root$0, FSObject$0], [Root$0, FSObject$1], [Root$0, FSObject$2], [FSObject$0, Root$0], [FSObject$0, FSObject$0], [FSObject$0, FSObject$1], [FSObject$0, FSObject$2], [FSObject$1, Root$0], [FSObject$1, FSObject$1], [FSObject$1, FSObject$2], [FSObject$2, Root$0], [FSObject$2, FSObject$0], [FSObject$2, FSObject$1], [FSObject$2, FSObject$2]]
+ 
+ 
+Iter2:Index30
+fitness-new:1.8187501430511475
+number of failed subformulas: 6
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$1], [FSObject$2]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 3:[[FSObject$0, Root$0], [FSObject$1, Root$0], [FSObject$1, FSObject$2]]
+ 
+ 
+Iter2:Index31
+fitness-new:1.8468750715255737
+number of failed subformulas: 7
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$1], [FSObject$2]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 9:[[Root$0, Root$0], [Root$0, FSObject$0], [Root$0, FSObject$2], [FSObject$0, Root$0], [FSObject$0, FSObject$0], [FSObject$1, Root$0], [FSObject$1, FSObject$2], [FSObject$2, Root$0], [FSObject$2, FSObject$0]]
+ 
+ 
+ ------------- ------------- ------------- 
+x number of mutation 7.9799999999999995
+ numberOfMutation 30
+End GA Time: 27ms
+ --- Full Iteration Time: 81 ms.  -- 32
+ --- Address Chromosomes Data Time: 0 ms.  -- 32
+size ++ 32
+0 low|high 31
+0 low|high 3
+1 low|high 3
+2 low|high 3
+5 low|high 31
+5 low|high 16
+6 low|high 16
+7 low|high 16
+8 low|high 16
+9 low|high 16
+9 low|high 14
+10 low|high 14
+11 low|high 14
+12 low|high 14
+12 low|high 13
+18 low|high 31
+18 low|high 22
+19 low|high 22
+20 low|high 22
+21 low|high 22
+24 low|high 31
+25 low|high 31
+25 low|high 30
+25 low|high 26
+28 low|high 30
+29 low|high 30
+ ------------- ------------- ------------- Iteration 3
+Iter3:Index0
+fitness-new:1.7062500715255737
+number of failed subformulas: 2
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 1:[[FSObject$1]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 0:[]
+ 
+ 
+Iter3:Index1
+fitness-new:1.7062500715255737
+number of failed subformulas: 2
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 0:[]
+this/File | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/Dir.contents | 0:[]
+ 
+ 
+Iter3:Index2
+fitness-new:1.7343751192092896
+number of failed subformulas: 3
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$2]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 2:[[FSObject$0, Root$0], [FSObject$2, FSObject$2]]
+ 
+ 
+Iter3:Index3
+fitness-new:1.7343751192092896
+number of failed subformulas: 3
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 1:[[FSObject$1]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 1:[[FSObject$1, FSObject$0]]
+ 
+ 
+Iter3:Index4
+fitness-new:1.7343751192092896
+number of failed subformulas: 3
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$2]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 2:[[FSObject$0, Root$0], [FSObject$2, FSObject$2]]
+ 
+ 
+Iter3:Index5
+fitness-new:1.7343751192092896
+number of failed subformulas: 3
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$1]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 1:[[Root$0, FSObject$0]]
+ 
+ 
+Iter3:Index6
+fitness-new:1.7343751192092896
+number of failed subformulas: 3
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/File | 0:[]
+this/Dir.contents | 0:[]
+ 
+ 
+Iter3:Index7
+fitness-new:1.7343751192092896
+number of failed subformulas: 3
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$1]]
+this/File | 0:[]
+this/Dir.contents | 0:[]
+ 
+ 
+Iter3:Index8
+fitness-new:1.7343751192092896
+number of failed subformulas: 3
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$1], [FSObject$2]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 0:[]
+ 
+ 
+Iter3:Index9
+fitness-new:1.7343751192092896
+number of failed subformulas: 3
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$2]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 2:[[FSObject$0, Root$0], [FSObject$2, FSObject$2]]
+ 
+ 
+Iter3:Index10
+fitness-new:1.7343751192092896
+number of failed subformulas: 3
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 1:[[FSObject$1]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 1:[[FSObject$1, FSObject$0]]
+ 
+ 
+Iter3:Index11
+fitness-new:1.7343751192092896
+number of failed subformulas: 3
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 1:[[FSObject$1, FSObject$0]]
+ 
+ 
+Iter3:Index12
+fitness-new:1.7343751192092896
+number of failed subformulas: 3
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/File | 0:[]
+this/Dir.contents | 0:[]
+ 
+ 
+Iter3:Index13
+fitness-new:1.7625000476837158
+number of failed subformulas: 4
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$1], [FSObject$2]]
+this/File | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/Dir.contents | 1:[[FSObject$1, FSObject$0]]
+ 
+ 
+Iter3:Index14
+fitness-new:1.7625000476837158
+number of failed subformulas: 4
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/File | 1:[[FSObject$2]]
+this/Dir.contents | 14:[[Root$0, Root$0], [Root$0, FSObject$1], [Root$0, FSObject$2], [FSObject$0, Root$0], [FSObject$0, FSObject$0], [FSObject$0, FSObject$1], [FSObject$0, FSObject$2], [FSObject$1, Root$0], [FSObject$1, FSObject$1], [FSObject$1, FSObject$2], [FSObject$2, Root$0], [FSObject$2, FSObject$0], [FSObject$2, FSObject$1], [FSObject$2, FSObject$2]]
+ 
+ 
+Iter3:Index15
+fitness-new:1.7625000476837158
+number of failed subformulas: 4
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$1]]
+this/File | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/Dir.contents | 1:[[Root$0, FSObject$0]]
+ 
+ 
+Iter3:Index16
+fitness-new:1.7625000476837158
+number of failed subformulas: 4
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$2]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 3:[[Root$0, FSObject$2], [FSObject$0, Root$0], [FSObject$2, FSObject$2]]
+ 
+ 
+Iter3:Index17
+fitness-new:1.7625000476837158
+number of failed subformulas: 4
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/File | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/Dir.contents | 0:[]
+ 
+ 
+Iter3:Index18
+fitness-new:1.7625000476837158
+number of failed subformulas: 4
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$1]]
+this/File | 0:[]
+this/Dir.contents | 1:[[Root$0, Root$0]]
+ 
+ 
+Iter3:Index19
+fitness-new:1.7625000476837158
+number of failed subformulas: 4
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$1]]
+this/File | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/Dir.contents | 0:[]
+ 
+ 
+Iter3:Index20
+fitness-new:1.7625000476837158
+number of failed subformulas: 4
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/File | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/Dir.contents | 0:[]
+ 
+ 
+Iter3:Index21
+fitness-new:1.7625000476837158
+number of failed subformulas: 4
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$1]]
+this/File | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/Dir.contents | 0:[]
+ 
+ 
+Iter3:Index22
+fitness-new:1.7625000476837158
+number of failed subformulas: 4
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$1], [FSObject$2]]
+this/File | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/Dir.contents | 0:[]
+ 
+ 
+Iter3:Index23
+fitness-new:1.7906250953674316
+number of failed subformulas: 5
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$2]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 9:[[Root$0, Root$0], [Root$0, FSObject$0], [Root$0, FSObject$2], [FSObject$0, FSObject$0], [FSObject$0, FSObject$2], [FSObject$1, FSObject$1], [FSObject$2, Root$0], [FSObject$2, FSObject$0], [FSObject$2, FSObject$2]]
+ 
+ 
+Iter3:Index24
+fitness-new:1.7906250953674316
+number of failed subformulas: 5
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/File | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/Dir.contents | 7:[[Root$0, Root$0], [Root$0, FSObject$0], [Root$0, FSObject$1], [Root$0, FSObject$2], [FSObject$0, FSObject$0], [FSObject$1, Root$0], [FSObject$1, FSObject$1]]
+ 
+ 
+Iter3:Index25
+fitness-new:1.7906250953674316
+number of failed subformulas: 5
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/File | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/Dir.contents | 7:[[Root$0, Root$0], [Root$0, FSObject$0], [Root$0, FSObject$1], [Root$0, FSObject$2], [FSObject$0, FSObject$0], [FSObject$1, Root$0], [FSObject$1, FSObject$1]]
+ 
+ 
+Iter3:Index26
+fitness-new:1.8187501430511475
+number of failed subformulas: 6
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$1], [FSObject$2]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 4:[[Root$0, FSObject$2], [FSObject$0, Root$0], [FSObject$1, Root$0], [FSObject$1, FSObject$2]]
+ 
+ 
+Iter3:Index27
+fitness-new:1.8187501430511475
+number of failed subformulas: 6
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$1]]
+this/File | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/Dir.contents | 2:[[Root$0, FSObject$0], [FSObject$2, Root$0]]
+ 
+ 
+Iter3:Index28
+fitness-new:1.8187501430511475
+number of failed subformulas: 6
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$1], [FSObject$2]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 3:[[FSObject$0, Root$0], [FSObject$1, Root$0], [FSObject$1, FSObject$2]]
+ 
+ 
+Iter3:Index29
+fitness-new:1.8187501430511475
+number of failed subformulas: 6
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$1], [FSObject$2]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 16:[[Root$0, Root$0], [Root$0, FSObject$0], [Root$0, FSObject$1], [Root$0, FSObject$2], [FSObject$0, Root$0], [FSObject$0, FSObject$0], [FSObject$0, FSObject$1], [FSObject$0, FSObject$2], [FSObject$1, Root$0], [FSObject$1, FSObject$0], [FSObject$1, FSObject$1], [FSObject$1, FSObject$2], [FSObject$2, Root$0], [FSObject$2, FSObject$0], [FSObject$2, FSObject$1], [FSObject$2, FSObject$2]]
+ 
+ 
+Iter3:Index30
+fitness-new:1.8468750715255737
+number of failed subformulas: 7
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$1], [FSObject$2]]
+this/File | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/Dir.contents | 3:[[FSObject$0, Root$0], [FSObject$1, Root$0], [FSObject$1, FSObject$2]]
+ 
+ 
+Iter3:Index31
+fitness-new:1.8468750715255737
+number of failed subformulas: 7
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$1], [FSObject$2]]
+this/File | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/Dir.contents | 5:[[Root$0, Root$0], [Root$0, FSObject$2], [FSObject$0, FSObject$0], [FSObject$1, FSObject$1], [FSObject$2, Root$0]]
+ 
+ 
+ ------------- ------------- ------------- 
+x number of mutation 7.9799999999999995
+ numberOfMutation 30
+End GA Time: 20ms
+ --- Full Iteration Time: 59 ms.  -- 32
+ --- Address Chromosomes Data Time: 1 ms.  -- 32
+size ++ 32
+0 low|high 31
+0 low|high 1
+3 low|high 31
+3 low|high 8
+4 low|high 8
+4 low|high 7
+5 low|high 7
+6 low|high 7
+10 low|high 31
+10 low|high 25
+11 low|high 25
+12 low|high 25
+13 low|high 25
+14 low|high 25
+15 low|high 25
+15 low|high 24
+16 low|high 24
+16 low|high 23
+17 low|high 23
+18 low|high 23
+19 low|high 23
+20 low|high 23
+20 low|high 22
+21 low|high 22
+27 low|high 31
+28 low|high 31
+28 low|high 30
+ ------------- ------------- ------------- Iteration 4
+Iter4:Index0
+fitness-new:1.1281250715255737
+number of failed subformulas: 1
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 1:[[FSObject$1]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 1:[[Root$0, FSObject$1]]
+ 
+ 
+Iter4:Index1
+fitness-new:1.7062500715255737
+number of failed subformulas: 2
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 0:[]
+this/File | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/Dir.contents | 0:[]
+ 
+ 
+Iter4:Index2
+fitness-new:1.7062500715255737
+number of failed subformulas: 2
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 1:[[FSObject$1]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 0:[]
+ 
+ 
+Iter4:Index3
+fitness-new:1.7062500715255737
+number of failed subformulas: 2
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 1:[[FSObject$1]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 0:[]
+ 
+ 
+Iter4:Index4
+fitness-new:1.7062500715255737
+number of failed subformulas: 2
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 1:[[FSObject$1]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 0:[]
+ 
+ 
+Iter4:Index5
+fitness-new:1.7062500715255737
+number of failed subformulas: 2
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$2]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 0:[]
+ 
+ 
+Iter4:Index6
+fitness-new:1.7062500715255737
+number of failed subformulas: 2
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 0:[]
+this/File | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/Dir.contents | 0:[]
+ 
+ 
+Iter4:Index7
+fitness-new:1.7343751192092896
+number of failed subformulas: 3
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 1:[[FSObject$1, FSObject$0]]
+ 
+ 
+Iter4:Index8
+fitness-new:1.7343751192092896
+number of failed subformulas: 3
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/File | 2:[[FSObject$0], [FSObject$2]]
+this/Dir.contents | 0:[]
+ 
+ 
+Iter4:Index9
+fitness-new:1.7343751192092896
+number of failed subformulas: 3
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 1:[[FSObject$1]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 1:[[FSObject$1, FSObject$0]]
+ 
+ 
+Iter4:Index10
+fitness-new:1.7343751192092896
+number of failed subformulas: 3
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/File | 0:[]
+this/Dir.contents | 0:[]
+ 
+ 
+Iter4:Index11
+fitness-new:1.7343751192092896
+number of failed subformulas: 3
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/File | 0:[]
+this/Dir.contents | 1:[[FSObject$1, FSObject$1]]
+ 
+ 
+Iter4:Index12
+fitness-new:1.7343751192092896
+number of failed subformulas: 3
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 1:[[FSObject$1]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 1:[[FSObject$1, FSObject$0]]
+ 
+ 
+Iter4:Index13
+fitness-new:1.7343751192092896
+number of failed subformulas: 3
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 1:[[FSObject$1, FSObject$0]]
+ 
+ 
+Iter4:Index14
+fitness-new:1.7343751192092896
+number of failed subformulas: 3
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 1:[[FSObject$1, FSObject$0]]
+ 
+ 
+Iter4:Index15
+fitness-new:1.7343751192092896
+number of failed subformulas: 3
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$2]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 2:[[FSObject$0, Root$0], [FSObject$2, FSObject$2]]
+ 
+ 
+Iter4:Index16
+fitness-new:1.7343751192092896
+number of failed subformulas: 3
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/File | 0:[]
+this/Dir.contents | 0:[]
+ 
+ 
+Iter4:Index17
+fitness-new:1.7343751192092896
+number of failed subformulas: 3
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$2]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 2:[[FSObject$0, Root$0], [FSObject$2, FSObject$2]]
+ 
+ 
+Iter4:Index18
+fitness-new:1.7343751192092896
+number of failed subformulas: 3
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$2]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 2:[[FSObject$0, Root$0], [FSObject$2, FSObject$2]]
+ 
+ 
+Iter4:Index19
+fitness-new:1.7343751192092896
+number of failed subformulas: 3
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$2]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 2:[[FSObject$0, Root$0], [FSObject$2, FSObject$2]]
+ 
+ 
+Iter4:Index20
+fitness-new:1.7343751192092896
+number of failed subformulas: 3
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 1:[[FSObject$1]]
+this/File | 0:[]
+this/Dir.contents | 1:[[FSObject$1, FSObject$0]]
+ 
+ 
+Iter4:Index21
+fitness-new:1.7343751192092896
+number of failed subformulas: 3
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 1:[[FSObject$1]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 1:[[FSObject$1, FSObject$0]]
+ 
+ 
+Iter4:Index22
+fitness-new:1.7625000476837158
+number of failed subformulas: 4
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 1:[[FSObject$1]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 4:[[Root$0, FSObject$2], [FSObject$1, FSObject$1], [FSObject$1, FSObject$2], [FSObject$2, FSObject$2]]
+ 
+ 
+Iter4:Index23
+fitness-new:1.7625000476837158
+number of failed subformulas: 4
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 0:[]
+this/File | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/Dir.contents | 2:[[Root$0, FSObject$0], [FSObject$2, Root$0]]
+ 
+ 
+Iter4:Index24
+fitness-new:1.7625000476837158
+number of failed subformulas: 4
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$1]]
+this/File | 0:[]
+this/Dir.contents | 2:[[Root$0, FSObject$1], [FSObject$1, Root$0]]
+ 
+ 
+Iter4:Index25
+fitness-new:1.7625000476837158
+number of failed subformulas: 4
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$2]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 4:[[Root$0, FSObject$0], [Root$0, FSObject$2], [FSObject$0, FSObject$2], [FSObject$1, FSObject$2]]
+ 
+ 
+Iter4:Index26
+fitness-new:1.7625000476837158
+number of failed subformulas: 4
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$1], [FSObject$2]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 1:[[FSObject$1, FSObject$0]]
+ 
+ 
+Iter4:Index27
+fitness-new:1.7625000476837158
+number of failed subformulas: 4
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 2:[[FSObject$1, FSObject$0], [FSObject$2, Root$0]]
+ 
+ 
+Iter4:Index28
+fitness-new:1.7625000476837158
+number of failed subformulas: 4
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$2]]
+this/File | 0:[]
+this/Dir.contents | 2:[[FSObject$0, Root$0], [FSObject$2, FSObject$2]]
+ 
+ 
+Iter4:Index29
+fitness-new:1.7906250953674316
+number of failed subformulas: 5
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 9:[[Root$0, Root$0], [Root$0, FSObject$0], [Root$0, FSObject$2], [FSObject$0, FSObject$0], [FSObject$0, FSObject$2], [FSObject$1, FSObject$1], [FSObject$2, Root$0], [FSObject$2, FSObject$0], [FSObject$2, FSObject$2]]
+ 
+ 
+Iter4:Index30
+fitness-new:1.8187501430511475
+number of failed subformulas: 6
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$1], [FSObject$2]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 3:[[Root$0, Root$0], [FSObject$0, Root$0], [FSObject$2, FSObject$2]]
+ 
+ 
+Iter4:Index31
+fitness-new:1.8187501430511475
+number of failed subformulas: 6
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$2]]
+this/File | 2:[[FSObject$1], [FSObject$2]]
+this/Dir.contents | 9:[[Root$0, Root$0], [Root$0, FSObject$0], [Root$0, FSObject$2], [FSObject$0, FSObject$0], [FSObject$0, FSObject$2], [FSObject$1, FSObject$1], [FSObject$2, Root$0], [FSObject$2, FSObject$0], [FSObject$2, FSObject$2]]
+ 
+ 
+ ------------- ------------- ------------- 
+x number of mutation 7.5600000000000005
+ numberOfMutation 28
+End GA Time: 21ms
+ --- Full Iteration Time: 47 ms.  -- 32
+ --- Address Chromosomes Data Time: 0 ms.  -- 32
+size ++ 32
+0 low|high 31
+1 low|high 31
+1 low|high 25
+2 low|high 25
+2 low|high 6
+3 low|high 6
+3 low|high 5
+4 low|high 5
+8 low|high 25
+9 low|high 25
+10 low|high 25
+10 low|high 14
+11 low|high 14
+13 low|high 14
+16 low|high 25
+17 low|high 25
+18 low|high 25
+18 low|high 24
+19 low|high 24
+19 low|high 23
+20 low|high 23
+21 low|high 23
+22 low|high 23
+27 low|high 31
+27 low|high 30
+27 low|high 29
+28 low|high 29
+ ------------- ------------- ------------- Iteration 5
+Iter5:Index0
+fitness-new:1.1281250715255737
+number of failed subformulas: 1
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 1:[[FSObject$1]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 1:[[Root$0, FSObject$1]]
+ 
+ 
+Iter5:Index1
+fitness-new:1.1281250715255737
+number of failed subformulas: 1
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 1:[[FSObject$1]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 1:[[Root$0, FSObject$1]]
+ 
+ 
+Iter5:Index2
+fitness-new:1.1281250715255737
+number of failed subformulas: 1
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 1:[[FSObject$1]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 1:[[Root$0, FSObject$1]]
+ 
+ 
+Iter5:Index3
+fitness-new:1.1281250715255737
+number of failed subformulas: 1
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 1:[[FSObject$1]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 1:[[Root$0, FSObject$1]]
+ 
+ 
+Iter5:Index4
+fitness-new:1.1281250715255737
+number of failed subformulas: 1
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 1:[[FSObject$1]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 1:[[Root$0, FSObject$1]]
+ 
+ 
+Iter5:Index5
+fitness-new:1.6781251430511475
+number of failed subformulas: 1
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 1:[[FSObject$0]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 0:[]
+ 
+ 
+Iter5:Index6
+fitness-new:1.7062500715255737
+number of failed subformulas: 2
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 1:[[FSObject$1]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 0:[]
+ 
+ 
+Iter5:Index7
+fitness-new:1.7062500715255737
+number of failed subformulas: 2
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 1:[[FSObject$1]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 0:[]
+ 
+ 
+Iter5:Index8
+fitness-new:1.7062500715255737
+number of failed subformulas: 2
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$2]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 0:[]
+ 
+ 
+Iter5:Index9
+fitness-new:1.7062500715255737
+number of failed subformulas: 2
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$2]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 0:[]
+ 
+ 
+Iter5:Index10
+fitness-new:1.7062500715255737
+number of failed subformulas: 2
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$2]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 0:[]
+ 
+ 
+Iter5:Index11
+fitness-new:1.7062500715255737
+number of failed subformulas: 2
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 1:[[FSObject$1]]
+this/File | 0:[]
+this/Dir.contents | 0:[]
+ 
+ 
+Iter5:Index12
+fitness-new:1.7343751192092896
+number of failed subformulas: 3
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 1:[[FSObject$1, FSObject$0]]
+ 
+ 
+Iter5:Index13
+fitness-new:1.7343751192092896
+number of failed subformulas: 3
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 1:[[FSObject$1, FSObject$0]]
+ 
+ 
+Iter5:Index14
+fitness-new:1.7343751192092896
+number of failed subformulas: 3
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 0:[]
+ 
+ 
+Iter5:Index15
+fitness-new:1.7343751192092896
+number of failed subformulas: 3
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/File | 0:[]
+this/Dir.contents | 0:[]
+ 
+ 
+Iter5:Index16
+fitness-new:1.7343751192092896
+number of failed subformulas: 3
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$2]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 1:[[Root$0, Root$0]]
+ 
+ 
+Iter5:Index17
+fitness-new:1.7343751192092896
+number of failed subformulas: 3
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/File | 0:[]
+this/Dir.contents | 1:[[FSObject$1, FSObject$0]]
+ 
+ 
+Iter5:Index18
+fitness-new:1.7343751192092896
+number of failed subformulas: 3
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/File | 0:[]
+this/Dir.contents | 1:[[FSObject$1, FSObject$1]]
+ 
+ 
+Iter5:Index19
+fitness-new:1.7343751192092896
+number of failed subformulas: 3
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 1:[[FSObject$1, FSObject$0]]
+ 
+ 
+Iter5:Index20
+fitness-new:1.7343751192092896
+number of failed subformulas: 3
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 1:[[FSObject$1, FSObject$1]]
+ 
+ 
+Iter5:Index21
+fitness-new:1.7343751192092896
+number of failed subformulas: 3
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 1:[[FSObject$1, FSObject$0]]
+ 
+ 
+Iter5:Index22
+fitness-new:1.7625000476837158
+number of failed subformulas: 4
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$2]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 2:[[FSObject$1, Root$0], [FSObject$1, FSObject$0]]
+ 
+ 
+Iter5:Index23
+fitness-new:1.7625000476837158
+number of failed subformulas: 4
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/File | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/Dir.contents | 0:[]
+ 
+ 
+Iter5:Index24
+fitness-new:1.7625000476837158
+number of failed subformulas: 4
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 1:[[FSObject$1]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 9:[[Root$0, Root$0], [Root$0, FSObject$1], [FSObject$0, Root$0], [FSObject$0, FSObject$2], [FSObject$1, FSObject$1], [FSObject$2, Root$0], [FSObject$2, FSObject$0], [FSObject$2, FSObject$1], [FSObject$2, FSObject$2]]
+ 
+ 
+Iter5:Index25
+fitness-new:1.7625000476837158
+number of failed subformulas: 4
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$1], [FSObject$2]]
+this/File | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/Dir.contents | 0:[]
+ 
+ 
+Iter5:Index26
+fitness-new:1.7625000476837158
+number of failed subformulas: 4
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/File | 3:[[FSObject$0], [FSObject$1], [FSObject$2]]
+this/Dir.contents | 0:[]
+ 
+ 
+Iter5:Index27
+fitness-new:1.7625000476837158
+number of failed subformulas: 4
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$0], [FSObject$2]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 9:[[Root$0, FSObject$1], [FSObject$0, Root$0], [FSObject$0, FSObject$1], [FSObject$0, FSObject$2], [FSObject$1, Root$0], [FSObject$1, FSObject$0], [FSObject$1, FSObject$1], [FSObject$2, Root$0], [FSObject$2, FSObject$1]]
+ 
+ 
+Iter5:Index28
+fitness-new:1.7906250953674316
+number of failed subformulas: 5
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 1:[[FSObject$1]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 12:[[Root$0, Root$0], [Root$0, FSObject$0], [Root$0, FSObject$1], [Root$0, FSObject$2], [FSObject$0, FSObject$1], [FSObject$0, FSObject$2], [FSObject$1, Root$0], [FSObject$1, FSObject$0], [FSObject$1, FSObject$2], [FSObject$2, FSObject$0], [FSObject$2, FSObject$1], [FSObject$2, FSObject$2]]
+ 
+ 
+Iter5:Index29
+fitness-new:1.7906250953674316
+number of failed subformulas: 5
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 1:[[FSObject$1]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 9:[[Root$0, Root$0], [Root$0, FSObject$1], [FSObject$0, Root$0], [FSObject$0, FSObject$0], [FSObject$1, FSObject$1], [FSObject$1, FSObject$2], [FSObject$2, FSObject$0], [FSObject$2, FSObject$1], [FSObject$2, FSObject$2]]
+ 
+ 
+Iter5:Index30
+fitness-new:1.7906250953674316
+number of failed subformulas: 5
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 1:[[FSObject$1]]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 9:[[Root$0, Root$0], [Root$0, FSObject$1], [FSObject$0, Root$0], [FSObject$0, FSObject$0], [FSObject$0, FSObject$2], [FSObject$1, Root$0], [FSObject$1, FSObject$0], [FSObject$1, FSObject$2], [FSObject$2, FSObject$1]]
+ 
+ 
+Iter5:Index31
+fitness-new:1.8468750715255737
+number of failed subformulas: 7
+number of failed null relations 0
+ bounds 
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 2:[[FSObject$1], [FSObject$2]]
+this/File | 0:[]
+this/Dir.contents | 5:[[Root$0, Root$0], [FSObject$0, FSObject$0], [FSObject$0, FSObject$2], [FSObject$2, FSObject$0], [FSObject$2, FSObject$2]]
+ 
+ 
+ ------------- ------------- ------------- 
+x number of mutation 9.239999999999998
+ numberOfMutation 35
+End GA Time: 14ms
+evalOptions:
+ solver: MiniSatProver
+ reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@7289d4a9
+ intEncoding: TWOSCOMPLEMENT
+ bitwidth: 3
+ sharing: 3
+ flatten: false
+ symmetryBreaking: 20
+ noOverflow: true
+ skolemDepth: 2
+ logTranslation: 2
+ coreGranularity: 3
+relations: {Int/next=[], seq/Int=[], String=[], this/Root=[[Root$0]], this/Dir.remainder=[], this/File=[[FSObject$1]], this/Dir.contents=[[Root$0, FSObject$1]]}
+ints: []
+-----INSTANCE---
+integers={}
+univ={Root$0, FSObject$1}
+Int={}
+seq/Int={}
+String={}
+none={}
+this/Root={Root$0}
+this/Dir={Root$0}
+this/Dir<:contents={Root$0->FSObject$1}
+this/File={FSObject$1}
+this/FSObject={Root$0, FSObject$1}
+ ---1
+.
+Int/next | 0:[]
+seq/Int | 0:[]
+String | 0:[]
+this/Root | 1:[[Root$0]]
+this/Dir.remainder | 0:[]
+this/File | 1:[[FSObject$1]]
+this/Dir.contents | 1:[[Root$0, FSObject$1]]
+== Solutions:1
+--Solved : -1
+ --- Full Iteration Time: 53 ms.  -- 32
+ --- Address Chromosomes Data Time: 0 ms.  -- 32
+solved
+Sample Nodes of the Ant Colony Instance:
+Relation: this/File | Pheromone: 5.0 | Probability: 0.0
+Tuples: 
+[[FSObject$0], [FSObject$1], [FSObject$2]]
+
+Relation: this/Dir.contents | Pheromone: 5.0 | Probability: 0.0
+Tuples: 
+[[Root$0, Root$0], [Root$0, FSObject$0], [Root$0, FSObject$1], [Root$0, FSObject$2], [FSObject$0, Root$0], [FSObject$0, FSObject$0], [FSObject$0, FSObject$1], [FSObject$0, FSObject$2], [FSObject$1, Root$0], [FSObject$1, FSObject$0], [FSObject$1, FSObject$1], [FSObject$1, FSObject$2], [FSObject$2, Root$0], [FSObject$2, FSObject$0], [FSObject$2, FSObject$1], [FSObject$2, FSObject$2]]
+
+Relation: this/Dir.remainder | Pheromone: 5.0 | Probability: 0.0
+Tuples: 
+[[FSObject$0], [FSObject$1], [FSObject$2]]
+
+Relation: this/Root | Pheromone: 5.0 | Probability: 0.0
+Tuples: 
+[[Root$0]]
+
+=================================
+Printing Chromosomes:
+=================================
+Printing non initial nodes:
+Relation: this/File
+Pheromone: 28.063062666763074
+Tuple Set:
+[]
+Pheromone: 10.959031149380264
+Tuple Set:
+[[FSObject$2]]
+Pheromone: 27.703848199714923
+Tuple Set:
+[[FSObject$0], [FSObject$1], [FSObject$2]]
+-------------------------------
+Relation: this/Dir.contents
+Pheromone: 34.21217311855653
+Tuple Set:
+[]
+Pheromone: 10.860805615122354
+Tuple Set:
+[[Root$0, FSObject$0], [Root$0, FSObject$1]]
+Pheromone: 10.860805615122354
+Tuple Set:
+[[Root$0, FSObject$2]]
+Pheromone: 10.58464193642278
+Tuple Set:
+[[FSObject$0, Root$0]]
+Pheromone: 10.67375871174701
+Tuple Set:
+[[Root$0, FSObject$1], [FSObject$0, FSObject$2]]
+Pheromone: 27.97105482014434
+Tuple Set:
+[[FSObject$1, FSObject$0]]
+Pheromone: 10.860805615122354
+Tuple Set:
+[[Root$0, FSObject$1], [Root$0, FSObject$2], [FSObject$1, FSObject$0]]
+Pheromone: 10.860805615122354
+Tuple Set:
+[[FSObject$1, FSObject$1]]
+Pheromone: 10.58464193642278
+Tuple Set:
+[[Root$0, FSObject$1], [FSObject$1, FSObject$1], [FSObject$1, FSObject$2]]
+Pheromone: 10.765765369465777
+Tuple Set:
+[[Root$0, FSObject$1], [FSObject$2, FSObject$1]]
+Pheromone: 10.58464193642278
+Tuple Set:
+[[Root$0, Root$0], [FSObject$0, Root$0], [FSObject$2, FSObject$2]]
+Pheromone: 21.9321593599168
+Tuple Set:
+[[Root$0, Root$0], [Root$0, FSObject$1], [FSObject$0, Root$0], [FSObject$0, FSObject$2], [FSObject$1, FSObject$1], [FSObject$2, Root$0], [FSObject$2, FSObject$0], [FSObject$2, FSObject$1], [FSObject$2, FSObject$2]]
+Pheromone: 10.67375871174701
+Tuple Set:
+[[Root$0, Root$0], [Root$0, FSObject$0], [Root$0, FSObject$1], [Root$0, FSObject$2], [FSObject$0, Root$0], [FSObject$0, FSObject$1], [FSObject$1, Root$0], [FSObject$1, FSObject$0], [FSObject$1, FSObject$1], [FSObject$1, FSObject$2], [FSObject$2, Root$0], [FSObject$2, FSObject$0], [FSObject$2, FSObject$1], [FSObject$2, FSObject$2]]
+-------------------------------
+Relation: this/Dir.remainder
+Pheromone: 50.0
+Tuple Set:
+[[FSObject$1]]
+Pheromone: 10.67375871174701
+Tuple Set:
+[[FSObject$0], [FSObject$1]]
+Pheromone: 28.072018536133267
+Tuple Set:
+[[FSObject$0], [FSObject$2]]
+Pheromone: 50.0
+Tuple Set:
+[[FSObject$0], [FSObject$1], [FSObject$2]]
+-------------------------------
+Relation: this/Root
+-------------------------------
+Starting Optimization
+End of Optimization
+=================================
+Best Ant:
+null
+Total Time: 1939 ms.
