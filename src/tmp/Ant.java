@@ -19,8 +19,17 @@ public class Ant {
         this.totalConstraintsNumber = ant.totalConstraintsNumber;
     }
 
+    public int getDistance() {
+        return this.failedRelationNumber + this.failedConstraintsNumber;
+    }
+
     public Ant() {
-        this.fitness = -1.0D;
+
+        // TODO: Change these initial numbers to more logical ones
+
+        this.failedConstraintsNumber = 1000;
+        this.failedRelationNumber = 1000;
+        this.fitness = 1000000.0D;
     }
 
     public double getFitness() {
@@ -37,6 +46,10 @@ public class Ant {
         return this.fitness;
     }
 
+    public void setNode(AntNode node, int index) {
+        nodes.set(index, node);
+    }
+
     public void addNode(AntNode node) {
         nodes.add(node);
     }
@@ -51,7 +64,7 @@ public class Ant {
 
     @Override
     public String toString() {
-        StringBuilder printed = new StringBuilder("Lucky Ant: ").append(fitness).append("\n");
+        StringBuilder printed = new StringBuilder("Ant: ").append(fitness).append("\n");
         printed.append("Number of failed constraints: ").append(failedConstraintsNumber).append("\n");
         printed.append("Number of failed relations: ").append(failedRelationNumber).append("\n");
         for (AntNode node : nodes)

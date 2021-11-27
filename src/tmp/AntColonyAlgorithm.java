@@ -7,26 +7,45 @@ import java.util.*;
 
 public class AntColonyAlgorithm {
 
-    public double pheromoneWeight = 1;
-    public double heuristicWeight = 0;
+    public double pheromoneWeight = 0.45;
+    public double heuristicWeight = 0.55;
+    public int randomSelectionRatio = 5; // percent
     public int numberOfAnts = 32;
-    public double minPheromone = 1;
+    public double minPheromone = 5;
     public double maxPheromone = 50;
     public double defaultPheromone = 5;
-    public double remainderPheromone = 10;
+    public double remainderPheromone = 5;
     public double evaporationRate = 0.8;
-    public int numberOfIterations = 30;
+    public int numberOfIterations = 3;
     public int bestAntIndex = 0;
     public Ant bestAnt;
+    public boolean initialAnts = true;
     public ArrayList<Ant> ants = new ArrayList<>();
-    public Map<Relation, ArrayList<AntNode>> relationNodes = new HashMap<>();
-
+    public Map<Relation, ArrayList<AntNode>> relationNodes = new LinkedHashMap<>();
     public ArrayList<Relation> unimportantRelations = new ArrayList<>();
 
+    public int totalNumberOfChoice = 0;
+    public int numberOfRandomChoice = 0;
+    public int numberOfProbabilityChoice = 0;
+
     public AntColonyAlgorithm() {
-        for (int i = 0; i < this.numberOfAnts; ++i)
-            this.ants.add(new Ant());
         this.bestAnt = null;
+    }
+
+    public void initializeAnts() {
+        Ant fullSolutionAnt = new Ant();
+
+        for (HashMap.Entry<Relation, ArrayList<AntNode>> entry : relationNodes.entrySet())
+            fullSolutionAnt.addNode(entry.getValue().get(0));
+
+        int index = 0;
+        for (int i = 0; i < this.numberOfAnts; ++i) {
+            if (initialAnts)
+                ants.add(new Ant(fullSolutionAnt));
+            else
+                ants.set(index, new Ant(fullSolutionAnt));
+            ++index;
+        }
     }
 
     public void initializeNodes(HashMap<Relation, ArrayList<TupleSet>> relationTuples) {
@@ -64,20 +83,41 @@ public class AntColonyAlgorithm {
         }
     }
 
+    public void printAnts() {
+        int index = 1;
+        for (Ant ant : ants) {
+//            System.out.println(index + ") " + ant);
+            System.out.println(index + ") ");
+            System.out.println("Fitness: " + ant.fitness);
+            System.out.println("Failed Constraints: " + ant.failedConstraintsNumber);
+            System.out.println("Failed Relations: " + ant.failedRelationNumber);
+            System.out.println("=====================");
+            ++index;
+        }
+    }
+
     public Ant startOptimization() {
         sortRelationsByNodeSize();
         int iter = 0;
         while (iter < numberOfIterations && !Main.foundSolution) {
-            System.out.println("Iteration: " + iter);
-            clearAntsNodes();
-            calculateProbabilities();
+//        while (iter < numberOfIterations) {
+            System.out.println("------------------------- Iteration " + iter + " -------------------------");
+//            clearAntsNodes();
+//            calculateProbabilities();
+            initializeAnts();
             moveAnts();
             evaluateAnts();
             updatePheromones();
             updateBestAnt();
+//            printAnts();
             System.out.println(bestAnt);
             ++iter;
+            initialAnts = false;
         }
+        System.out.println("# Probability Choice: " + numberOfProbabilityChoice);
+        System.out.println("# Random Choice: " + numberOfRandomChoice);
+        System.out.println("# Total Choice: " + totalNumberOfChoice);
+
         return bestAnt;
     }
 
@@ -114,11 +154,17 @@ public class AntColonyAlgorithm {
 
     private void moveAnts() {
         System.out.println("Moving Ants...");
+        int antNumber = 1;
         for (Ant ant: ants) {
+            int relationIndex = 0;
             for (HashMap.Entry<Relation, ArrayList<AntNode>> entry : relationNodes.entrySet()) {
+
                 Relation relation = entry.getKey();
-                selectNode(ant, relation);
+                selectNode(ant, relation, relationIndex);
+
+                ++relationIndex;
             }
+            ++antNumber;
         }
     }
 
@@ -195,11 +241,64 @@ public class AntColonyAlgorithm {
             bestAnt = new Ant(ants.get(bestAntIndex));
     }
 
-    private void selectNode(Ant ant, Relation relation) {
-        AntNode selectedNode = selectNodeByProbability(ant, relation);
-        if (selectedNode == null)
-            selectedNode = selectNodeRandomly(relation);
-        ant.addNode(selectedNode);
+    /**
+     * Selection Mechanism:
+     *
+     * If relation is single node then select that single node
+     * With 10% probability select from non-optimal nodes
+     * With 90% probability select from optimal nodes by considering pheromone and heuristic
+     */
+    private void selectNode(Ant ant, Relation relation, int relationIndex) {
+        AntNode selectedNode;
+        if (relationNodes.get(relation).size() == 1) {
+            selectedNode = relationNodes.get(relation).get(0);
+        } else {
+
+            Random random = new Random(System.currentTimeMillis());
+            int randomProbability = random.nextInt(100);
+
+            ArrayList<Integer> nonOptimalNodesIndex = getSpecificRelationNodesIndex(relation, false);
+
+            if (randomProbability <= randomSelectionRatio && nonOptimalNodesIndex.size() > 0) {
+                ++numberOfRandomChoice;
+                selectedNode = selectNodeRandomly(relation, nonOptimalNodesIndex);
+            } else {
+                ++numberOfProbabilityChoice;
+                setAntNodesProbability(ant, relation, relationIndex);
+                selectedNode = selectNodeByProbability(ant, relation);
+            }
+        }
+        ++totalNumberOfChoice;
+        ant.setNode(selectedNode, relationIndex);
+    }
+
+    private void setAntNodesProbability(Ant ant, Relation relation, int relationIndex) {
+        ArrayList<AntNode> relationNode = relationNodes.get(relation);
+
+        // Step 1. Calculate pheromone-heuristic sum
+        double pheromoneHeuristicSum = 0;
+        for (AntNode node : relationNode) {
+            if (node.pheromone > defaultPheromone) {
+                Ant tempAnt = new Ant(ant);
+                tempAnt.setNode(node, relationIndex);
+                Main.evaluateAntPartialSolution(tempAnt, unimportantRelations);
+                double nodeHeuristic = (double) 1 / (1 + tempAnt.getDistance());
+                pheromoneHeuristicSum +=
+                        Math.pow(node.pheromone, pheromoneWeight) *
+                                Math.pow(nodeHeuristic, heuristicWeight);
+                node.setTempHeuristic(nodeHeuristic);
+            }
+        }
+
+        // Step 2. Calculate each relation node temp probability
+        for (AntNode node : relationNode) {
+            if (node.pheromone > defaultPheromone) {
+                double probability = Math.pow(node.pheromone, pheromoneWeight) *
+                        Math.pow(node.tempHeuristic, heuristicWeight) /
+                        pheromoneHeuristicSum;
+                node.setProbability(probability);
+            }
+        }
     }
 
     private double getNodesPheromoneHeuristicSum(Relation relation) {
@@ -225,6 +324,33 @@ public class AntColonyAlgorithm {
         return 1;
     }
 
+    private ArrayList<Integer> getSpecificRelationNodesIndex(Relation relation, boolean optimal) {
+        ArrayList<AntNode> relationNode = relationNodes.get(relation);
+        ArrayList<Integer> optimalNodes = new ArrayList<>();
+
+        int index = 0;
+        for (AntNode node : relationNode) {
+            if (optimal) {
+                if (node.pheromone > defaultPheromone)
+                    optimalNodes.add(index);
+            } else {
+                if (node.pheromone <= defaultPheromone)
+                    optimalNodes.add(index);
+            }
+            ++index;
+        }
+        return optimalNodes;
+    }
+
+    private AntNode selectNodeRandomly(Relation relation, ArrayList<Integer> relationNodeIndex) {
+        ArrayList<AntNode> relationNode = relationNodes.get(relation);
+
+        Random random = new Random(System.currentTimeMillis());
+        int index = random.nextInt(relationNodeIndex.size());
+
+        return relationNode.get(relationNodeIndex.get(index));
+    }
+
     private AntNode selectNodeRandomly(Relation relation) {
         ArrayList<AntNode> relationNode = relationNodes.get(relation);
 
@@ -242,9 +368,11 @@ public class AntColonyAlgorithm {
         double cumulativeProbability = 0.0;
 
         for (AntNode n : relationNode) {
-            cumulativeProbability += n.probability;
-            if (cumulativeProbability >= probability)
-                return n;
+            if (n.pheromone > defaultPheromone) {
+                cumulativeProbability += n.probability;
+                if (cumulativeProbability >= probability)
+                    return n;
+            }
         }
         return null;
     }

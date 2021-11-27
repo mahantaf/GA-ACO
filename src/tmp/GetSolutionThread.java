@@ -62,7 +62,6 @@ public class GetSolutionThread implements Runnable {
                 System.out.println("--Solved : " + this.generatedChromo.originalIndex);
                 Main.foundSolution = true;
             }
-
             Main.originPopulation.set(this.taskIndex, this.generatedChromo);
             long time1 = System.currentTimeMillis() - startT;
             Main.latch.countDown();

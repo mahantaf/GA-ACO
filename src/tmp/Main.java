@@ -437,7 +437,8 @@ public class Main {
                         for(int i = 0; i < originPopulation.size(); ++i) {
                             Choromosome tmp = (Choromosome)originPopulation.get(i);
                             if (printMode == Main.PrintMode.DebugMode) {
-                                System.out.println("Iter" + iterations + ":Index" + i + "\nfitness-new:" + tmp.fitness + "\nnumber of failed subformulas: " + tmp.failedConstraintsNumber + "\nnumber of failed null relations " + tmp.nullRelationsNumber + "\n bounds ");
+                                System.out.println("Iter" + iterations + ":Index" + i + "\n" +
+                                        "fitness-new:" + tmp.fitness + "\nnumber of failed subformulas: " + tmp.failedConstraintsNumber + "\nnumber of failed null relations " + tmp.failedRelationNumber + "\n bounds ");
                                 tmp.printBounds();
                             }
 
@@ -509,35 +510,39 @@ public class Main {
 //                        break;
                     }
                 }
-
+                System.out.println("Bounds");
+                for (Relation r : unsolvedSolution.bounds.relations()) {
+                    System.out.println(r);
+                    System.out.println(unsolvedSolution.bounds.uppers.get(r));
+                }
                 // Added by Mahan
                 // TODO: Delete this part this is just for test
 
-                AntColonyAlgorithm antColonyAlgorithm = createAntColonyInstance(unsolvedSolution);
-                System.out.println("Sample Nodes of the Ant Colony Instance:");
-                antColonyAlgorithm.sampleNodes();
-                System.out.println("=================================");
+//                AntColonyAlgorithm antColonyAlgorithm = createAntColonyInstance(unsolvedSolution);
+//                System.out.println("Sample Nodes of the Ant Colony Instance:");
+//                antColonyAlgorithm.sampleNodes();
+//                System.out.println("=================================");
 
-                System.out.println("Printing Chromosomes:");
-                for (Choromosome choromosome : originPopulation) {
-                    antColonyAlgorithm.updatePheromonesByGASolution(choromosome.chromosomeBounds, choromosome.fitness);
-                }
-                System.out.println("=================================");
-                System.out.println("Printing non initial nodes:");
-                antColonyAlgorithm.sampleNonInitialNodes();
-
-                System.out.println("Starting Optimization");
-                Ant bestAnt = antColonyAlgorithm.startOptimization();
-                System.out.println("End of Optimization");
-
-                System.out.println("=================================");
-                System.out.println("Best Ant:");
-                System.out.println(bestAnt);
-
-                startGA = System.currentTimeMillis() - start;
-                if (printMode != Main.PrintMode.GraphDataMode) {
-                    System.out.println("Total Time: " + startGA + " ms.");
-                }
+//                System.out.println("Printing Chromosomes:");
+//                for (Choromosome choromosome : originPopulation) {
+//                    antColonyAlgorithm.updatePheromonesByGASolution(choromosome.chromosomeBounds, choromosome.fitness);
+//                }
+//                System.out.println("=================================");
+//                System.out.println("Printing non initial nodes:");
+//                antColonyAlgorithm.sampleNonInitialNodes();
+//
+//                System.out.println("Starting Optimization");
+//                Ant bestAnt = antColonyAlgorithm.startOptimization();
+//                System.out.println("End of Optimization");
+//
+//                System.out.println("=================================");
+//                System.out.println("Best Ant:");
+//                System.out.println(bestAnt);
+//
+//                startGA = System.currentTimeMillis() - start;
+//                if (printMode != Main.PrintMode.GraphDataMode) {
+//                    System.out.println("Total Time: " + startGA + " ms.");
+//                }
 
                 executorPool.shutdown();
 
@@ -765,6 +770,30 @@ public class Main {
      * Ant Colony Optimization Methods
      * Added by Mahan Tafreshipour (Nov. 2021)
      */
+
+    private static void evaluateSingleChromosome(
+            Command cmd,
+            A4Reporter rep, ConstList<Sig> sigsS,
+            A4Options opt,
+            Choromosome choromosome,
+            ThreadPoolExecutor executorPool
+    ) throws Err, CloneNotSupportedException, IOException, InterruptedException, ClassNotFoundException {
+        originPopulation = new ArrayList<>();
+        for(int j = 0; j < population; ++j)
+            originPopulation.add(null);
+
+        latch = new CountDownLatch(1);
+
+        Formula f1 = Formula.and(unsolvedSolution.formulas);
+        A4Solution sol1 = new A4Solution(unsolvedSolution, 0);
+        Runnable solutionThread = new GetSolutionThread(sol1, cmd, rep, f1, choromosome, 0);
+        executorPool.execute(solutionThread);
+
+        try {
+            latch.await();
+        } catch (InterruptedException ignored) {}
+    }
+
     public static boolean isUnimportant(Relation relation) {
         return  relation.toString().equals("String")   ||
                 relation.toString().equals("seq/Int")  ||
@@ -802,6 +831,26 @@ public class Main {
         generatedChromosome.tupleSize = tupleSize;
 
         return generatedChromosome;
+    }
+
+    public static void evaluateAntPartialSolution(Ant ant, ArrayList<Relation> unimportantRelations) {
+        int index = 0;
+        Choromosome choromosome = translateAntToChromosome(ant, unimportantRelations, index);
+
+        Command cmd = world.getAllCommands().get(0);
+        ConstList<Sig> sigsS = world.getAllReachableSigs();
+
+        try {
+            evaluateSingleChromosome(cmd, rep, sigsS, opt, choromosome, executorPool);
+        } catch (Err | CloneNotSupportedException | InterruptedException | IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        Choromosome evaluatedChromosome = originPopulation.get(index);
+        ant.fitness = evaluatedChromosome.fitness;
+        ant.failedConstraintsNumber = evaluatedChromosome.failedConstraintsNumber;
+        ant.totalConstraintsNumber = evaluatedChromosome.totalConstraintsNumber;
+        ant.failedRelationNumber = evaluatedChromosome.failedRelationNumber;
     }
 
     public static void evaluateAntsSolutions(ArrayList<Ant> ants, ArrayList<Relation> unimportantRelations) {

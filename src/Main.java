@@ -18,38 +18,9 @@ import edu.mit.csail.sdg.alloy4compiler.ast.Sig.PrimSig;
 import edu.mit.csail.sdg.alloy4compiler.translator.A4Options;
 import edu.mit.csail.sdg.alloy4compiler.translator.A4Solution;
 import edu.mit.csail.sdg.alloy4compiler.translator.TranslateAlloyToKodkod;
-import tmp.tmpClass;
 
 public class Main {
     public static void main(String[] args) throws Err {
-        ArrayList<tmpClass> a = new ArrayList<tmpClass>();
-        ArrayList<tmpClass> b = new ArrayList<tmpClass>();
-
-        a.add(new tmpClass(1));
-        a.add(new tmpClass(2));
-        a.add(new tmpClass(3));
-
-        b.add(a.get(0));
-        b.add(a.get(2));
-
-        for (tmpClass t : a) {
-            System.out.println(t.a);
-        }
-        System.out.println("=================");
-        for (tmpClass t : b) {
-            System.out.println(t.a);
-        }
-
-        b.get(0).a = 4;
-        System.out.println();
-
-        for (tmpClass t : a) {
-            System.out.println(t.a);
-        }
-        System.out.println("=================");
-        for (tmpClass t : b) {
-            System.out.println(t.a);
-        }
 
     }
 }

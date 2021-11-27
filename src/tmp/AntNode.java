@@ -11,6 +11,7 @@ public class AntNode {
     public int index;
     public double pheromone;
     public double probability = 0.0;
+    public double tempHeuristic = 0.0;
 
 
     public AntNode(Relation relation, TupleSet tuples, double pheromone) {
@@ -37,6 +38,10 @@ public class AntNode {
 
     public void setPheromone(double pheromone) {
         this.pheromone = pheromone;
+    }
+
+    public void setTempHeuristic(double heuristic) {
+        this.tempHeuristic = heuristic;
     }
 
     public void setProbability(double probability) { this.probability = probability; }
