@@ -14,29 +14,23 @@ import edu.mit.csail.sdg.alloy4compiler.ast.Sig;
 import edu.mit.csail.sdg.alloy4compiler.parser.CompModule;
 import edu.mit.csail.sdg.alloy4compiler.parser.CompUtil;
 import edu.mit.csail.sdg.alloy4compiler.translator.A4Options;
+import edu.mit.csail.sdg.alloy4compiler.translator.A4Options.SatSolver;
 import edu.mit.csail.sdg.alloy4compiler.translator.A4Solution;
 import edu.mit.csail.sdg.alloy4compiler.translator.Simplifier;
 import edu.mit.csail.sdg.alloy4compiler.translator.TranslateAlloyToKodkod;
-import edu.mit.csail.sdg.alloy4compiler.translator.A4Options.SatSolver;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.PrintStream;
-import java.lang.reflect.Field;
-import java.util.*;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
 import kodkod.ast.Formula;
 import kodkod.ast.Relation;
 import kodkod.instance.Bounds;
 import kodkod.instance.Tuple;
 import kodkod.instance.TupleSet;
-import kodkod.util.ints.IntIterator;
-import kodkod.util.ints.IntSet;
 import kodkod.util.nodes.AnnotatedNode;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.lang.reflect.Field;
+import java.util.*;
+import java.util.concurrent.*;
 
 public class Main {
     public static int solvingMode = 1;
@@ -83,8 +77,7 @@ public class Main {
     public static CompModule world = null;
     public static ThreadPoolExecutor executorPool = null;
 
-    public Main() {
-    }
+    public Main() {}
 
     public static void addLibraryPath(String pathToAdd) throws Exception {
         Field usrPathsField = ClassLoader.class.getDeclaredField("usr_paths");
@@ -111,6 +104,8 @@ public class Main {
         } else {
 
             // -------------- Configuration Begin --------------
+
+            // TODO: Configuration part can all be done a separate function and return sth like ConfigurationClass
 
             String libraryPath = args[2];
 
@@ -283,6 +278,7 @@ public class Main {
                 var40.printStackTrace();
             }
 
+            // TODO: It can be done in configuration part
             if (output != null) {
                 FileOutputStream oStream = null;
                 String outputFile;
@@ -297,29 +293,23 @@ public class Main {
                 System.setOut(f);
             }
 
+            // TODO: Opt setup can be done in a separate function
             opt = new A4Options();
             opt.solver = SatSolver.MiniSatProverJNI;
-            int symmetry = 20;
-            if (symmetry > -1) {
-                opt.symmetry = symmetry;
-            }
-
+            opt.symmetry = 20;
             opt.skolemDepth = 2;
             opt.noOverflow = true;
+
             if (printMode != Main.PrintMode.GraphDataMode) {
                 System.out.println("Analyzing Alloy Specification:\n" + filename);
             }
 
             // -------------- Initialization End --------------
 
-            // -------------- Discovery Section --------------
-
-//            discoverProblem(rep, world, opt);
-
-            // -------------- End Discovery Section --------------
-
             Command cmd = (Command)world.getAllCommands().get(0);
             ConstList<Sig> sigsS = world.getAllReachableSigs();
+
+            // TODO: Each Analysis can be done in a separate function
             if (analysisMode == Main.AnalysisMode.AlloyMode) {
                 startAlloyToKodKod = System.currentTimeMillis();
 
@@ -352,6 +342,7 @@ public class Main {
                 }
 
             } else {
+                // TODO: Two following if statements can be reduced to one
                 if (analysisMode == Main.AnalysisMode.GAReduceSimplifyMode) {
                     unsolvedSolution = TranslateAlloyToKodkod.execute_command(rep, sigsS, cmd, opt);
                     fgoal = unsolvedSolution.prepareSolve(rep, cmd, new Simplifier());
@@ -362,28 +353,28 @@ public class Main {
                     fgoal = unsolvedSolution.prepareSolve(rep, cmd, new Simplifier());
                 }
 
-                executorPool = new ThreadPoolExecutor(numberOfTasks, 100, 500L, TimeUnit.SECONDS, new LinkedBlockingQueue());
+                // TODO: Pool initialization can be done in initialization step
+                executorPool = new ThreadPoolExecutor(
+                        numberOfTasks,
+                        100,
+                        500L,
+                        TimeUnit.SECONDS,
+                        new LinkedBlockingQueue()
+                );
                 Boolean hasFinishedPrepare = GeneticAlgorithm.prepareUniverseScope();
                 isStartingGA = true;
                 if (analysisMode == Main.AnalysisMode.GAMultiThreadTestMode || analysisMode == Main.AnalysisMode.RandomMode) {
                     try {
-                        generateOriginalPopulationOfChromosome_multithread(cmd, rep, sigsS, opt, (ArrayList)null, executorPool);
-                    } catch (Err var37) {
+                        generateOriginalPopulationOfChromosome_multithread(cmd, rep, sigsS, opt, null, executorPool);
+                    } catch (Err | InterruptedException | ClassNotFoundException var37) {
                         var37.printStackTrace();
-                    } catch (InterruptedException var38) {
-                        var38.printStackTrace();
-                    } catch (ClassNotFoundException var39) {
-                        var39.printStackTrace();
                     }
                 }
 
 
                 int possibility = 0;
-                Iterator var15 = principleRelationsAndTuplesNumber.keySet().iterator();
-
-                while(var15.hasNext()) {
-                    String key = (String)var15.next();
-                    possibility += (Integer)principleRelationsAndTuplesNumber.get(key);
+                for (String key : principleRelationsAndTuplesNumber.keySet()) {
+                    possibility += principleRelationsAndTuplesNumber.get(key);
                     PossibilityPair pair = new PossibilityPair(possibility, key);
                     possibilityAndRelationList.add(pair);
                 }
@@ -397,21 +388,13 @@ public class Main {
                 if (analysisMode == Main.AnalysisMode.RandomMode) {
                     while(!foundSolution && iterations < 500) {
                         try {
-                            generateOriginalPopulationOfChromosome_multithread(cmd, rep, sigsS, opt, (ArrayList)null, executorPool);
-                        } catch (Err var33) {
+                            generateOriginalPopulationOfChromosome_multithread(cmd, rep, sigsS, opt, null, executorPool);
+                        } catch (Err | CloneNotSupportedException | InterruptedException | ClassNotFoundException var33) {
                             var33.printStackTrace();
-                        } catch (CloneNotSupportedException var34) {
-                            var34.printStackTrace();
-                        } catch (InterruptedException var35) {
-                            var35.printStackTrace();
-                        } catch (ClassNotFoundException var36) {
-                            var36.printStackTrace();
                         }
 
-                        for(int i = 0; i < originPopulation.size(); ++i) {
-                            Choromosome tmp = (Choromosome)originPopulation.get(i);
-                            System.out.println("Fitness :" + tmp.fitness);
-                        }
+                        for (Choromosome choromosome : originPopulation)
+                            System.out.println("Fitness :" + choromosome.fitness);
                     }
 
                     if (foundSolution) {
@@ -420,57 +403,66 @@ public class Main {
                         System.out.println("Exceed " + iterations + " iterations");
                     }
                 } else {
+                    int numOfZeroFitnessChange = 0;
                     while(!foundSolution) {
-
                         startGA = System.currentTimeMillis();
                         ArrayList<Choromosome> populationWithoutSorting = new ArrayList(originPopulation);
+
                         ArrayList<Choromosome> topFitnessPopulation = new ArrayList();
                         if (printMode == Main.PrintMode.DebugMode) {
                             System.out.println("size ++ " + originPopulation.size());
                         }
 
                         quickSortPopulation(originPopulation);
+
+                        if (numOfZeroFitnessChange >= 3) {
+                            System.out.println("GA is not optimal anymore");
+                            System.out.println("Switching to ACO...");
+                            break;
+                        }
+
+                        double currentFitness = originPopulation.get(0).fitness;
+
                         if (printMode == Main.PrintMode.DebugMode) {
                             System.out.println(" ------------- ------------- ------------- Iteration " + iterations);
                         }
+                        // TODO: Move this part into a separate function (it's just printing)
+//                        for(int i = 0; i < originPopulation.size(); ++i) {
+//                            Choromosome tmp = (Choromosome)originPopulation.get(i);
+//                            if (printMode == Main.PrintMode.DebugMode) {
+//                                System.out.println("Iter" + iterations + ":Index" + i + "\n" +
+//                                        "fitness-new:" + tmp.fitness + "\nnumber of failed subformulas: " + tmp.failedConstraintsNumber + "\nnumber of failed null relations " + tmp.failedRelationNumber + "\n bounds ");
+//                                tmp.printBounds();
+//                            }
+//
+//                            if (i < 5) {
+//                            }
+//
+//                            if (printMode == Main.PrintMode.GraphDataMode) {
+//                                if (i == 0) {
+//                                    System.out.print(tmp.fitness + ",");
+//                                }
+//
+//                                if (i == population - 1) {
+//                                    System.out.println(tmp.fitness);
+//                                }
+//                            }
+//
+//                            if (printMode == Main.PrintMode.DebugMode) {
+//                                System.out.println(" \n ");
+//                            }
+//                        }
 
-                        for(int i = 0; i < originPopulation.size(); ++i) {
-                            Choromosome tmp = (Choromosome)originPopulation.get(i);
-                            if (printMode == Main.PrintMode.DebugMode) {
-                                System.out.println("Iter" + iterations + ":Index" + i + "\n" +
-                                        "fitness-new:" + tmp.fitness + "\nnumber of failed subformulas: " + tmp.failedConstraintsNumber + "\nnumber of failed null relations " + tmp.failedRelationNumber + "\n bounds ");
-                                tmp.printBounds();
-                            }
-
-                            if (i < 5) {
-                            }
-
-                            if (printMode == Main.PrintMode.GraphDataMode) {
-                                if (i == 0) {
-                                    System.out.print(tmp.fitness + ",");
-                                }
-
-                                if (i == population - 1) {
-                                    System.out.println(tmp.fitness);
-                                }
-                            }
-
-                            if (printMode == Main.PrintMode.DebugMode) {
-                                System.out.println(" \n ");
-                            }
-                        }
-
-                        ArrayList selectedPopulation;
+                        ArrayList<Choromosome> selectedPopulation;
                         if (selectionAlgorithm != Main.SelectionAlgorithm.UnbiasedSelection) {
                             if (selectionAlgorithm != Main.SelectionAlgorithm.TournamentSelection) {
                                 selectedPopulation = null;
                                 return;
                             }
-
                             selectedPopulation = GeneticAlgorithm.tournamentSelectPopulation(originPopulation);
                         } else {
                             for(int i = 0; i < 1; ++i) {
-                                Choromosome tmp = (Choromosome)originPopulation.get(i);
+                                Choromosome tmp = originPopulation.get(i);
                                 populationWithoutSorting.remove(tmp);
                                 topFitnessPopulation.add(tmp);
                             }
@@ -493,63 +485,58 @@ public class Main {
                         if (analysisMode == Main.AnalysisMode.GAMultiThreadTestMode) {
                             try {
                                 generateOriginalPopulationOfChromosome_multithread(cmd, rep, sigsS, opt, mutationGeneratedPopulation, executorPool);
-                            } catch (Err var29) {
+                            } catch (Err | CloneNotSupportedException | InterruptedException | ClassNotFoundException var29) {
                                 var29.printStackTrace();
-                            } catch (CloneNotSupportedException var30) {
-                                var30.printStackTrace();
-                            } catch (InterruptedException var31) {
-                                var31.printStackTrace();
-                            } catch (ClassNotFoundException var32) {
-                                var32.printStackTrace();
                             }
                         }
+
+                        double newFitness = getFittestChromosomeFitness();
+
+                        System.out.println("------------ Fitness Data ------------");
+                        System.out.println("Current Fitness: " + currentFitness);
+                        System.out.println("New Fitness: " + newFitness);
+                        System.out.println("Change: " + (currentFitness - newFitness));
+                        System.out.println("------------------------");
+
+                        if (currentFitness - newFitness <= 0.05)
+                            numOfZeroFitnessChange++;
+                        else
+                            numOfZeroFitnessChange = 0;
 
                         if (foundSolution && printMode == Main.PrintMode.DebugMode) {
                             System.out.println("solved");
                         }
-//                        break;
                     }
                 }
-                System.out.println("Bounds");
-                for (Relation r : unsolvedSolution.bounds.relations()) {
-                    System.out.println(r);
-                    System.out.println(unsolvedSolution.bounds.uppers.get(r));
-                }
                 // Added by Mahan
-                // TODO: Delete this part this is just for test
 
-//                AntColonyAlgorithm antColonyAlgorithm = createAntColonyInstance(unsolvedSolution);
-//                System.out.println("Sample Nodes of the Ant Colony Instance:");
-//                antColonyAlgorithm.sampleNodes();
-//                System.out.println("=================================");
+                AntColonyAlgorithm antColonyAlgorithm = createAntColonyInstanceByChromosomes(unsolvedSolution, originPopulation);
 
-//                System.out.println("Printing Chromosomes:");
-//                for (Choromosome choromosome : originPopulation) {
-//                    antColonyAlgorithm.updatePheromonesByGASolution(choromosome.chromosomeBounds, choromosome.fitness);
-//                }
-//                System.out.println("=================================");
-//                System.out.println("Printing non initial nodes:");
-//                antColonyAlgorithm.sampleNonInitialNodes();
-//
-//                System.out.println("Starting Optimization");
-//                Ant bestAnt = antColonyAlgorithm.startOptimization();
-//                System.out.println("End of Optimization");
-//
-//                System.out.println("=================================");
-//                System.out.println("Best Ant:");
-//                System.out.println(bestAnt);
-//
-//                startGA = System.currentTimeMillis() - start;
-//                if (printMode != Main.PrintMode.GraphDataMode) {
-//                    System.out.println("Total Time: " + startGA + " ms.");
-//                }
+                for (Choromosome choromosome : originPopulation)
+                    antColonyAlgorithm.updatePheromonesByGASolution(choromosome.chromosomeBounds, choromosome.fitness);
+
+                System.out.println("Setting best chromosome");
+                antColonyAlgorithm.setBestGASolution(originPopulation.get(0));
+
+                System.out.println("Starting Optimization");
+                Ant bestAnt = antColonyAlgorithm.startOptimization();
+                System.out.println("End of Optimization");
+
+                System.out.println("=================================");
+                System.out.println("Best Ant:");
+                System.out.println(bestAnt);
+
+
+                startGA = System.currentTimeMillis() - start;
+                if (printMode != Main.PrintMode.GraphDataMode) {
+                    System.out.println("Total Time: " + startGA + " ms.");
+                }
 
                 executorPool.shutdown();
 
                 try {
                     executorPool.awaitTermination(9223372036854775807L, TimeUnit.SECONDS);
-                } catch (InterruptedException var28) {
-                }
+                } catch (InterruptedException ignored) {}
 
             }
         }
@@ -565,12 +552,11 @@ public class Main {
             recursiveQuickSort(population, low, randomMiddle - 1);
             recursiveQuickSort(population, randomMiddle + 1, high);
         }
-
     }
 
     private static int partition(ArrayList<Choromosome> population, int low, int high) {
         if (printMode == Main.PrintMode.DebugMode) {
-            System.out.println(low + " low|high " + high);
+//            System.out.println(low + " low|high " + high);
         }
 
         double pivot = ((Choromosome)population.get(low)).fitness;
@@ -594,35 +580,23 @@ public class Main {
         return low;
     }
 
-    private static void swapChromosome(ArrayList<Choromosome> population, int i, int j) {
-        Choromosome tmp = (Choromosome)originPopulation.get(j);
-        originPopulation.set(j, originPopulation.get(i));
-        originPopulation.set(i, tmp);
-    }
-
     private static void generateOriginalPopulationOfChromosome_multithread(Command cmd, A4Reporter rep, ConstList<Sig> sigsS, A4Options opt, ArrayList<Choromosome> generatedPopulationByGA, ThreadPoolExecutor executorPool) throws Err, CloneNotSupportedException, IOException, InterruptedException, ClassNotFoundException {
         long start = System.currentTimeMillis();
         new ArrayList();
         originPopulation = new ArrayList();
 
-        for(int j = 0; j < population; ++j) {
-//            originPopulation.add((Object)null);
+        for(int j = 0; j < population; ++j)
             originPopulation.add(null);
-        }
 
         latch = new CountDownLatch(population);
 
-        // TODO: Remove these lines
-//        int size = isOriginalPopulation ? population : generatedPopulationByGA.size();
-
         for(int iter = 0; iter < population; ++iter) {
-//        for(int iter = 0; iter < size; ++iter) {
             long startIter = System.currentTimeMillis();
             Choromosome generatedChromo;
             if (isOriginalPopulation) {
                 generatedChromo = new Choromosome(iter);
             } else {
-                generatedChromo = (Choromosome)generatedPopulationByGA.get(iter);
+                generatedChromo = generatedPopulationByGA.get(iter);
             }
 
             Formula f1 = Formula.and(unsolvedSolution.formulas);
@@ -633,21 +607,299 @@ public class Main {
 
         try {
             latch.await();
-        } catch (InterruptedException var17) {
-        }
+        } catch (InterruptedException ignored) {}
 
         long cTime1 = System.currentTimeMillis() - start;
-        long time1 = System.currentTimeMillis();
+//        long time1 = System.currentTimeMillis();
         if (printMode != Main.PrintMode.GraphDataMode) {
             System.out.println(" --- Full Iteration Time: " + cTime1 + " ms.  -- " + originPopulation.size());
         }
 
-        long cTime2 = System.currentTimeMillis() - time1;
-        if (printMode == Main.PrintMode.DebugMode) {
-            System.out.println(" --- Address Chromosomes Data Time: " + cTime2 + " ms.  -- " + originPopulation.size());
-        }
+//        long cTime2 = System.currentTimeMillis() - time1;
+//        if (printMode == Main.PrintMode.DebugMode) {
+//            System.out.println(" --- Address Chromosomes Data Time: " + cTime2 + " ms.  -- " + originPopulation.size());
+//        }
 
         ++iterations;
+    }
+
+    static {
+        printMode = Main.PrintMode.DebugMode;
+    }
+
+
+    // Enums:
+    public static enum SelectionAlgorithm {
+        TournamentSelection("TournamentSelection"),
+        UnbiasedSelection("UnbiasedSelection");
+
+        public final String name;
+
+        private SelectionAlgorithm(String label) {
+            this.name = label;
+        }
+    }
+
+    public static enum PrintMode {
+        OnlyTimeMode,
+        DebugMode,
+        GraphDataMode;
+
+        private PrintMode() {
+        }
+    }
+
+    public static enum AnalysisMode {
+        RandomMode,
+        AlloyMode,
+        GAOriginalMode,
+        GAReduceSimplifyMode,
+        GAMultiThreadTestMode;
+
+        private AnalysisMode() {
+        }
+    }
+
+    /*
+     * Ant Colony Optimization Methods
+     * Added by Mahan Tafreshipour (Nov. 2021)
+     */
+
+    public static double getFittestChromosomeFitness() {
+        double fitness = 10000000;
+        for (Choromosome c : originPopulation) {
+            if (c.fitness < fitness)
+                fitness = c.fitness;
+        }
+        return fitness;
+    }
+
+    public static void evaluateSingleChromosome(
+            Command cmd,
+            A4Reporter rep, ConstList<Sig> sigsS,
+            A4Options opt,
+            Choromosome choromosome,
+            ThreadPoolExecutor executorPool
+    ) throws Err, CloneNotSupportedException, IOException, InterruptedException, ClassNotFoundException {
+        originPopulation = new ArrayList<>();
+        for(int j = 0; j < population; ++j)
+            originPopulation.add(null);
+
+        latch = new CountDownLatch(1);
+
+        Formula f1 = Formula.and(unsolvedSolution.formulas);
+        A4Solution sol1 = new A4Solution(unsolvedSolution, 0);
+        Runnable solutionThread = new GetSolutionThread(sol1, cmd, rep, f1, choromosome, 0);
+        executorPool.execute(solutionThread);
+
+        try {
+            latch.await();
+        } catch (InterruptedException ignored) {}
+    }
+
+    public static boolean isUnimportant(Relation relation) {
+        return  relation.toString().equals("String")   ||
+                relation.toString().equals("seq/Int")  ||
+                relation.toString().equals("Int/next");
+    }
+
+    public static Choromosome translateAntToChromosome(Ant ant, ArrayList<Relation> unimportantRelations, int index) {
+        ArrayList<AntNode> antNodes = ant.getNodes();
+        Choromosome generatedChromosome = new Choromosome(index);
+
+        Map<Relation, TupleSet> lowerBounds = new LinkedHashMap<>();
+        Map<Relation, TupleSet> upperBounds = new LinkedHashMap<>();
+        Bounds chromosomeBounds = new Bounds(unsolvedSolution.bounds.universe());
+
+        for (Relation relation : unimportantRelations) {
+            lowerBounds.put(relation, unsolvedSolution.bounds.lowers.get(relation));
+            upperBounds.put(relation, unsolvedSolution.bounds.uppers.get(relation));
+        }
+
+        int tupleSize = 0;
+        for (AntNode antNode : antNodes) {
+            Relation relation = antNode.relation;
+            TupleSet tuples = antNode.tuples;
+
+            lowerBounds.put(relation, tuples);
+            upperBounds.put(relation, tuples);
+
+            tupleSize += tuples.size();
+        }
+
+        chromosomeBounds.uppers = upperBounds;
+        chromosomeBounds.lowers = lowerBounds;
+
+        generatedChromosome.chromosomeBounds = chromosomeBounds;
+        generatedChromosome.tupleSize = tupleSize;
+
+        return generatedChromosome;
+    }
+
+    private static void evaluatePartialAntsMultiThread(
+            Command cmd,
+            A4Reporter rep,
+            ConstList<Sig> sigsS,
+            A4Options opt,
+            ArrayList<Choromosome> generatedPopulationByGA,
+            ThreadPoolExecutor executorPool
+    ) throws Err, CloneNotSupportedException, IOException, InterruptedException, ClassNotFoundException {
+
+        originPopulation = new ArrayList<>();
+
+        for(int j = 0; j < generatedPopulationByGA.size(); ++j)
+            originPopulation.add(null);
+
+        latch = new CountDownLatch(generatedPopulationByGA.size());
+
+        for(int iter = 0; iter < generatedPopulationByGA.size(); ++iter) {
+            Choromosome generatedChromo = generatedPopulationByGA.get(iter);
+            Formula f1 = Formula.and(unsolvedSolution.formulas);
+            A4Solution sol1 = new A4Solution(unsolvedSolution, iter);
+            Runnable solutionThread = new GetSolutionThread(sol1, cmd, rep, f1, generatedChromo, iter);
+            executorPool.execute(solutionThread);
+        }
+
+        try {
+            latch.await();
+        } catch (InterruptedException ignored) {}
+
+        ++iterations;
+    }
+
+    public static void evaluateAntPartialSolution(Ant ant, ArrayList<Relation> unimportantRelations) {
+        int index = 0;
+        Choromosome choromosome = translateAntToChromosome(ant, unimportantRelations, index);
+
+        Command cmd = world.getAllCommands().get(0);
+        ConstList<Sig> sigsS = world.getAllReachableSigs();
+
+        try {
+            evaluateSingleChromosome(cmd, rep, sigsS, opt, choromosome, executorPool);
+        } catch (Err | CloneNotSupportedException | InterruptedException | IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        Choromosome evaluatedChromosome = originPopulation.get(index);
+        ant.fitness = evaluatedChromosome.fitness;
+        ant.failedConstraintsNumber = evaluatedChromosome.failedConstraintsNumber;
+        ant.totalConstraintsNumber = evaluatedChromosome.totalConstraintsNumber;
+        ant.failedRelationNumber = evaluatedChromosome.failedRelationNumber;
+    }
+
+    public static void evaluateAntsPartialSolutionsMultiThread(AntColonyAlgorithm antColonyAlgorithmInstance, ArrayList<Ant> ants) {
+        ArrayList<Choromosome> antChromosomePopulation = new ArrayList<>();
+        int index = 0;
+        for (Ant ant : ants) {
+            antChromosomePopulation.add(translateAntToChromosome(ant, antColonyAlgorithmInstance.unimportantRelations, index));
+            ++index;
+        }
+
+        Command cmd = world.getAllCommands().get(0);
+        ConstList<Sig> sigsS = world.getAllReachableSigs();
+
+        try {
+            evaluatePartialAntsMultiThread(cmd, rep, sigsS, opt, antChromosomePopulation, executorPool);
+        } catch (Err | CloneNotSupportedException | InterruptedException | IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        index = 0;
+        for (Ant ant: ants) {
+            Choromosome evaluatedChromosome = originPopulation.get(index);
+
+            ant.fitness = evaluatedChromosome.fitness;
+            ant.failedConstraintsNumber = evaluatedChromosome.failedConstraintsNumber;
+            ant.totalConstraintsNumber = evaluatedChromosome.totalConstraintsNumber;
+            ant.failedRelationNumber = evaluatedChromosome.failedRelationNumber;
+            ++index;
+        }
+    }
+
+    public static void evaluateAntsSolutions(AntColonyAlgorithm antColonyAlgorithmInstance, ArrayList<Ant> ants) {
+        ArrayList<Choromosome> antChromosomePopulation = new ArrayList<>();
+
+        int index = 0;
+        for (Ant ant : ants) {
+            antChromosomePopulation.add(translateAntToChromosome(ant, antColonyAlgorithmInstance.unimportantRelations, index));
+            ++index;
+        }
+
+        Command cmd = world.getAllCommands().get(0);
+        ConstList<Sig> sigsS = world.getAllReachableSigs();
+
+        Random random = new Random(System.currentTimeMillis());
+        int mutationProbability = random.nextInt(100);
+
+        if (mutationProbability <= 10) {
+            System.out.println("Adding Random Mutation");
+            antChromosomePopulation = GeneticAlgorithm.mutation_tupleLevel(antChromosomePopulation);
+        }
+
+        try {
+            generateOriginalPopulationOfChromosome_multithread(cmd, rep, sigsS, opt, antChromosomePopulation, executorPool);
+        } catch (Err | CloneNotSupportedException | InterruptedException | IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        index = 0;
+        for (Ant ant: ants) {
+
+            Choromosome evaluatedChromosome = originPopulation.get(index);
+
+            ant.fitness = evaluatedChromosome.fitness;
+            ant.failedConstraintsNumber = evaluatedChromosome.failedConstraintsNumber;
+            ant.totalConstraintsNumber = evaluatedChromosome.totalConstraintsNumber;
+            ant.failedRelationNumber = evaluatedChromosome.failedRelationNumber;
+
+            antColonyAlgorithmInstance.updateNodesByChromosome(evaluatedChromosome.chromosomeBounds);
+            ++index;
+        }
+    }
+
+    public static boolean contain(ArrayList<TupleSet> tupleSets, TupleSet tupleSet) {
+        for (TupleSet ts : tupleSets) {
+            if (ts.equals(tupleSet))
+                return true;
+        }
+        return false;
+    }
+
+    public static AntColonyAlgorithm createAntColonyInstanceByChromosomes(A4Solution notSolvedSolution, ArrayList<Choromosome> choromosomes) {
+        HashMap<Relation, ArrayList<TupleSet>> relationTuples = new HashMap<Relation, ArrayList<TupleSet>>();
+        ArrayList<Relation> unimportantRelations = new ArrayList<>();
+
+        for (Relation relation : notSolvedSolution.bounds.relations()) {
+            if (isUnimportant(relation)) {
+                unimportantRelations.add(relation);
+            } else {
+                ArrayList<TupleSet> tupleSets = new ArrayList<>();
+                for (Choromosome choromosome : choromosomes) {
+                    TupleSet chromosomeTuples = choromosome.chromosomeBounds.uppers.get(relation);
+                    if (!contain(tupleSets, chromosomeTuples))
+                        tupleSets.add(chromosomeTuples);
+                }
+                relationTuples.put(relation, tupleSets);
+            }
+        }
+        AntColonyAlgorithm antColonyAlgorithm = new AntColonyAlgorithm();
+        antColonyAlgorithm.setUnimportantRelations(unimportantRelations);
+        antColonyAlgorithm.setNotSolvedSolution(notSolvedSolution);
+        antColonyAlgorithm.initializeNodes(relationTuples);
+
+        return antColonyAlgorithm;
+    }
+
+
+    /**
+     *
+     * Not Used Methods:
+     */
+
+    private static void swapChromosome(ArrayList<Choromosome> population, int i, int j) {
+        Choromosome tmp = (Choromosome)originPopulation.get(j);
+        originPopulation.set(j, originPopulation.get(i));
+        originPopulation.set(i, tmp);
     }
 
     private static void generateOriginalPopulationOfChromosome(Command cmd, A4Reporter rep, ConstList<Sig> sigsS, A4Options opt, ArrayList<Choromosome> generatedPopulationByGA) throws Err {
@@ -731,159 +983,6 @@ public class Main {
 
     }
 
-    static {
-        printMode = Main.PrintMode.DebugMode;
-    }
-
-    public static enum SelectionAlgorithm {
-        TournamentSelection("TournamentSelection"),
-        UnbiasedSelection("UnbiasedSelection");
-
-        public final String name;
-
-        private SelectionAlgorithm(String label) {
-            this.name = label;
-        }
-    }
-
-    public static enum PrintMode {
-        OnlyTimeMode,
-        DebugMode,
-        GraphDataMode;
-
-        private PrintMode() {
-        }
-    }
-
-    public static enum AnalysisMode {
-        RandomMode,
-        AlloyMode,
-        GAOriginalMode,
-        GAReduceSimplifyMode,
-        GAMultiThreadTestMode;
-
-        private AnalysisMode() {
-        }
-    }
-
-    /*
-     * Ant Colony Optimization Methods
-     * Added by Mahan Tafreshipour (Nov. 2021)
-     */
-
-    private static void evaluateSingleChromosome(
-            Command cmd,
-            A4Reporter rep, ConstList<Sig> sigsS,
-            A4Options opt,
-            Choromosome choromosome,
-            ThreadPoolExecutor executorPool
-    ) throws Err, CloneNotSupportedException, IOException, InterruptedException, ClassNotFoundException {
-        originPopulation = new ArrayList<>();
-        for(int j = 0; j < population; ++j)
-            originPopulation.add(null);
-
-        latch = new CountDownLatch(1);
-
-        Formula f1 = Formula.and(unsolvedSolution.formulas);
-        A4Solution sol1 = new A4Solution(unsolvedSolution, 0);
-        Runnable solutionThread = new GetSolutionThread(sol1, cmd, rep, f1, choromosome, 0);
-        executorPool.execute(solutionThread);
-
-        try {
-            latch.await();
-        } catch (InterruptedException ignored) {}
-    }
-
-    public static boolean isUnimportant(Relation relation) {
-        return  relation.toString().equals("String")   ||
-                relation.toString().equals("seq/Int")  ||
-                relation.toString().equals("Int/next");
-    }
-
-    public static Choromosome translateAntToChromosome(Ant ant, ArrayList<Relation> unimportantRelations, int index) {
-        ArrayList<AntNode> antNodes = ant.getNodes();
-        Choromosome generatedChromosome = new Choromosome(index);
-
-        Map<Relation, TupleSet> lowerBounds = new LinkedHashMap<>();
-        Map<Relation, TupleSet> upperBounds = new LinkedHashMap<>();
-        Bounds chromosomeBounds = new Bounds(unsolvedSolution.bounds.universe());
-
-        for (Relation relation : unimportantRelations) {
-            lowerBounds.put(relation, unsolvedSolution.bounds.lowers.get(relation));
-            upperBounds.put(relation, unsolvedSolution.bounds.uppers.get(relation));
-        }
-
-        int tupleSize = 0;
-        for (AntNode antNode : antNodes) {
-            Relation relation = antNode.relation;
-            TupleSet tuples = antNode.tuples;
-
-            lowerBounds.put(relation, tuples);
-            upperBounds.put(relation, tuples);
-
-            tupleSize += tuples.size();
-        }
-
-        chromosomeBounds.uppers = upperBounds;
-        chromosomeBounds.lowers = lowerBounds;
-
-        generatedChromosome.chromosomeBounds = chromosomeBounds;
-        generatedChromosome.tupleSize = tupleSize;
-
-        return generatedChromosome;
-    }
-
-    public static void evaluateAntPartialSolution(Ant ant, ArrayList<Relation> unimportantRelations) {
-        int index = 0;
-        Choromosome choromosome = translateAntToChromosome(ant, unimportantRelations, index);
-
-        Command cmd = world.getAllCommands().get(0);
-        ConstList<Sig> sigsS = world.getAllReachableSigs();
-
-        try {
-            evaluateSingleChromosome(cmd, rep, sigsS, opt, choromosome, executorPool);
-        } catch (Err | CloneNotSupportedException | InterruptedException | IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        Choromosome evaluatedChromosome = originPopulation.get(index);
-        ant.fitness = evaluatedChromosome.fitness;
-        ant.failedConstraintsNumber = evaluatedChromosome.failedConstraintsNumber;
-        ant.totalConstraintsNumber = evaluatedChromosome.totalConstraintsNumber;
-        ant.failedRelationNumber = evaluatedChromosome.failedRelationNumber;
-    }
-
-    public static void evaluateAntsSolutions(ArrayList<Ant> ants, ArrayList<Relation> unimportantRelations) {
-        ArrayList<Choromosome> antChromosomePopulation = new ArrayList<>();
-
-        int index = 0;
-        for (Ant ant : ants) {
-            antChromosomePopulation.add(translateAntToChromosome(ant, unimportantRelations, index));
-            ++index;
-        }
-
-        Command cmd = world.getAllCommands().get(0);
-        ConstList<Sig> sigsS = world.getAllReachableSigs();
-
-        try {
-            generateOriginalPopulationOfChromosome_multithread(cmd, rep, sigsS, opt, antChromosomePopulation, executorPool);
-        } catch (Err | CloneNotSupportedException | InterruptedException | IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        index = 0;
-        for (Ant ant: ants) {
-            Choromosome evaluatedChromosome = originPopulation.get(index);
-
-            ant.fitness = evaluatedChromosome.fitness;
-            ant.failedConstraintsNumber = evaluatedChromosome.failedConstraintsNumber;
-            ant.totalConstraintsNumber = evaluatedChromosome.totalConstraintsNumber;
-            ant.failedRelationNumber = evaluatedChromosome.failedRelationNumber;
-
-            ++index;
-        }
-    }
-
     public static void updatePheromonesByChromosome(AntColonyAlgorithm antColonyAlgorithm, Choromosome choromosome) {
         antColonyAlgorithm.updatePheromonesByGASolution(choromosome.chromosomeBounds, choromosome.fitness);
     }
@@ -915,9 +1014,6 @@ public class Main {
         return antColonyAlgorithm;
     }
 
-    /**
-     * Check whether a contains all elements of b or not
-     */
     public static boolean containsAll(TupleSet a, TupleSet b) {
         boolean contains = true;
         for (Tuple tuple : b) {
