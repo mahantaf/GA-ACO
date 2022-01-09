@@ -229,6 +229,8 @@ public class AntColonyAlgorithm {
                 ++relationIndex;
             }
             System.out.println("Ant " + index + " moving time: " + (System.currentTimeMillis() - cTime2) + " ms");
+            if (Main.foundSolution)
+                break;
         }
         System.out.println("Moving Ants End: " + (System.currentTimeMillis() - cTime) + " ms");
     }

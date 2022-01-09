@@ -67,8 +67,9 @@ public class Ant {
         StringBuilder printed = new StringBuilder("Ant: ").append(fitness).append("\n");
         printed.append("Number of failed constraints: ").append(failedConstraintsNumber).append("\n");
         printed.append("Number of failed relations: ").append(failedRelationNumber).append("\n");
-        for (AntNode node : nodes)
-            printed.append(node.relation).append(" : ").append(node.tuples.toString()).append("\n");
+        // TODO: Uncomment following lines later
+//        for (AntNode node : nodes)
+//            printed.append(node.relation).append(" : ").append(node.tuples.toString()).append("\n");
         return printed.toString();
     }
 }

@@ -107,6 +107,8 @@ public class Main {
 
             // TODO: Configuration part can all be done a separate function and return sth like ConfigurationClass
 
+            long configTime = System.currentTimeMillis();
+
             String libraryPath = args[2];
 
             try {
@@ -304,8 +306,10 @@ public class Main {
                 System.out.println("Analyzing Alloy Specification:\n" + filename);
             }
 
+            System.out.println("Configuration Time: " + (System.currentTimeMillis() - configTime) + " ms");
             // -------------- Initialization End --------------
 
+            long initializationTime = System.currentTimeMillis();
             Command cmd = (Command)world.getAllCommands().get(0);
             ConstList<Sig> sigsS = world.getAllReachableSigs();
 
@@ -361,8 +365,11 @@ public class Main {
                         TimeUnit.SECONDS,
                         new LinkedBlockingQueue()
                 );
+                long GAPreparationTime = System.currentTimeMillis();
                 Boolean hasFinishedPrepare = GeneticAlgorithm.prepareUniverseScope();
+                System.out.println("GA preparation time: " + (System.currentTimeMillis() - GAPreparationTime) + " ms");
                 isStartingGA = true;
+                long firstGenerationTime = System.currentTimeMillis();
                 if (analysisMode == Main.AnalysisMode.GAMultiThreadTestMode || analysisMode == Main.AnalysisMode.RandomMode) {
                     try {
                         generateOriginalPopulationOfChromosome_multithread(cmd, rep, sigsS, opt, null, executorPool);
@@ -370,6 +377,7 @@ public class Main {
                         var37.printStackTrace();
                     }
                 }
+                System.out.println("First generation time: " + (System.currentTimeMillis() - firstGenerationTime) + " ms");
 
 
                 int possibility = 0;
@@ -404,6 +412,8 @@ public class Main {
                     }
                 } else {
                     int numOfZeroFitnessChange = 0;
+                    long GATime = System.currentTimeMillis();
+                    System.out.println("Initialization Time: " + (GATime - initializationTime) + " ms");
                     while(!foundSolution) {
                         startGA = System.currentTimeMillis();
                         ArrayList<Choromosome> populationWithoutSorting = new ArrayList(originPopulation);
@@ -507,24 +517,27 @@ public class Main {
                             System.out.println("solved");
                         }
                     }
+                    System.out.println("GA Time: " + (System.currentTimeMillis() - GATime) + " ms");
                 }
                 // Added by Mahan
+                if (!foundSolution) {
+                    long startAntColony = System.currentTimeMillis();
+                    AntColonyAlgorithm antColonyAlgorithm = createAntColonyInstanceByChromosomes(unsolvedSolution, originPopulation);
 
-                AntColonyAlgorithm antColonyAlgorithm = createAntColonyInstanceByChromosomes(unsolvedSolution, originPopulation);
+                    for (Choromosome choromosome : originPopulation)
+                        antColonyAlgorithm.updatePheromonesByGASolution(choromosome.chromosomeBounds, choromosome.fitness);
 
-                for (Choromosome choromosome : originPopulation)
-                    antColonyAlgorithm.updatePheromonesByGASolution(choromosome.chromosomeBounds, choromosome.fitness);
+//                    System.out.println("Setting best chromosome");
+                    antColonyAlgorithm.setBestGASolution(originPopulation.get(0));
+                    System.out.println("Starting Optimization");
+                    Ant bestAnt = antColonyAlgorithm.startOptimization();
+//                    System.out.println("End of Optimization");
+                    System.out.println("ACO Time: " + (System.currentTimeMillis() - startAntColony) + " ms");
 
-                System.out.println("Setting best chromosome");
-                antColonyAlgorithm.setBestGASolution(originPopulation.get(0));
-
-                System.out.println("Starting Optimization");
-                Ant bestAnt = antColonyAlgorithm.startOptimization();
-                System.out.println("End of Optimization");
-
-                System.out.println("=================================");
-                System.out.println("Best Ant:");
-                System.out.println(bestAnt);
+//                    System.out.println("=================================");
+//                    System.out.println("Best Ant:");
+//                    System.out.println(bestAnt);
+                }
 
 
                 startGA = System.currentTimeMillis() - start;
