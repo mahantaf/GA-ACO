@@ -1,6 +1,6 @@
 <alloy builddate="unknown">
 
-<instance bitwidth="0" maxseq="0" command="Run run$1 for 25" filename="">
+<instance bitwidth="0" maxseq="0" command="Run IsValidFS for 105" filename="">
 
 <sig label="seq/Int" ID="0" parentID="1" builtin="yes">
 </sig>
@@ -11,43 +11,23 @@
 <sig label="String" ID="3" parentID="2" builtin="yes">
 </sig>
 
-<sig label="this/File" ID="4" parentID="5">
+<sig label="this/RootName" ID="4" parentID="5" one="yes">
+   <atom label="RootName$0"/>
 </sig>
 
-<sig label="this/Root" ID="6" parentID="7" one="yes">
-   <atom label="Root$0"/>
+<sig label="this/Name" ID="5" parentID="2">
 </sig>
 
-<sig label="this/Cur" ID="8" parentID="7" lone="yes">
-</sig>
-
-<sig label="this/Dir" ID="7" parentID="5">
-</sig>
-
-<field label="entries" ID="9" parentID="7">
-   <types> <type ID="7"/> <type ID="10"/> </types>
+<field label="children" ID="6" parentID="5">
+   <types> <type ID="5"/> <type ID="5"/> </types>
 </field>
 
-<field label="parent" ID="11" parentID="7">
-   <types> <type ID="7"/> <type ID="7"/> </types>
-</field>
-
-<sig label="this/Object" ID="5" parentID="2" abstract="yes">
+<sig label="this/Dir" ID="7" parentID="8" one="yes">
+   <atom label="Dir$0"/>
 </sig>
 
-<sig label="this/Name" ID="12" parentID="2">
+<sig label="this/FileContents" ID="8" parentID="2">
 </sig>
-
-<sig label="this/DirEntry" ID="10" parentID="2">
-</sig>
-
-<field label="name" ID="13" parentID="10">
-   <types> <type ID="10"/> <type ID="12"/> </types>
-</field>
-
-<field label="contents" ID="14" parentID="10">
-   <types> <type ID="10"/> <type ID="5"/> </types>
-</field>
 
 <sig label="univ" ID="2" builtin="yes">
 </sig>

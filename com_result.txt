@@ -1,629 +1,86 @@
 Analyzing Alloy Specification:
-/Users/mahantp/Desktop/Work/Lamasoo/Projects/alloy4example/resources/file_system1.als
-Configuration Time: 416 ms
+/Users/mahantp/Desktop/Work/Lamasoo/Projects/alloy4example/resources/sync5.als
+Configuration Time: 311 ms
 []
-Formula :(no (this/Root & this/Cur) && no (this/File & ((this/Root + this/Cur) + this/Dir.remainder)) && lone this/Cur && lone this/Cur && (all this: one this/File | (some d: one ((this/Root + this/Cur) + this/Dir.remainder) | (this in ((d . this/Dir.entries) . this/DirEntry.contents)))) && no (this/Root . this/Dir.parent) && (all this: one ((this/Root + this/Cur) + this/Dir.remainder) | ((this . this/Dir.entries) in this/DirEntry)) && ((this/Dir.entries . univ) in ((this/Root + this/Cur) + this/Dir.remainder)) && (all this: one ((this/Root + this/Cur) + this/Dir.remainder) | (lone (this . this/Dir.parent) && ((this . this/Dir.parent) in ((this/Root + this/Cur) + this/Dir.remainder)))) && ((this/Dir.parent . univ) in ((this/Root + this/Cur) + this/Dir.remainder)) && (all this: one ((this/Root + this/Cur) + this/Dir.remainder) | ((((this . this/Dir.parent) = ((this . ~this/DirEntry.contents) . ~this/Dir.entries)) && ((all [e1: one (this . this/Dir.entries), e2: one (this . this/Dir.entries)] | (!((e1 . this/DirEntry.name) = (e2 . this/DirEntry.name)) || (e1 = e2))) && (!!(this = this/Root) || (this/Root in (this . ^this/Dir.parent))))) && !(this in (this . ^this/Dir.parent)))) && (all this: one this/DirEntry | (one (this . this/DirEntry.name) && ((this . this/DirEntry.name) in this/Name))) && ((this/DirEntry.name . univ) in this/DirEntry) && (all this: one this/DirEntry | (one (this . this/DirEntry.contents) && ((this . this/DirEntry.contents) in (this/File + ((this/Root + this/Cur) + this/Dir.remainder))))) && ((this/DirEntry.contents . univ) in this/DirEntry) && (all this: one this/DirEntry | one (this . ~this/Dir.entries)) && (Int/next = Int/next) && (seq/Int = seq/Int) && (String = String) && (this/File = this/File) && (this/Root = this/Root) && (this/Cur = this/Cur) && (this/Dir.remainder = this/Dir.remainder) && (this/Name = this/Name) && (this/DirEntry = this/DirEntry) && (this/Dir.entries = this/Dir.entries) && (this/Dir.parent = this/Dir.parent) && (this/DirEntry.name = this/DirEntry.name) && (this/DirEntry.contents = this/DirEntry.contents))
-Prepare KodKod Time: 4 ms.
-GA preparation time: 1 ms
+Formula :((all IsValidFS_this: one (this/RootName + this/Name.remainder) | ((IsValidFS_this . this/Name.children) in (this/RootName + this/Name.remainder))) && ((this/Name.children . univ) in (this/RootName + this/Name.remainder)) && (((all acyclic_x: one (this/RootName + this/Name.remainder) | !(acyclic_x in (acyclic_x . ^this/Name.children))) && (all forest_n: one (this/RootName + this/Name.remainder) | lone (this/Name.children . forest_n))) && lone { tree_root: one (this/RootName + this/Name.remainder) | no (this/Name.children . tree_root) }) && ((this/RootName + this/Name.remainder) in (this/RootName . (^this/Name.children + (iden & ((((ints + String) + (this/RootName + this/Name.remainder)) + (this/Dir + this/FileContents.remainder)) -> univ))))) && (some IsValidFS_fs: set ((this/RootName + this/Name.remainder) -> (this/Dir + this/FileContents.remainder)) | ((((IsValidFS_fs in ((this/RootName + this/Name.remainder) -> (this/Dir + this/FileContents.remainder))) && (all v0: one (this/RootName + this/Name.remainder) | (lone (v0 . IsValidFS_fs) && ((v0 . IsValidFS_fs) in (this/Dir + this/FileContents.remainder))))) && (all v1: one (this/Dir + this/FileContents.remainder) | ((IsValidFS_fs . v1) in (this/RootName + this/Name.remainder)))) && ((all IsValidFS_n: one ((this/RootName + this/Name.remainder) - this/RootName) | ((!!((IsValidFS_n . IsValidFS_fs) = this/Dir) || no ((IsValidFS_n . ^this/Name.children) . IsValidFS_fs)) && (!some (IsValidFS_n . IsValidFS_fs) || some ((IsValidFS_n . ~this/Name.children) . IsValidFS_fs)))) && ((this/RootName . IsValidFS_fs) = this/Dir)))) && (Int/next = Int/next) && (seq/Int = seq/Int) && (String = String) && (this/RootName = this/RootName) && (this/Name.remainder = this/Name.remainder) && (this/Dir = this/Dir) && (this/FileContents.remainder = this/FileContents.remainder) && (this/Name.children = this/Name.children))
+Prepare KodKod Time: 2 ms.
+GA preparation time: 2 ms
 
 ---STATS---
 p cnf 0 0
 primary variables: 0
-translation time: 657 ms
+translation time: 5869 ms
 solving time: 0 ms
 
- --- Full Iteration Time: 6695 ms.  -- 32
-First generation time: 6695 ms
-Initialization Time: 6814 ms
+ --- Full Iteration Time: 31144 ms.  -- 32
+First generation time: 31147 ms
+Initialization Time: 31283 ms
 size ++ 32
  ------------- ------------- ------------- Iteration 1
  ------------- ------------- ------------- 
-x number of mutation 16.38
+x number of mutation 10.08
  numberOfMutation 33
-End GA Time: 19ms
- --- Full Iteration Time: 2827 ms.  -- 32
+End GA Time: 74ms
+ --- Full Iteration Time: 25361 ms.  -- 32
 ------------ Fitness Data ------------
-Current Fitness: 4.756896495819092
-New Fitness: 4.098276138305664
-Change: 0.6586203575134277
+Current Fitness: 1.5153846740722656
+New Fitness: 1.4461538791656494
+Change: 0.06923079490661621
 ------------------------
 size ++ 32
  ------------- ------------- ------------- Iteration 2
  ------------- ------------- ------------- 
-x number of mutation 14.819999999999999
- numberOfMutation 30
-End GA Time: 6ms
- --- Full Iteration Time: 2226 ms.  -- 32
+x number of mutation 10.08
+ numberOfMutation 33
+End GA Time: 77ms
+ --- Full Iteration Time: 25400 ms.  -- 32
 ------------ Fitness Data ------------
-Current Fitness: 4.098276138305664
-New Fitness: 4.098276138305664
-Change: 0.0
+Current Fitness: 1.4461538791656494
+New Fitness: 1.3769230842590332
+Change: 0.06923079490661621
 ------------------------
 size ++ 32
  ------------- ------------- ------------- Iteration 3
  ------------- ------------- ------------- 
-x number of mutation 14.819999999999999
- numberOfMutation 30
-End GA Time: 7ms
- --- Full Iteration Time: 654 ms.  -- 32
+x number of mutation 9.6
+ numberOfMutation 32
+End GA Time: 47ms
+ --- Full Iteration Time: 24556 ms.  -- 32
 ------------ Fitness Data ------------
-Current Fitness: 4.098276138305664
-New Fitness: 4.0051727294921875
-Change: 0.09310340881347656
+Current Fitness: 1.3769230842590332
+New Fitness: 1.307692289352417
+Change: 0.06923079490661621
 ------------------------
 size ++ 32
  ------------- ------------- ------------- Iteration 4
  ------------- ------------- ------------- 
-x number of mutation 16.38
- numberOfMutation 33
-End GA Time: 7ms
- --- Full Iteration Time: 451 ms.  -- 32
+x number of mutation 10.559999999999999
+ numberOfMutation 35
+End GA Time: 48ms
+New Way
+generate SBP
+--------------Bool To CNF transl-------------
+evalOptions:
+ solver: MiniSatProver
+ reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@4d4d113b
+ intEncoding: TWOSCOMPLEMENT
+ bitwidth: 7
+ sharing: 3
+ flatten: false
+ symmetryBreaking: 20
+ noOverflow: true
+ skolemDepth: 2
+ logTranslation: 2
+ coreGranularity: 3
+relations: {Int/next=[], seq/Int=[], String=[], this/RootName=[[RootName$0]], this/Name.remainder=[], this/Dir=[[Dir$0]], this/FileContents.remainder=[], this/Name.children=[], $IsValidFS_fs=[[RootName$0, Dir$0]]}
+ints: []
+Solutions:1
+ --- Full Iteration Time: 21025 ms.  -- 32
 ------------ Fitness Data ------------
-Current Fitness: 4.0051727294921875
-New Fitness: 4.0051727294921875
+Current Fitness: 1.307692289352417
+New Fitness: 1.307692289352417
 Change: 0.0
 ------------------------
-size ++ 32
- ------------- ------------- ------------- Iteration 5
- ------------- ------------- ------------- 
-x number of mutation 16.38
- numberOfMutation 33
-End GA Time: 8ms
- --- Full Iteration Time: 812 ms.  -- 32
------------- Fitness Data ------------
-Current Fitness: 4.0051727294921875
-New Fitness: 4.0051727294921875
-Change: 0.0
-------------------------
-size ++ 32
- ------------- ------------- ------------- Iteration 6
- ------------- ------------- ------------- 
-x number of mutation 14.819999999999999
- numberOfMutation 30
-End GA Time: 11ms
- --- Full Iteration Time: 634 ms.  -- 32
------------- Fitness Data ------------
-Current Fitness: 4.0051727294921875
-New Fitness: 3.9896552562713623
-Change: 0.015517473220825195
-------------------------
-size ++ 32
-GA is not optimal anymore
-Switching to ACO...
-GA Time: 7679 ms
-Starting Optimization
-------------------------- Iteration 0 -------------------------
-------------------
-Relation: this/Root size: 1
-Relation: this/Cur size: 2
-Relation: this/DirEntry size: 3
-Relation: this/Name size: 3
-Relation: this/Dir.remainder size: 3
-Relation: this/File size: 5
-Relation: this/DirEntry.contents size: 7
-Relation: this/Dir.entries size: 7
-Relation: this/DirEntry.name size: 7
-Relation: this/Dir.parent size: 7
-------------------
-Initialize Lower Bounds Start
-Initialize Lower Bounds End: 0 ms
-Moving Ants Start
-Ant 1 selected relation node: this/Root size 1. Time: 0 ms
-evalOptions:
- solver: MiniSatProver
- reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@7a4cbefe
- intEncoding: TWOSCOMPLEMENT
- bitwidth: 6
- sharing: 3
- flatten: false
- symmetryBreaking: 20
- noOverflow: true
- skolemDepth: 2
- logTranslation: 2
- coreGranularity: 3
-relations: {Int/next=[], seq/Int=[], String=[], this/Root=[[Root$0]], this/Cur=[], this/DirEntry=[], this/Name=[], this/Dir.remainder=[], this/File=[], this/DirEntry.contents=[], this/Dir.entries=[], this/DirEntry.name=[], this/Dir.parent=[], $d=[]}
-ints: []
-Solutions:1
-Ant 1 selected relation node: this/Cur size 3. Time: 18 ms
-evalOptions:
- solver: MiniSatProver
- reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@7a4cbefe
- intEncoding: TWOSCOMPLEMENT
- bitwidth: 6
- sharing: 3
- flatten: false
- symmetryBreaking: 20
- noOverflow: true
- skolemDepth: 2
- logTranslation: 2
- coreGranularity: 3
-relations: {Int/next=[], seq/Int=[], String=[], this/Root=[[Root$0]], this/Cur=[], this/DirEntry=[], this/Name=[], this/Dir.remainder=[], this/File=[], this/DirEntry.contents=[], this/Dir.entries=[], this/DirEntry.name=[], this/Dir.parent=[], $d=[]}
-ints: []
-Solutions:1
-Ant 1 selected relation node: this/DirEntry size 3. Time: 6 ms
-Ant 1 selected relation node: this/Name size 3. Time: 11 ms
-Ant 1 selected relation node: this/Dir.remainder size 3. Time: 6 ms
-Ant 1 selected relation node: this/File size 5. Time: 18 ms
-Ant 1 selected relation node: this/DirEntry.contents size 7. Time: 22 ms
-Ant 1 selected relation node: this/Dir.entries size 8. Time: 46 ms
-Ant 1 selected relation node: this/DirEntry.name size 7. Time: 86 ms
-Ant 1 selected relation node: this/Dir.parent size 7. Time: 329 ms
-Ant 1 moving time: 545 ms
-Moving Ants End: 545 ms
-Evaluate Ants Begin
-evalOptions:
- solver: MiniSatProver
- reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@7a4cbefe
- intEncoding: TWOSCOMPLEMENT
- bitwidth: 6
- sharing: 3
- flatten: false
- symmetryBreaking: 20
- noOverflow: true
- skolemDepth: 2
- logTranslation: 2
- coreGranularity: 3
-relations: {Int/next=[], seq/Int=[], String=[], this/Root=[[Root$0]], this/Cur=[], this/DirEntry=[], this/Name=[], this/Dir.remainder=[], this/File=[], this/DirEntry.contents=[], this/Dir.entries=[], this/DirEntry.name=[], this/Dir.parent=[], $d=[]}
-ints: []
-Solutions:1
-evalOptions:
- solver: MiniSatProver
- reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@7a4cbefe
- intEncoding: TWOSCOMPLEMENT
- bitwidth: 6
- sharing: 3
- flatten: false
- symmetryBreaking: 20
- noOverflow: true
- skolemDepth: 2
- logTranslation: 2
- coreGranularity: 3
-relations: {Int/next=[], seq/Int=[], String=[], this/Root=[[Root$0]], this/Cur=[], this/DirEntry=[], this/Name=[], this/Dir.remainder=[], this/File=[], this/DirEntry.contents=[], this/Dir.entries=[], this/DirEntry.name=[], this/Dir.parent=[], $d=[]}
-ints: []
-evalOptions:
- solver: MiniSatProver
- reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@7a4cbefe
- intEncoding: TWOSCOMPLEMENT
- bitwidth: 6
- sharing: 3
- flatten: false
- symmetryBreaking: 20
- noOverflow: true
- skolemDepth: 2
- logTranslation: 2
- coreGranularity: 3
-relations: {Int/next=[], seq/Int=[], String=[], this/Root=[[Root$0]], this/Cur=[], this/DirEntry=[], this/Name=[], this/Dir.remainder=[], this/File=[], this/DirEntry.contents=[], this/Dir.entries=[], this/DirEntry.name=[], this/Dir.parent=[], $d=[]}
-ints: []
-Solutions:1
-Solutions:1
-evalOptions:
- solver: MiniSatProver
- reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@7a4cbefe
- intEncoding: TWOSCOMPLEMENT
- bitwidth: 6
- sharing: 3
- flatten: false
- symmetryBreaking: 20
- noOverflow: true
- skolemDepth: 2
- logTranslation: 2
- coreGranularity: 3
-relations: {Int/next=[], seq/Int=[], String=[], this/Root=[[Root$0]], this/Cur=[], this/DirEntry=[], this/Name=[], this/Dir.remainder=[], this/File=[], this/DirEntry.contents=[], this/Dir.entries=[], this/DirEntry.name=[], this/Dir.parent=[], $d=[]}
-ints: []
-evalOptions:
- solver: MiniSatProver
- reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@7a4cbefe
- intEncoding: TWOSCOMPLEMENT
- bitwidth: 6
- sharing: 3
- flatten: false
- symmetryBreaking: 20
- noOverflow: true
- skolemDepth: 2
- logTranslation: 2
- coreGranularity: 3
-relations: {Int/next=[], seq/Int=[], String=[], this/Root=[[Root$0]], this/Cur=[], this/DirEntry=[], this/Name=[], this/Dir.remainder=[], this/File=[], this/DirEntry.contents=[], this/Dir.entries=[], this/DirEntry.name=[], this/Dir.parent=[], $d=[]}
-ints: []
-Solutions:1
-evalOptions:
- solver: MiniSatProver
- reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@7a4cbefe
- intEncoding: TWOSCOMPLEMENT
- bitwidth: 6
- sharing: 3
- flatten: false
- symmetryBreaking: 20
- noOverflow: true
- skolemDepth: 2
- logTranslation: 2
- coreGranularity: 3
-relations: {Int/next=[], seq/Int=[], String=[], this/Root=[[Root$0]], this/Cur=[], this/DirEntry=[], this/Name=[], this/Dir.remainder=[], this/File=[], this/DirEntry.contents=[], this/Dir.entries=[], this/DirEntry.name=[], this/Dir.parent=[], $d=[]}
-ints: []
-Solutions:1
-evalOptions:
- solver: MiniSatProver
- reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@7a4cbefe
- intEncoding: TWOSCOMPLEMENT
- bitwidth: 6
- sharing: 3
- flatten: false
- symmetryBreaking: 20
- noOverflow: true
- skolemDepth: 2
- logTranslation: 2
- coreGranularity: 3
-relations: {Int/next=[], seq/Int=[], String=[], this/Root=[[Root$0]], this/Cur=[], this/DirEntry=[], this/Name=[], this/Dir.remainder=[], this/File=[], this/DirEntry.contents=[], this/Dir.entries=[], this/DirEntry.name=[], this/Dir.parent=[], $d=[]}
-ints: []
-Solutions:1
-Solutions:1
-evalOptions:
- solver: MiniSatProver
- reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@7a4cbefe
- intEncoding: TWOSCOMPLEMENT
- bitwidth: 6
- sharing: 3
- flatten: false
- symmetryBreaking: 20
- noOverflow: true
- skolemDepth: 2
- logTranslation: 2
- coreGranularity: 3
-relations: {Int/next=[], seq/Int=[], String=[], this/Root=[[Root$0]], this/Cur=[], this/DirEntry=[], this/Name=[], this/Dir.remainder=[], this/File=[], this/DirEntry.contents=[], this/Dir.entries=[], this/DirEntry.name=[], this/Dir.parent=[], $d=[]}
-ints: []
-evalOptions:
- solver: MiniSatProver
- reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@7a4cbefe
- intEncoding: TWOSCOMPLEMENT
- bitwidth: 6
- sharing: 3
- flatten: false
- symmetryBreaking: 20
- noOverflow: true
- skolemDepth: 2
- logTranslation: 2
- coreGranularity: 3
-relations: {Int/next=[], seq/Int=[], String=[], this/Root=[[Root$0]], this/Cur=[], this/DirEntry=[], this/Name=[], this/Dir.remainder=[], this/File=[], this/DirEntry.contents=[], this/Dir.entries=[], this/DirEntry.name=[], this/Dir.parent=[], $d=[]}
-ints: []
-Solutions:1
-Solutions:1
-evalOptions:
- solver: MiniSatProver
- reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@7a4cbefe
- intEncoding: TWOSCOMPLEMENT
- bitwidth: 6
- sharing: 3
- flatten: false
- symmetryBreaking: 20
- noOverflow: true
- skolemDepth: 2
- logTranslation: 2
- coreGranularity: 3
-relations: {Int/next=[], seq/Int=[], String=[], this/Root=[[Root$0]], this/Cur=[], this/DirEntry=[], this/Name=[], this/Dir.remainder=[], this/File=[], this/DirEntry.contents=[], this/Dir.entries=[], this/DirEntry.name=[], this/Dir.parent=[], $d=[]}
-ints: []
-evalOptions:
- solver: MiniSatProver
- reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@7a4cbefe
- intEncoding: TWOSCOMPLEMENT
- bitwidth: 6
- sharing: 3
- flatten: false
- symmetryBreaking: 20
- noOverflow: true
- skolemDepth: 2
- logTranslation: 2
- coreGranularity: 3
-relations: {Int/next=[], seq/Int=[], String=[], this/Root=[[Root$0]], this/Cur=[], this/DirEntry=[], this/Name=[], this/Dir.remainder=[], this/File=[], this/DirEntry.contents=[], this/Dir.entries=[], this/DirEntry.name=[], this/Dir.parent=[], $d=[]}
-ints: []
-Solutions:1
-Solutions:1
-evalOptions:
- solver: MiniSatProver
- reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@7a4cbefe
- intEncoding: TWOSCOMPLEMENT
- bitwidth: 6
- sharing: 3
- flatten: false
- symmetryBreaking: 20
- noOverflow: true
- skolemDepth: 2
- logTranslation: 2
- coreGranularity: 3
-relations: {Int/next=[], seq/Int=[], String=[], this/Root=[[Root$0]], this/Cur=[], this/DirEntry=[], this/Name=[], this/Dir.remainder=[], this/File=[], this/DirEntry.contents=[], this/Dir.entries=[], this/DirEntry.name=[], this/Dir.parent=[], $d=[]}
-ints: []
-evalOptions:
- solver: MiniSatProver
- reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@7a4cbefe
- intEncoding: TWOSCOMPLEMENT
- bitwidth: 6
- sharing: 3
- flatten: false
- symmetryBreaking: 20
- noOverflow: true
- skolemDepth: 2
- logTranslation: 2
- coreGranularity: 3
-relations: {Int/next=[], seq/Int=[], String=[], this/Root=[[Root$0]], this/Cur=[], this/DirEntry=[], this/Name=[], this/Dir.remainder=[], this/File=[], this/DirEntry.contents=[], this/Dir.entries=[], this/DirEntry.name=[], this/Dir.parent=[], $d=[]}
-ints: []
-evalOptions:
- solver: MiniSatProver
- reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@7a4cbefe
- intEncoding: TWOSCOMPLEMENT
- bitwidth: 6
- sharing: 3
- flatten: false
- symmetryBreaking: 20
- noOverflow: true
- skolemDepth: 2
- logTranslation: 2
- coreGranularity: 3
-relations: {Int/next=[], seq/Int=[], String=[], this/Root=[[Root$0]], this/Cur=[], this/DirEntry=[], this/Name=[], this/Dir.remainder=[], this/File=[], this/DirEntry.contents=[], this/Dir.entries=[], this/DirEntry.name=[], this/Dir.parent=[], $d=[]}
-ints: []
-Solutions:1
-evalOptions:
- solver: MiniSatProver
- reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@7a4cbefe
- intEncoding: TWOSCOMPLEMENT
- bitwidth: 6
- sharing: 3
- flatten: false
- symmetryBreaking: 20
- noOverflow: true
- skolemDepth: 2
- logTranslation: 2
- coreGranularity: 3
-relations: {Int/next=[], seq/Int=[], String=[], this/Root=[[Root$0]], this/Cur=[], this/DirEntry=[], this/Name=[], this/Dir.remainder=[], this/File=[], this/DirEntry.contents=[], this/Dir.entries=[], this/DirEntry.name=[], this/Dir.parent=[], $d=[]}
-ints: []
-Solutions:1
-Solutions:1
-evalOptions:
- solver: MiniSatProver
- reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@7a4cbefe
- intEncoding: TWOSCOMPLEMENT
- bitwidth: 6
- sharing: 3
- flatten: false
- symmetryBreaking: 20
- noOverflow: true
- skolemDepth: 2
- logTranslation: 2
- coreGranularity: 3
-relations: {Int/next=[], seq/Int=[], String=[], this/Root=[[Root$0]], this/Cur=[], this/DirEntry=[], this/Name=[], this/Dir.remainder=[], this/File=[], this/DirEntry.contents=[], this/Dir.entries=[], this/DirEntry.name=[], this/Dir.parent=[], $d=[]}
-ints: []
-evalOptions:
- solver: MiniSatProver
- reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@7a4cbefe
- intEncoding: TWOSCOMPLEMENT
- bitwidth: 6
- sharing: 3
- flatten: false
- symmetryBreaking: 20
- noOverflow: true
- skolemDepth: 2
- logTranslation: 2
- coreGranularity: 3
-relations: {Int/next=[], seq/Int=[], String=[], this/Root=[[Root$0]], this/Cur=[], this/DirEntry=[], this/Name=[], this/Dir.remainder=[], this/File=[], this/DirEntry.contents=[], this/Dir.entries=[], this/DirEntry.name=[], this/Dir.parent=[], $d=[]}
-ints: []
-Solutions:1
-Solutions:1
-Solutions:1
-evalOptions:
- solver: MiniSatProver
- reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@7a4cbefe
- intEncoding: TWOSCOMPLEMENT
- bitwidth: 6
- sharing: 3
- flatten: false
- symmetryBreaking: 20
- noOverflow: true
- skolemDepth: 2
- logTranslation: 2
- coreGranularity: 3
-relations: {Int/next=[], seq/Int=[], String=[], this/Root=[[Root$0]], this/Cur=[], this/DirEntry=[], this/Name=[], this/Dir.remainder=[], this/File=[], this/DirEntry.contents=[], this/Dir.entries=[], this/DirEntry.name=[], this/Dir.parent=[], $d=[]}
-ints: []
-evalOptions:
- solver: MiniSatProver
- reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@7a4cbefe
- intEncoding: TWOSCOMPLEMENT
- bitwidth: 6
- sharing: 3
- flatten: false
- symmetryBreaking: 20
- noOverflow: true
- skolemDepth: 2
- logTranslation: 2
- coreGranularity: 3
-relations: {Int/next=[], seq/Int=[], String=[], this/Root=[[Root$0]], this/Cur=[], this/DirEntry=[], this/Name=[], this/Dir.remainder=[], this/File=[], this/DirEntry.contents=[], this/Dir.entries=[], this/DirEntry.name=[], this/Dir.parent=[], $d=[]}
-ints: []
-evalOptions:
- solver: MiniSatProver
- reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@7a4cbefe
- intEncoding: TWOSCOMPLEMENT
- bitwidth: 6
- sharing: 3
- flatten: false
- symmetryBreaking: 20
- noOverflow: true
- skolemDepth: 2
- logTranslation: 2
- coreGranularity: 3
-relations: {Int/next=[], seq/Int=[], String=[], this/Root=[[Root$0]], this/Cur=[], this/DirEntry=[], this/Name=[], this/Dir.remainder=[], this/File=[], this/DirEntry.contents=[], this/Dir.entries=[], this/DirEntry.name=[], this/Dir.parent=[], $d=[]}
-ints: []
-Solutions:1
-Solutions:1
-Solutions:1
-evalOptions:
- solver: MiniSatProver
- reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@7a4cbefe
- intEncoding: TWOSCOMPLEMENT
- bitwidth: 6
- sharing: 3
- flatten: false
- symmetryBreaking: 20
- noOverflow: true
- skolemDepth: 2
- logTranslation: 2
- coreGranularity: 3
-relations: {Int/next=[], seq/Int=[], String=[], this/Root=[[Root$0]], this/Cur=[], this/DirEntry=[], this/Name=[], this/Dir.remainder=[], this/File=[], this/DirEntry.contents=[], this/Dir.entries=[], this/DirEntry.name=[], this/Dir.parent=[], $d=[]}
-ints: []
-evalOptions:
- solver: MiniSatProver
- reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@7a4cbefe
- intEncoding: TWOSCOMPLEMENT
- bitwidth: 6
- sharing: 3
- flatten: false
- symmetryBreaking: 20
- noOverflow: true
- skolemDepth: 2
- logTranslation: 2
- coreGranularity: 3
-relations: {Int/next=[], seq/Int=[], String=[], this/Root=[[Root$0]], this/Cur=[], this/DirEntry=[], this/Name=[], this/Dir.remainder=[], this/File=[], this/DirEntry.contents=[], this/Dir.entries=[], this/DirEntry.name=[], this/Dir.parent=[], $d=[]}
-ints: []
-evalOptions:
- solver: MiniSatProver
- reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@7a4cbefe
- intEncoding: TWOSCOMPLEMENT
- bitwidth: 6
- sharing: 3
- flatten: false
- symmetryBreaking: 20
- noOverflow: true
- skolemDepth: 2
- logTranslation: 2
- coreGranularity: 3
-relations: {Int/next=[], seq/Int=[], String=[], this/Root=[[Root$0]], this/Cur=[], this/DirEntry=[], this/Name=[], this/Dir.remainder=[], this/File=[], this/DirEntry.contents=[], this/Dir.entries=[], this/DirEntry.name=[], this/Dir.parent=[], $d=[]}
-ints: []
-evalOptions:
- solver: MiniSatProver
- reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@7a4cbefe
- intEncoding: TWOSCOMPLEMENT
- bitwidth: 6
- sharing: 3
- flatten: false
- symmetryBreaking: 20
- noOverflow: true
- skolemDepth: 2
- logTranslation: 2
- coreGranularity: 3
-relations: {Int/next=[], seq/Int=[], String=[], this/Root=[[Root$0]], this/Cur=[], this/DirEntry=[], this/Name=[], this/Dir.remainder=[], this/File=[], this/DirEntry.contents=[], this/Dir.entries=[], this/DirEntry.name=[], this/Dir.parent=[], $d=[]}
-ints: []
-Solutions:1
-Solutions:1
-Solutions:1
-evalOptions:
- solver: MiniSatProver
- reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@7a4cbefe
- intEncoding: TWOSCOMPLEMENT
- bitwidth: 6
- sharing: 3
- flatten: false
- symmetryBreaking: 20
- noOverflow: true
- skolemDepth: 2
- logTranslation: 2
- coreGranularity: 3
-relations: {Int/next=[], seq/Int=[], String=[], this/Root=[[Root$0]], this/Cur=[], this/DirEntry=[], this/Name=[], this/Dir.remainder=[], this/File=[], this/DirEntry.contents=[], this/Dir.entries=[], this/DirEntry.name=[], this/Dir.parent=[], $d=[]}
-ints: []
-evalOptions:
- solver: MiniSatProver
- reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@7a4cbefe
- intEncoding: TWOSCOMPLEMENT
- bitwidth: 6
- sharing: 3
- flatten: false
- symmetryBreaking: 20
- noOverflow: true
- skolemDepth: 2
- logTranslation: 2
- coreGranularity: 3
-relations: {Int/next=[], seq/Int=[], String=[], this/Root=[[Root$0]], this/Cur=[], this/DirEntry=[], this/Name=[], this/Dir.remainder=[], this/File=[], this/DirEntry.contents=[], this/Dir.entries=[], this/DirEntry.name=[], this/Dir.parent=[], $d=[]}
-ints: []
-evalOptions:
- solver: MiniSatProver
- reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@7a4cbefe
- intEncoding: TWOSCOMPLEMENT
- bitwidth: 6
- sharing: 3
- flatten: false
- symmetryBreaking: 20
- noOverflow: true
- skolemDepth: 2
- logTranslation: 2
- coreGranularity: 3
-relations: {Int/next=[], seq/Int=[], String=[], this/Root=[[Root$0]], this/Cur=[], this/DirEntry=[], this/Name=[], this/Dir.remainder=[], this/File=[], this/DirEntry.contents=[], this/Dir.entries=[], this/DirEntry.name=[], this/Dir.parent=[], $d=[]}
-ints: []
-Solutions:1
-Solutions:1
-Solutions:1
-evalOptions:
- solver: MiniSatProver
- reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@7a4cbefe
- intEncoding: TWOSCOMPLEMENT
- bitwidth: 6
- sharing: 3
- flatten: false
- symmetryBreaking: 20
- noOverflow: true
- skolemDepth: 2
- logTranslation: 2
- coreGranularity: 3
-relations: {Int/next=[], seq/Int=[], String=[], this/Root=[[Root$0]], this/Cur=[], this/DirEntry=[], this/Name=[], this/Dir.remainder=[], this/File=[], this/DirEntry.contents=[], this/Dir.entries=[], this/DirEntry.name=[], this/Dir.parent=[], $d=[]}
-ints: []
-evalOptions:
- solver: MiniSatProver
- reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@7a4cbefe
- intEncoding: TWOSCOMPLEMENT
- bitwidth: 6
- sharing: 3
- flatten: false
- symmetryBreaking: 20
- noOverflow: true
- skolemDepth: 2
- logTranslation: 2
- coreGranularity: 3
-relations: {Int/next=[], seq/Int=[], String=[], this/Root=[[Root$0]], this/Cur=[], this/DirEntry=[], this/Name=[], this/Dir.remainder=[], this/File=[], this/DirEntry.contents=[], this/Dir.entries=[], this/DirEntry.name=[], this/Dir.parent=[], $d=[]}
-ints: []
-evalOptions:
- solver: MiniSatProver
- reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@7a4cbefe
- intEncoding: TWOSCOMPLEMENT
- bitwidth: 6
- sharing: 3
- flatten: false
- symmetryBreaking: 20
- noOverflow: true
- skolemDepth: 2
- logTranslation: 2
- coreGranularity: 3
-relations: {Int/next=[], seq/Int=[], String=[], this/Root=[[Root$0]], this/Cur=[], this/DirEntry=[], this/Name=[], this/Dir.remainder=[], this/File=[], this/DirEntry.contents=[], this/Dir.entries=[], this/DirEntry.name=[], this/Dir.parent=[], $d=[]}
-ints: []
-Solutions:1
-Solutions:1
-evalOptions:
- solver: MiniSatProver
- reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@7a4cbefe
- intEncoding: TWOSCOMPLEMENT
- bitwidth: 6
- sharing: 3
- flatten: false
- symmetryBreaking: 20
- noOverflow: true
- skolemDepth: 2
- logTranslation: 2
- coreGranularity: 3
-relations: {Int/next=[], seq/Int=[], String=[], this/Root=[[Root$0]], this/Cur=[], this/DirEntry=[], this/Name=[], this/Dir.remainder=[], this/File=[], this/DirEntry.contents=[], this/Dir.entries=[], this/DirEntry.name=[], this/Dir.parent=[], $d=[]}
-ints: []
-Solutions:1
-Solutions:1
-Solutions:1
- --- Full Iteration Time: 44 ms.  -- 32
-Evaluate Ants End: 45 ms
-Update Pheromones...
-Update best Ant...
-Ant: 5.291379451751709
-Number of failed constraints: 22
-Number of failed relations: 9
-
-End Iteration: 591 ms
-ACO Time: 594 ms
-Total Time: 15500 ms.
+solved
+GA Time: 96595 ms
+Total Time: 128188 ms.

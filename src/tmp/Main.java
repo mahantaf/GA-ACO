@@ -316,22 +316,30 @@ public class Main {
             // TODO: Each Analysis can be done in a separate function
             if (analysisMode == Main.AnalysisMode.AlloyMode) {
                 startAlloyToKodKod = System.currentTimeMillis();
+                long startAlloy = System.currentTimeMillis();
 
                 A4Solution sol = TranslateAlloyToKodkod.execute_command_original(rep, sigsS, cmd, opt);
                 if (printMode != Main.PrintMode.GraphDataMode) {
-                    System.out.println("Solving time after end of solve: " + (System.currentTimeMillis() - startSolving) + " ms");
+                    System.out.println("Solving time after end of solve: " + (System.currentTimeMillis() - startAlloy) + " ms");
                 }
 
                 int solNumber = 0;
-                for(solNumber = solNumber + 1; sol.satisfiable(); ++solNumber) {
-                    if (printMode != Main.PrintMode.GraphDataMode) {
-                        System.out.println("--" + sol);
-                        System.out.print(".\n");
-                        System.out.println("--" + sol.eval);
-                    }
-
+//                for(solNumber = solNumber + 1; sol.satisfiable(); ++solNumber) {
+//                    if (printMode != Main.PrintMode.GraphDataMode) {
+//                        System.out.println("--" + sol);
+//                        System.out.print(".\n");
+//                        System.out.println("--" + sol.eval);
+//                    }
+//
+//                    sol = sol.next();
+//                }
+                while (!sol.satisfiable()) {
                     sol = sol.next();
                 }
+                System.out.println("--" + sol);
+                System.out.print(".\n");
+                System.out.println("--" + sol.eval);
+
 
                 if (printMode != Main.PrintMode.GraphDataMode) {
                     PrintStream var10000 = System.out;
@@ -425,11 +433,11 @@ public class Main {
 
                         quickSortPopulation(originPopulation);
 
-                        if (numOfZeroFitnessChange >= 3) {
-                            System.out.println("GA is not optimal anymore");
-                            System.out.println("Switching to ACO...");
-                            break;
-                        }
+//                        if (numOfZeroFitnessChange >= 3) {
+//                            System.out.println("GA is not optimal anymore");
+//                            System.out.println("Switching to ACO...");
+//                            break;
+//                        }
 
                         double currentFitness = originPopulation.get(0).fitness;
 
