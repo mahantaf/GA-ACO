@@ -433,11 +433,11 @@ public class Main {
 
                         quickSortPopulation(originPopulation);
 
-//                        if (numOfZeroFitnessChange >= 3) {
-//                            System.out.println("GA is not optimal anymore");
-//                            System.out.println("Switching to ACO...");
-//                            break;
-//                        }
+                        if (numOfZeroFitnessChange >= 3) {
+                            System.out.println("GA is not optimal anymore");
+                            System.out.println("Switching to ACO...");
+                            break;
+                        }
 
                         double currentFitness = originPopulation.get(0).fitness;
 
@@ -527,7 +527,7 @@ public class Main {
                     }
                     System.out.println("GA Time: " + (System.currentTimeMillis() - GATime) + " ms");
                 }
-                // Added by Mahan
+                // Added by Mahan Ant Colony Optimization
                 if (!foundSolution) {
                     long startAntColony = System.currentTimeMillis();
                     AntColonyAlgorithm antColonyAlgorithm = createAntColonyInstanceByChromosomes(unsolvedSolution, originPopulation);
