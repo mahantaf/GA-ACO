@@ -16,7 +16,7 @@ public class AntColonyAlgorithm {
     public double defaultPheromone = 5;
     public double remainderPheromone = 5;
     public double evaporationRate = 0.8;
-    public int numberOfIterations = 1;
+    public int numberOfIterations = 100;
     public int bestAntIndex = 0;
     public Ant bestAnt;
     public boolean initialAnts = true;
