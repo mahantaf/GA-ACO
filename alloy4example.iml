@@ -10,11 +10,11 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../../../Apply/UCI/Formal &amp; Alloy/EvoAlloy/EvoAlloy/EvoAlloy.jar!/" />
+          <root url="jar://$MODULE_DIR$/../EvoAlloy/EvoAlloy/EvoAlloy.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES>
-          <root url="jar://$MODULE_DIR$/../../../../Apply/UCI/Formal &amp; Alloy/EvoAlloy/EvoAlloy/EvoAlloy.jar!/" />
+          <root url="jar://$MODULE_DIR$/../EvoAlloy/EvoAlloy/EvoAlloy.jar!/" />
         </SOURCES>
       </library>
     </orderEntry>

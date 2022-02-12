@@ -1,70 +1,247 @@
 Analyzing Alloy Specification:
-/Users/mahantp/Desktop/Work/Lamasoo/Projects/alloy4example/resources/sync5.als
-Configuration Time: 311 ms
+/home/mahan/Projects/UCI/GA-ACO/resources/file_system0.als
+Configuration Time: 126 ms
 []
-Formula :((all IsValidFS_this: one (this/RootName + this/Name.remainder) | ((IsValidFS_this . this/Name.children) in (this/RootName + this/Name.remainder))) && ((this/Name.children . univ) in (this/RootName + this/Name.remainder)) && (((all acyclic_x: one (this/RootName + this/Name.remainder) | !(acyclic_x in (acyclic_x . ^this/Name.children))) && (all forest_n: one (this/RootName + this/Name.remainder) | lone (this/Name.children . forest_n))) && lone { tree_root: one (this/RootName + this/Name.remainder) | no (this/Name.children . tree_root) }) && ((this/RootName + this/Name.remainder) in (this/RootName . (^this/Name.children + (iden & ((((ints + String) + (this/RootName + this/Name.remainder)) + (this/Dir + this/FileContents.remainder)) -> univ))))) && (some IsValidFS_fs: set ((this/RootName + this/Name.remainder) -> (this/Dir + this/FileContents.remainder)) | ((((IsValidFS_fs in ((this/RootName + this/Name.remainder) -> (this/Dir + this/FileContents.remainder))) && (all v0: one (this/RootName + this/Name.remainder) | (lone (v0 . IsValidFS_fs) && ((v0 . IsValidFS_fs) in (this/Dir + this/FileContents.remainder))))) && (all v1: one (this/Dir + this/FileContents.remainder) | ((IsValidFS_fs . v1) in (this/RootName + this/Name.remainder)))) && ((all IsValidFS_n: one ((this/RootName + this/Name.remainder) - this/RootName) | ((!!((IsValidFS_n . IsValidFS_fs) = this/Dir) || no ((IsValidFS_n . ^this/Name.children) . IsValidFS_fs)) && (!some (IsValidFS_n . IsValidFS_fs) || some ((IsValidFS_n . ~this/Name.children) . IsValidFS_fs)))) && ((this/RootName . IsValidFS_fs) = this/Dir)))) && (Int/next = Int/next) && (seq/Int = seq/Int) && (String = String) && (this/RootName = this/RootName) && (this/Name.remainder = this/Name.remainder) && (this/Dir = this/Dir) && (this/FileContents.remainder = this/FileContents.remainder) && (this/Name.children = this/Name.children))
-Prepare KodKod Time: 2 ms.
-GA preparation time: 2 ms
+Formula :(no (this/Root & this/Cur) && no (this/File & ((this/Root + this/Cur) + this/Dir.remainder)) && lone this/Cur && lone this/Cur && (all this: one this/File | (some d: one ((this/Root + this/Cur) + this/Dir.remainder) | (this in ((d . this/Dir.entries) . this/DirEntry.contents)))) && no (this/Root . this/Dir.parent) && (all this: one ((this/Root + this/Cur) + this/Dir.remainder) | ((this . this/Dir.entries) in this/DirEntry)) && ((this/Dir.entries . univ) in ((this/Root + this/Cur) + this/Dir.remainder)) && (all this: one ((this/Root + this/Cur) + this/Dir.remainder) | (lone (this . this/Dir.parent) && ((this . this/Dir.parent) in ((this/Root + this/Cur) + this/Dir.remainder)))) && ((this/Dir.parent . univ) in ((this/Root + this/Cur) + this/Dir.remainder)) && (all this: one ((this/Root + this/Cur) + this/Dir.remainder) | ((((this . this/Dir.parent) = ((this . ~this/DirEntry.contents) . ~this/Dir.entries)) && ((all [e1: one (this . this/Dir.entries), e2: one (this . this/Dir.entries)] | (!((e1 . this/DirEntry.name) = (e2 . this/DirEntry.name)) || (e1 = e2))) && (!!(this = this/Root) || (this/Root in (this . ^this/Dir.parent))))) && !(this in (this . ^this/Dir.parent)))) && (all this: one this/DirEntry | (one (this . this/DirEntry.name) && ((this . this/DirEntry.name) in this/Name))) && ((this/DirEntry.name . univ) in this/DirEntry) && (all this: one this/DirEntry | (one (this . this/DirEntry.contents) && ((this . this/DirEntry.contents) in (this/File + ((this/Root + this/Cur) + this/Dir.remainder))))) && ((this/DirEntry.contents . univ) in this/DirEntry) && (all this: one this/DirEntry | one (this . ~this/Dir.entries)) && (Int/next = Int/next) && (seq/Int = seq/Int) && (String = String) && (this/File = this/File) && (this/Root = this/Root) && (this/Cur = this/Cur) && (this/Dir.remainder = this/Dir.remainder) && (this/Name = this/Name) && (this/DirEntry = this/DirEntry) && (this/Dir.entries = this/Dir.entries) && (this/Dir.parent = this/Dir.parent) && (this/DirEntry.name = this/DirEntry.name) && (this/DirEntry.contents = this/DirEntry.contents))
+Prepare KodKod Time: 1 ms.
+GA preparation time: 1 ms
 
 ---STATS---
 p cnf 0 0
 primary variables: 0
-translation time: 5869 ms
+translation time: 263 ms
 solving time: 0 ms
 
- --- Full Iteration Time: 31144 ms.  -- 32
-First generation time: 31147 ms
-Initialization Time: 31283 ms
+ --- Full Iteration Time: 1813 ms.  -- 32
+First generation time: 1813 ms
+Initialization Time: 1888 ms
 size ++ 32
  ------------- ------------- ------------- Iteration 1
  ------------- ------------- ------------- 
-x number of mutation 10.08
- numberOfMutation 33
-End GA Time: 74ms
- --- Full Iteration Time: 25361 ms.  -- 32
+x number of mutation 15.6
+ numberOfMutation 32
+End GA Time: 7ms
+ --- Full Iteration Time: 1649 ms.  -- 32
 ------------ Fitness Data ------------
-Current Fitness: 1.5153846740722656
-New Fitness: 1.4461538791656494
-Change: 0.06923079490661621
+Current Fitness: 4.741379261016846
+New Fitness: 4.741379261016846
+Change: 0.0
 ------------------------
 size ++ 32
  ------------- ------------- ------------- Iteration 2
  ------------- ------------- ------------- 
-x number of mutation 10.08
- numberOfMutation 33
-End GA Time: 77ms
- --- Full Iteration Time: 25400 ms.  -- 32
+x number of mutation 15.6
+ numberOfMutation 32
+End GA Time: 4ms
+ --- Full Iteration Time: 2228 ms.  -- 32
 ------------ Fitness Data ------------
-Current Fitness: 1.4461538791656494
-New Fitness: 1.3769230842590332
-Change: 0.06923079490661621
+Current Fitness: 4.741379261016846
+New Fitness: 4.741379261016846
+Change: 0.0
 ------------------------
 size ++ 32
  ------------- ------------- ------------- Iteration 3
  ------------- ------------- ------------- 
-x number of mutation 9.6
+x number of mutation 15.6
  numberOfMutation 32
-End GA Time: 47ms
- --- Full Iteration Time: 24556 ms.  -- 32
+End GA Time: 2ms
+ --- Full Iteration Time: 1632 ms.  -- 32
 ------------ Fitness Data ------------
-Current Fitness: 1.3769230842590332
-New Fitness: 1.307692289352417
-Change: 0.06923079490661621
+Current Fitness: 4.741379261016846
+New Fitness: 4.11379337310791
+Change: 0.6275858879089355
 ------------------------
 size ++ 32
  ------------- ------------- ------------- Iteration 4
  ------------- ------------- ------------- 
-x number of mutation 10.559999999999999
+x number of mutation 15.6
+ numberOfMutation 32
+End GA Time: 4ms
+ --- Full Iteration Time: 1517 ms.  -- 32
+------------ Fitness Data ------------
+Current Fitness: 4.11379337310791
+New Fitness: 4.11379337310791
+Change: 0.0
+------------------------
+size ++ 32
+ ------------- ------------- ------------- Iteration 5
+ ------------- ------------- ------------- 
+x number of mutation 16.38
+ numberOfMutation 33
+End GA Time: 3ms
+ --- Full Iteration Time: 1309 ms.  -- 32
+------------ Fitness Data ------------
+Current Fitness: 4.11379337310791
+New Fitness: 3.9896552562713623
+Change: 0.12413811683654785
+------------------------
+size ++ 32
+ ------------- ------------- ------------- Iteration 6
+ ------------- ------------- ------------- 
+x number of mutation 16.38
+ numberOfMutation 33
+End GA Time: 3ms
+ --- Full Iteration Time: 1047 ms.  -- 32
+------------ Fitness Data ------------
+Current Fitness: 3.9896552562713623
+New Fitness: 3.9896552562713623
+Change: 0.0
+------------------------
+size ++ 32
+ ------------- ------------- ------------- Iteration 7
+ ------------- ------------- ------------- 
+x number of mutation 15.6
+ numberOfMutation 32
+End GA Time: 2ms
+ --- Full Iteration Time: 1509 ms.  -- 32
+------------ Fitness Data ------------
+Current Fitness: 3.9896552562713623
+New Fitness: 3.9896552562713623
+Change: 0.0
+------------------------
+size ++ 32
+ ------------- ------------- ------------- Iteration 8
+ ------------- ------------- ------------- 
+x number of mutation 14.819999999999999
+ numberOfMutation 30
+End GA Time: 1ms
+ --- Full Iteration Time: 1065 ms.  -- 32
+------------ Fitness Data ------------
+Current Fitness: 3.9896552562713623
+New Fitness: 3.974138021469116
+Change: 0.015517234802246094
+------------------------
+size ++ 32
+ ------------- ------------- ------------- Iteration 9
+ ------------- ------------- ------------- 
+x number of mutation 15.6
+ numberOfMutation 32
+End GA Time: 3ms
+ --- Full Iteration Time: 643 ms.  -- 32
+------------ Fitness Data ------------
+Current Fitness: 3.974138021469116
+New Fitness: 3.974138021469116
+Change: 0.0
+------------------------
+size ++ 32
+ ------------- ------------- ------------- Iteration 10
+ ------------- ------------- ------------- 
+x number of mutation 15.6
+ numberOfMutation 32
+End GA Time: 3ms
+ --- Full Iteration Time: 479 ms.  -- 32
+------------ Fitness Data ------------
+Current Fitness: 3.974138021469116
+New Fitness: 3.3775863647460938
+Change: 0.5965516567230225
+------------------------
+size ++ 32
+ ------------- ------------- ------------- Iteration 11
+ ------------- ------------- ------------- 
+x number of mutation 16.38
+ numberOfMutation 33
+End GA Time: 3ms
+ --- Full Iteration Time: 460 ms.  -- 32
+------------ Fitness Data ------------
+Current Fitness: 3.3775863647460938
+New Fitness: 2.7965517044067383
+Change: 0.5810346603393555
+------------------------
+size ++ 32
+ ------------- ------------- ------------- Iteration 12
+ ------------- ------------- ------------- 
+x number of mutation 16.38
+ numberOfMutation 33
+End GA Time: 3ms
+ --- Full Iteration Time: 506 ms.  -- 32
+------------ Fitness Data ------------
+Current Fitness: 2.7965517044067383
+New Fitness: 2.7965517044067383
+Change: 0.0
+------------------------
+size ++ 32
+ ------------- ------------- ------------- Iteration 13
+ ------------- ------------- ------------- 
+x number of mutation 15.6
+ numberOfMutation 32
+End GA Time: 4ms
+ --- Full Iteration Time: 253 ms.  -- 32
+------------ Fitness Data ------------
+Current Fitness: 2.7965517044067383
+New Fitness: 2.7965517044067383
+Change: 0.0
+------------------------
+size ++ 32
+ ------------- ------------- ------------- Iteration 14
+ ------------- ------------- ------------- 
+x number of mutation 14.819999999999999
+ numberOfMutation 30
+End GA Time: 2ms
+ --- Full Iteration Time: 49 ms.  -- 32
+------------ Fitness Data ------------
+Current Fitness: 2.7965517044067383
+New Fitness: 2.7965517044067383
+Change: 0.0
+------------------------
+size ++ 32
+ ------------- ------------- ------------- Iteration 15
+ ------------- ------------- ------------- 
+x number of mutation 17.159999999999997
  numberOfMutation 35
-End GA Time: 48ms
-New Way
-generate SBP
---------------Bool To CNF transl-------------
+End GA Time: 3ms
+ --- Full Iteration Time: 29 ms.  -- 32
+------------ Fitness Data ------------
+Current Fitness: 2.7965517044067383
+New Fitness: 1.115517258644104
+Change: 1.6810344457626343
+------------------------
+size ++ 32
+ ------------- ------------- ------------- Iteration 16
+ ------------- ------------- ------------- 
+x number of mutation 15.6
+ numberOfMutation 32
+End GA Time: 2ms
+ --- Full Iteration Time: 41 ms.  -- 32
+------------ Fitness Data ------------
+Current Fitness: 1.115517258644104
+New Fitness: 1.115517258644104
+Change: 0.0
+------------------------
+size ++ 32
+ ------------- ------------- ------------- Iteration 17
+ ------------- ------------- ------------- 
+x number of mutation 14.819999999999999
+ numberOfMutation 30
+End GA Time: 2ms
+ --- Full Iteration Time: 17 ms.  -- 32
+------------ Fitness Data ------------
+Current Fitness: 1.115517258644104
+New Fitness: 1.115517258644104
+Change: 0.0
+------------------------
+size ++ 32
+ ------------- ------------- ------------- Iteration 18
+ ------------- ------------- ------------- 
+x number of mutation 17.159999999999997
+ numberOfMutation 35
+End GA Time: 3ms
+ --- Full Iteration Time: 32 ms.  -- 32
+------------ Fitness Data ------------
+Current Fitness: 1.115517258644104
+New Fitness: 1.115517258644104
+Change: 0.0
+------------------------
+size ++ 32
+ ------------- ------------- ------------- Iteration 19
+ ------------- ------------- ------------- 
+x number of mutation 16.38
+ numberOfMutation 33
+End GA Time: 3ms
 evalOptions:
  solver: MiniSatProver
- reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@4d4d113b
+ reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@4e8838f4
  intEncoding: TWOSCOMPLEMENT
- bitwidth: 7
+ bitwidth: 6
  sharing: 3
  flatten: false
  symmetryBreaking: 20
@@ -72,15 +249,15 @@ evalOptions:
  skolemDepth: 2
  logTranslation: 2
  coreGranularity: 3
-relations: {Int/next=[], seq/Int=[], String=[], this/RootName=[[RootName$0]], this/Name.remainder=[], this/Dir=[[Dir$0]], this/FileContents.remainder=[], this/Name.children=[], $IsValidFS_fs=[[RootName$0, Dir$0]]}
+relations: {Int/next=[], seq/Int=[], String=[], this/File=[], this/Root=[[Root$0]], this/Cur=[], this/Dir.remainder=[], this/Name=[[Name$0], [Name$1], [Name$2], [Name$3], [Name$4], [Name$5], [Name$6], [Name$7], [Name$8], [Name$9], [Name$10], [Name$11], [Name$12], [Name$13], [Name$14], [Name$15], [Name$16], [Name$17], [Name$18], [Name$19], [Name$20], [Name$21], [Name$22], [Name$23], [Name$24]], this/DirEntry=[], this/Dir.entries=[], this/Dir.parent=[], this/DirEntry.name=[], this/DirEntry.contents=[], $d=[]}
 ints: []
 Solutions:1
- --- Full Iteration Time: 21025 ms.  -- 32
+ --- Full Iteration Time: 52 ms.  -- 32
 ------------ Fitness Data ------------
-Current Fitness: 1.307692289352417
-New Fitness: 1.307692289352417
+Current Fitness: 1.115517258644104
+New Fitness: 1.115517258644104
 Change: 0.0
 ------------------------
 solved
-GA Time: 96595 ms
-Total Time: 128188 ms.
+GA Time: 14579 ms
+Total Time: 16592 ms.
