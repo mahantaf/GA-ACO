@@ -1,7 +1,6 @@
 ##############################
 ## Java
 ##############################
-.mtj.tmp/
 *.class
 *.jar
 *.war
@@ -49,11 +48,9 @@ out/
 ##############################
 .settings/
 bin/
-tmp/
 .metadata
 .classpath
 .project
-*.tmp
 *.bak
 *.swp
 *~.nib
