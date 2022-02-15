@@ -16,7 +16,7 @@ public class AntColonyAlgorithm {
     public static double heuristicWeight = 0.6;
     public int numberOfAnts = 32;
     public double minPheromone = 5;
-    public double maxPheromone = 30;
+    public double maxPheromone = 50;
     public double defaultPheromone = 5;
     public double remainderPheromone = 5;
     public double evaporationRate = 0.8;
@@ -48,7 +48,6 @@ public class AntColonyAlgorithm {
 
     public AntColonyAlgorithm() {
         this.bestAnt = new Ant();
-        this.bestAnt = null;
         antThreadPool = new ThreadPoolExecutor(
                 numberOfAnts,
                 100,
@@ -83,6 +82,7 @@ public class AntColonyAlgorithm {
 
             bestAnt.addNode(node);
         }
+        bestAnt.fitness = bestGASolution.fitness;
         System.out.println("Best Ant: " + bestAnt);
     }
 
@@ -179,9 +179,6 @@ public class AntColonyAlgorithm {
         for (Ant ant : ants) {
             System.out.println(index + ") ");
             System.out.println(ant);
-//            System.out.println("Fitness: " + ant.fitness);
-//            System.out.println("Failed Constraints: " + ant.failedConstraintsNumber);
-//            System.out.println("Failed Relations: " + ant.failedRelationNumber);
             System.out.println("=====================");
             ++index;
         }

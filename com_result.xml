@@ -1,6 +1,6 @@
 <alloy builddate="unknown">
 
-<instance bitwidth="0" maxseq="0" command="Run Square for 45 Point, 3 State expect 1" filename="">
+<instance bitwidth="0" maxseq="0" command="Run Square for 25 Point, 3 State expect 1" filename="">
 
 <sig label="seq/Int" ID="0" parentID="1" builtin="yes">
 </sig>
@@ -41,13 +41,13 @@
 </sig>
 
 <field label="First" ID="11" parentID="10" private="yes">
-   <tuple> <atom label="ord/Ord$0"/> <atom label="State$1"/> </tuple>
+   <tuple> <atom label="ord/Ord$0"/> <atom label="State$2"/> </tuple>
    <types> <type ID="10"/> <type ID="8"/> </types>
 </field>
 
 <field label="Next" ID="12" parentID="10" private="yes">
-   <tuple> <atom label="ord/Ord$0"/> <atom label="State$1"/> <atom label="State$2"/> </tuple>
-   <tuple> <atom label="ord/Ord$0"/> <atom label="State$2"/> <atom label="State$0"/> </tuple>
+   <tuple> <atom label="ord/Ord$0"/> <atom label="State$1"/> <atom label="State$0"/> </tuple>
+   <tuple> <atom label="ord/Ord$0"/> <atom label="State$2"/> <atom label="State$1"/> </tuple>
    <types> <type ID="10"/> <type ID="8"/> <type ID="8"/> </types>
 </field>
 

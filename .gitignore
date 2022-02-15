@@ -79,3 +79,37 @@ nb-configuration.xml
 ## OS X
 ##############################
 .DS_Store
+
+this/Root=[[Root$0]],
+this/State=[[State$0], [State$1], [State$2]],
+ord/Ord=[[ord/Ord$0]],
+ord/Ord.First=[[State$1]],
+this/State.ADD=[[State$0]],
+this/Point.remainder=[],
+ord/Ord.Next=[[State$1, State$2], [State$2, State$0]],
+this/Point.right=[],
+this/State.live=[],
+this/Point.below=[]
+
+this/Root=[[Root$0]],
+this/State=[[State$0], [State$1], [State$2]]
+ord/Ord=[[ord/Ord$0]],
+ord/Ord.First=[[State$1]],
+this/State.ADD=[[State$2]],
+this/Point.remainder=[],
+ord/Ord.Next=[[State$0, State$2], [State$1, State$0]],
+this/Point.right=[],
+this/State.live=[],
+this/Point.below=[]
+
+
+this/Root : [[Root$0]]
+this/State : [[State$0], [State$1], [State$2]]
+ord/Ord : [[ord/Ord$0]]
+ord/Ord.First : []
+this/State.ADD : [[State$1]]
+this/Point.remainder : []
+ord/Ord.Next : [[State$0, State$0], [State$0, State$2], [State$1, State$0], [State$2, State$2]]
+this/Point.right : []
+this/State.live : []
+this/Point.below : []

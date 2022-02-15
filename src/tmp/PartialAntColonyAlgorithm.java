@@ -1,33 +1,52 @@
 package tmp;
 
 import kodkod.ast.Relation;
+import kodkod.engine.bool.Int;
 import kodkod.instance.Bounds;
 import kodkod.instance.TupleSet;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 public class PartialAntColonyAlgorithm extends AntColonyAlgorithm {
 
     public int expirationTimeSlots = 3;
-    public int relationTuplesWindowSize = 30;
+    public int relationTuplesWindowSize = 50;
+    public static int randomChromosomeNumber = 50;
 
 
     public PartialAntColonyAlgorithm() {
         super();
     }
 
+    public void initializeBestAntByBestChromosome() {
+        for (Relation relation : relationNodes.keySet()) {
+            TupleSet chromosomeTuples = bestGASolution.chromosomeBounds.uppers.get(relation);
+            SubAntNode node = (SubAntNode) findNodeByTupleSet(relation, chromosomeTuples);
+
+            bestAnt.addNode(node);
+        }
+        bestAnt.fitness = bestGASolution.fitness;
+        bestAnt.totalConstraintsNumber = bestGASolution.totalConstraintsNumber;
+        bestAnt.failedConstraintsNumber = bestGASolution.failedConstraintsNumber;
+        bestAnt.failedRelationNumber = bestGASolution.failedRelationNumber;
+    }
+
     public Ant startOptimization() {
         sortRelationsByNodeSize();
+        initializeBestAntByBestChromosome();
         int iter = 0;
         while (iter < numberOfIterations && !Main.foundSolution) {
+//            sortRelationsByNodeSize();
             long startIteration = System.currentTimeMillis();
             System.out.println("------------------------- Iteration " + iter + " -------------------------");
             printGraphSize();
             initializeAntsByLowerBounds();
 //            moveAntsMultiThread();
-            moveAnts();
+//            moveAnts();
+            moveAntsByProbability();
             evaluateAnts();
             updatePheromones();
             updateBestAnt();
@@ -45,6 +64,56 @@ public class PartialAntColonyAlgorithm extends AntColonyAlgorithm {
         } catch (InterruptedException ignored) {}
 
         return bestAnt;
+    }
+
+    private void moveAntsByProbability() {
+        System.out.println("Moving Ants by Probability Start");
+        long cTime = System.currentTimeMillis();
+        int antIndex = 0;
+        for (Ant ant: ants) {
+            long cTime2 = System.currentTimeMillis();
+            ++antIndex;
+            int relationIndex = 0;
+
+            Random random = new Random(System.currentTimeMillis());
+            int numOfBestChoice = random.nextInt(numOfRelations);
+
+//            System.out.println("Ant " + antIndex + " is about to choose " + numOfBestChoice + " best choice.");
+
+            ArrayList<Integer> relationChoice = new ArrayList<>();
+            int numOfBestChoiceTemp = numOfBestChoice;
+            while (numOfBestChoice > 0) {
+                int chosenRelationIndex = random.nextInt(numOfRelations);
+                if (!relationChoice.contains(chosenRelationIndex)) {
+                    relationChoice.add(chosenRelationIndex);
+                    numOfBestChoice--;
+                }
+            }
+//            System.out.print("relations: ");
+//            for (Integer rc : relationChoice) {
+//                System.out.print(rc + " ");
+//            }
+//            System.out.println();
+
+            for (HashMap.Entry<Relation, ArrayList<AntNode>> entry : relationNodes.entrySet()) {
+//                if (numOfBestChoice > 0) {
+                if (relationChoice.contains(relationIndex)) {
+                    SubAntNode bestAntNode = (SubAntNode) bestAnt.getNode(relationIndex);
+                    ant.setNode(bestAntNode, relationIndex);
+                    relationIndex++;
+                    continue;
+                } else {
+                    // TODO: Select by probability
+                    Relation relation = entry.getKey();
+                    selectNode(ant, relation, relationIndex);
+                }
+                ++relationIndex;
+            }
+            System.out.println("Ant with " + numOfBestChoiceTemp + "best choice " + antIndex + " moving time: " + (System.currentTimeMillis() - cTime2) + " ms");
+            if (Main.foundSolution)
+                break;
+        }
+        System.out.println("Moving Ants By Probability End: " + (System.currentTimeMillis() - cTime) + " ms");
     }
 
     public void initializeNodes(HashMap<Relation, ArrayList<TupleSet>> relationTuples) {
@@ -92,6 +161,7 @@ public class PartialAntColonyAlgorithm extends AntColonyAlgorithm {
             AntNode node = findNodeByTupleSet(relation, chromosomeTuples);
 
             if (node == null)
+//                relationNodes.get(relation).add(new SubAntNode(relation, chromosomeTuples, defaultPheromone));
                 relationNodes.get(relation).add(new SubAntNode(relation, chromosomeTuples, defaultPheromone));
         }
     }
@@ -101,7 +171,6 @@ public class PartialAntColonyAlgorithm extends AntColonyAlgorithm {
         if (relationNodes.get(relation).size() == 1) {
             selectedNode = (SubAntNode) relationNodes.get(relation).get(0);
         } else {
-//            setAntNodesProbability(ant, relation, relationIndex);
             setAntNodeProbabilityMultiThread(ant, relation, relationIndex);
             selectedNode = (SubAntNode) selectNodeByProbability(ant, relation);
         }

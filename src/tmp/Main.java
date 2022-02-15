@@ -535,16 +535,9 @@ public class Main {
                     for (Choromosome choromosome : originPopulation)
                         antColonyAlgorithm.updatePheromonesByGASolution(choromosome.chromosomeBounds, choromosome.fitness);
 
-//                    System.out.println("Setting best chromosome");
                     antColonyAlgorithm.setBestGASolution(originPopulation.get(0));
-                    System.out.println("Starting Optimization");
                     Ant bestAnt = antColonyAlgorithm.startOptimization();
-//                    System.out.println("End of Optimization");
                     System.out.println("ACO Time: " + (System.currentTimeMillis() - startAntColony) + " ms");
-
-//                    System.out.println("=================================");
-//                    System.out.println("Best Ant:");
-//                    System.out.println(bestAnt);
                 }
 
 
@@ -599,29 +592,6 @@ public class Main {
 
         population.set(low, piv);
         return low;
-    }
-
-    private static void generateRandomChromosomes(
-            ThreadPoolExecutor executorPool)
-    {
-        int randomChromosomesSize = 30;
-
-        originPopulation = new ArrayList<>();
-        for (int j = 0; j < randomChromosomesSize; ++j)
-            originPopulation.add(null);
-
-        latch = new CountDownLatch(randomChromosomesSize);
-
-        for (int iter = 0; iter < randomChromosomesSize; ++iter) {
-            Choromosome generatedChromo = new Choromosome(iter);
-            Runnable generateRandomChromosomeThread = new GenerateRandomChromosomeThread(generatedChromo, iter);
-            executorPool.execute(generateRandomChromosomeThread);
-        }
-
-        try {
-            latch.await();
-        } catch (InterruptedException ignored) {}
-        ++iterations;
     }
 
     private static void generateOriginalPopulationOfChromosome_multithread(Command cmd, A4Reporter rep, ConstList<Sig> sigsS, A4Options opt, ArrayList<Choromosome> generatedPopulationByGA, ThreadPoolExecutor executorPool) throws Err, CloneNotSupportedException, IOException, InterruptedException, ClassNotFoundException {
@@ -708,6 +678,25 @@ public class Main {
      * Ant Colony Optimization Methods
      * Added by Mahan Tafreshipour (Nov. 2021)
      */
+    private static void generateRandomChromosomes(ThreadPoolExecutor executorPool) {
+        int randomChromosomesSize = PartialAntColonyAlgorithm.randomChromosomeNumber;
+
+        originPopulation = new ArrayList<>();
+        for (int j = 0; j < randomChromosomesSize; ++j)
+            originPopulation.add(null);
+
+        latch = new CountDownLatch(randomChromosomesSize);
+
+        for (int iter = 0; iter < randomChromosomesSize; ++iter) {
+            Choromosome generatedChromo = new Choromosome(iter);
+            Runnable generateRandomChromosomeThread = new GenerateRandomChromosomeThread(generatedChromo, iter);
+            executorPool.execute(generateRandomChromosomeThread);
+        }
+
+        try {
+            latch.await();
+        } catch (InterruptedException ignored) {}
+    }
 
     public static double getFittestChromosomeFitness() {
         double fitness = 10000000;
@@ -882,8 +871,8 @@ public class Main {
 //            antChromosomePopulation = GeneticAlgorithm.mutation_tupleLevel(antChromosomePopulation);
 //        }
 
-//        System.out.println("Adding Random Mutation");
-//        antChromosomePopulation = GeneticAlgorithm.mutation_tupleLevel(antChromosomePopulation);
+        System.out.println("Adding Random Mutation");
+        antChromosomePopulation = GeneticAlgorithm.mutation_tupleLevel(antChromosomePopulation);
 
         try {
             generateOriginalPopulationOfChromosome_multithread(cmd, rep, sigsS, opt, antChromosomePopulation, executorPool);
