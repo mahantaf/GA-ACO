@@ -23,9 +23,13 @@ public class AntColonyAlgorithm {
     public ArrayList<Ant> ants = new ArrayList<>();
     public Map<Relation, ArrayList<AntNode>> relationNodes = new LinkedHashMap<>();
     public ArrayList<Relation> unimportantRelations = new ArrayList<>();
+    public int numOfRelations = 0;
     public Choromosome bestGASolution = null;
     A4Solution notSolvedSolution = null;
 
+    public void setNumOfRelations(int numOfRelations) {
+        this.numOfRelations = numOfRelations;
+    }
 
     public void setNotSolvedSolution(A4Solution notSolvedSolution) {
         this.notSolvedSolution = notSolvedSolution;
@@ -36,7 +40,7 @@ public class AntColonyAlgorithm {
     }
 
     public AntColonyAlgorithm() {
-        this.bestAnt = null;
+        this.bestAnt = new Ant();
     }
 
     public void initializeAntsByBestChromosome() {
@@ -55,6 +59,16 @@ public class AntColonyAlgorithm {
                 ants.set(index, new Ant(fullSolutionAnt));
             ++index;
         }
+    }
+
+    public void initializeBestAntByBestChromosome() {
+        for (Relation relation : relationNodes.keySet()) {
+            TupleSet chromosomeTuples = bestGASolution.chromosomeBounds.uppers.get(relation);
+            AntNode node = findNodeByTupleSet(relation, chromosomeTuples);
+
+            bestAnt.addNode(node);
+        }
+        System.out.println("Best Ant: " + bestAnt);
     }
 
     public void initializeAntsByLowerBounds() {
@@ -160,6 +174,7 @@ public class AntColonyAlgorithm {
 
     public Ant startOptimization() {
         sortRelationsByNodeSize();
+        initializeBestAntByBestChromosome();
         int iter = 0;
         while (iter < numberOfIterations && !Main.foundSolution) {
             long startIteration = System.currentTimeMillis();
@@ -168,7 +183,8 @@ public class AntColonyAlgorithm {
 //            initializeAnts();
 //            initializeAntsByBestChromosome();
             initializeAntsByLowerBounds();
-            moveAnts();
+//            moveAnts();
+            moveAntsByProbability();
             evaluateAnts();
             updatePheromones();
             updateBestAnt();
@@ -233,6 +249,40 @@ public class AntColonyAlgorithm {
                 break;
         }
         System.out.println("Moving Ants End: " + (System.currentTimeMillis() - cTime) + " ms");
+    }
+
+    private void moveAntsByProbability() {
+        System.out.println("Moving Ants by Probability Start");
+        int antIndex = 0;
+        for (Ant ant: ants) {
+            ++antIndex;
+            int relationIndex = 0;
+
+            Random random = new Random(System.currentTimeMillis());
+            int numOfBestChoice = random.nextInt(numOfRelations);
+
+            System.out.println("Ant " + antIndex + " is about to choose " + numOfBestChoice + " best choice.");
+
+            for (HashMap.Entry<Relation, ArrayList<AntNode>> entry : relationNodes.entrySet()) {
+
+                if (numOfBestChoice > 0) {
+                    AntNode bestAntNode = bestAnt.getNode(relationIndex);
+                    ant.setNode(bestAntNode, relationIndex);
+                    numOfBestChoice--;
+                    ++relationIndex;
+                    continue;
+                } else {
+                    // TODO: Select by probability
+                    Relation relation = entry.getKey();
+                    selectNode(ant, relation, relationIndex);
+                }
+                ++relationIndex;
+
+            }
+
+//            if (Main.foundSolution)
+//                break;
+        }
     }
 
     private void evaluateAnts() {

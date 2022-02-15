@@ -1,42 +1,42 @@
 Analyzing Alloy Specification:
-/home/mahan/Projects/UCI/GA-ACO/resources/file_system0.als
-Configuration Time: 126 ms
+/home/mahan/Projects/UCI/GA-ACO/resources/file_system2.als
+Configuration Time: 113 ms
 []
 Formula :(no (this/Root & this/Cur) && no (this/File & ((this/Root + this/Cur) + this/Dir.remainder)) && lone this/Cur && lone this/Cur && (all this: one this/File | (some d: one ((this/Root + this/Cur) + this/Dir.remainder) | (this in ((d . this/Dir.entries) . this/DirEntry.contents)))) && no (this/Root . this/Dir.parent) && (all this: one ((this/Root + this/Cur) + this/Dir.remainder) | ((this . this/Dir.entries) in this/DirEntry)) && ((this/Dir.entries . univ) in ((this/Root + this/Cur) + this/Dir.remainder)) && (all this: one ((this/Root + this/Cur) + this/Dir.remainder) | (lone (this . this/Dir.parent) && ((this . this/Dir.parent) in ((this/Root + this/Cur) + this/Dir.remainder)))) && ((this/Dir.parent . univ) in ((this/Root + this/Cur) + this/Dir.remainder)) && (all this: one ((this/Root + this/Cur) + this/Dir.remainder) | ((((this . this/Dir.parent) = ((this . ~this/DirEntry.contents) . ~this/Dir.entries)) && ((all [e1: one (this . this/Dir.entries), e2: one (this . this/Dir.entries)] | (!((e1 . this/DirEntry.name) = (e2 . this/DirEntry.name)) || (e1 = e2))) && (!!(this = this/Root) || (this/Root in (this . ^this/Dir.parent))))) && !(this in (this . ^this/Dir.parent)))) && (all this: one this/DirEntry | (one (this . this/DirEntry.name) && ((this . this/DirEntry.name) in this/Name))) && ((this/DirEntry.name . univ) in this/DirEntry) && (all this: one this/DirEntry | (one (this . this/DirEntry.contents) && ((this . this/DirEntry.contents) in (this/File + ((this/Root + this/Cur) + this/Dir.remainder))))) && ((this/DirEntry.contents . univ) in this/DirEntry) && (all this: one this/DirEntry | one (this . ~this/Dir.entries)) && (Int/next = Int/next) && (seq/Int = seq/Int) && (String = String) && (this/File = this/File) && (this/Root = this/Root) && (this/Cur = this/Cur) && (this/Dir.remainder = this/Dir.remainder) && (this/Name = this/Name) && (this/DirEntry = this/DirEntry) && (this/Dir.entries = this/Dir.entries) && (this/Dir.parent = this/Dir.parent) && (this/DirEntry.name = this/DirEntry.name) && (this/DirEntry.contents = this/DirEntry.contents))
 Prepare KodKod Time: 1 ms.
-GA preparation time: 1 ms
+GA preparation time: 0 ms
 
 ---STATS---
 p cnf 0 0
 primary variables: 0
-translation time: 263 ms
+translation time: 250 ms
 solving time: 0 ms
 
- --- Full Iteration Time: 1813 ms.  -- 32
-First generation time: 1813 ms
-Initialization Time: 1888 ms
+ --- Full Iteration Time: 5074 ms.  -- 32
+First generation time: 5074 ms
+Initialization Time: 5164 ms
 size ++ 32
  ------------- ------------- ------------- Iteration 1
  ------------- ------------- ------------- 
-x number of mutation 15.6
- numberOfMutation 32
-End GA Time: 7ms
- --- Full Iteration Time: 1649 ms.  -- 32
+x number of mutation 14.819999999999999
+ numberOfMutation 30
+End GA Time: 11ms
+ --- Full Iteration Time: 2181 ms.  -- 32
 ------------ Fitness Data ------------
-Current Fitness: 4.741379261016846
-New Fitness: 4.741379261016846
-Change: 0.0
+Current Fitness: 4.834482669830322
+New Fitness: 4.756896495819092
+Change: 0.07758617401123047
 ------------------------
 size ++ 32
  ------------- ------------- ------------- Iteration 2
  ------------- ------------- ------------- 
-x number of mutation 15.6
- numberOfMutation 32
-End GA Time: 4ms
- --- Full Iteration Time: 2228 ms.  -- 32
+x number of mutation 14.040000000000001
+ numberOfMutation 28
+End GA Time: 5ms
+ --- Full Iteration Time: 1866 ms.  -- 32
 ------------ Fitness Data ------------
-Current Fitness: 4.741379261016846
-New Fitness: 4.741379261016846
+Current Fitness: 4.756896495819092
+New Fitness: 4.756896495819092
 Change: 0.0
 ------------------------
 size ++ 32
@@ -44,23 +44,23 @@ size ++ 32
  ------------- ------------- ------------- 
 x number of mutation 15.6
  numberOfMutation 32
-End GA Time: 2ms
- --- Full Iteration Time: 1632 ms.  -- 32
+End GA Time: 5ms
+ --- Full Iteration Time: 1699 ms.  -- 32
 ------------ Fitness Data ------------
-Current Fitness: 4.741379261016846
-New Fitness: 4.11379337310791
-Change: 0.6275858879089355
+Current Fitness: 4.756896495819092
+New Fitness: 4.586206912994385
+Change: 0.17068958282470703
 ------------------------
 size ++ 32
  ------------- ------------- ------------- Iteration 4
  ------------- ------------- ------------- 
-x number of mutation 15.6
- numberOfMutation 32
-End GA Time: 4ms
- --- Full Iteration Time: 1517 ms.  -- 32
+x number of mutation 16.38
+ numberOfMutation 33
+End GA Time: 8ms
+ --- Full Iteration Time: 2371 ms.  -- 32
 ------------ Fitness Data ------------
-Current Fitness: 4.11379337310791
-New Fitness: 4.11379337310791
+Current Fitness: 4.586206912994385
+New Fitness: 4.586206912994385
 Change: 0.0
 ------------------------
 size ++ 32
@@ -68,178 +68,64 @@ size ++ 32
  ------------- ------------- ------------- 
 x number of mutation 16.38
  numberOfMutation 33
-End GA Time: 3ms
- --- Full Iteration Time: 1309 ms.  -- 32
+End GA Time: 7ms
+ --- Full Iteration Time: 1187 ms.  -- 32
 ------------ Fitness Data ------------
-Current Fitness: 4.11379337310791
-New Fitness: 3.9896552562713623
-Change: 0.12413811683654785
+Current Fitness: 4.586206912994385
+New Fitness: 4.586206912994385
+Change: 0.0
 ------------------------
 size ++ 32
  ------------- ------------- ------------- Iteration 6
  ------------- ------------- ------------- 
-x number of mutation 16.38
- numberOfMutation 33
-End GA Time: 3ms
- --- Full Iteration Time: 1047 ms.  -- 32
------------- Fitness Data ------------
-Current Fitness: 3.9896552562713623
-New Fitness: 3.9896552562713623
-Change: 0.0
-------------------------
-size ++ 32
- ------------- ------------- ------------- Iteration 7
- ------------- ------------- ------------- 
-x number of mutation 15.6
- numberOfMutation 32
-End GA Time: 2ms
- --- Full Iteration Time: 1509 ms.  -- 32
------------- Fitness Data ------------
-Current Fitness: 3.9896552562713623
-New Fitness: 3.9896552562713623
-Change: 0.0
-------------------------
-size ++ 32
- ------------- ------------- ------------- Iteration 8
- ------------- ------------- ------------- 
 x number of mutation 14.819999999999999
  numberOfMutation 30
-End GA Time: 1ms
- --- Full Iteration Time: 1065 ms.  -- 32
+End GA Time: 8ms
+ --- Full Iteration Time: 808 ms.  -- 32
 ------------ Fitness Data ------------
-Current Fitness: 3.9896552562713623
-New Fitness: 3.974138021469116
-Change: 0.015517234802246094
-------------------------
-size ++ 32
- ------------- ------------- ------------- Iteration 9
- ------------- ------------- ------------- 
-x number of mutation 15.6
- numberOfMutation 32
-End GA Time: 3ms
- --- Full Iteration Time: 643 ms.  -- 32
------------- Fitness Data ------------
-Current Fitness: 3.974138021469116
-New Fitness: 3.974138021469116
+Current Fitness: 4.586206912994385
+New Fitness: 4.586206912994385
 Change: 0.0
 ------------------------
 size ++ 32
- ------------- ------------- ------------- Iteration 10
- ------------- ------------- ------------- 
-x number of mutation 15.6
- numberOfMutation 32
-End GA Time: 3ms
- --- Full Iteration Time: 479 ms.  -- 32
------------- Fitness Data ------------
-Current Fitness: 3.974138021469116
-New Fitness: 3.3775863647460938
-Change: 0.5965516567230225
-------------------------
-size ++ 32
- ------------- ------------- ------------- Iteration 11
- ------------- ------------- ------------- 
-x number of mutation 16.38
- numberOfMutation 33
-End GA Time: 3ms
- --- Full Iteration Time: 460 ms.  -- 32
------------- Fitness Data ------------
-Current Fitness: 3.3775863647460938
-New Fitness: 2.7965517044067383
-Change: 0.5810346603393555
-------------------------
-size ++ 32
- ------------- ------------- ------------- Iteration 12
- ------------- ------------- ------------- 
-x number of mutation 16.38
- numberOfMutation 33
-End GA Time: 3ms
- --- Full Iteration Time: 506 ms.  -- 32
------------- Fitness Data ------------
-Current Fitness: 2.7965517044067383
-New Fitness: 2.7965517044067383
-Change: 0.0
-------------------------
-size ++ 32
- ------------- ------------- ------------- Iteration 13
- ------------- ------------- ------------- 
-x number of mutation 15.6
- numberOfMutation 32
-End GA Time: 4ms
- --- Full Iteration Time: 253 ms.  -- 32
------------- Fitness Data ------------
-Current Fitness: 2.7965517044067383
-New Fitness: 2.7965517044067383
-Change: 0.0
-------------------------
-size ++ 32
- ------------- ------------- ------------- Iteration 14
- ------------- ------------- ------------- 
-x number of mutation 14.819999999999999
- numberOfMutation 30
-End GA Time: 2ms
- --- Full Iteration Time: 49 ms.  -- 32
------------- Fitness Data ------------
-Current Fitness: 2.7965517044067383
-New Fitness: 2.7965517044067383
-Change: 0.0
-------------------------
-size ++ 32
- ------------- ------------- ------------- Iteration 15
- ------------- ------------- ------------- 
-x number of mutation 17.159999999999997
- numberOfMutation 35
-End GA Time: 3ms
- --- Full Iteration Time: 29 ms.  -- 32
------------- Fitness Data ------------
-Current Fitness: 2.7965517044067383
-New Fitness: 1.115517258644104
-Change: 1.6810344457626343
-------------------------
-size ++ 32
- ------------- ------------- ------------- Iteration 16
- ------------- ------------- ------------- 
-x number of mutation 15.6
- numberOfMutation 32
-End GA Time: 2ms
- --- Full Iteration Time: 41 ms.  -- 32
------------- Fitness Data ------------
-Current Fitness: 1.115517258644104
-New Fitness: 1.115517258644104
-Change: 0.0
-------------------------
-size ++ 32
- ------------- ------------- ------------- Iteration 17
- ------------- ------------- ------------- 
-x number of mutation 14.819999999999999
- numberOfMutation 30
-End GA Time: 2ms
- --- Full Iteration Time: 17 ms.  -- 32
------------- Fitness Data ------------
-Current Fitness: 1.115517258644104
-New Fitness: 1.115517258644104
-Change: 0.0
-------------------------
-size ++ 32
- ------------- ------------- ------------- Iteration 18
- ------------- ------------- ------------- 
-x number of mutation 17.159999999999997
- numberOfMutation 35
-End GA Time: 3ms
- --- Full Iteration Time: 32 ms.  -- 32
------------- Fitness Data ------------
-Current Fitness: 1.115517258644104
-New Fitness: 1.115517258644104
-Change: 0.0
-------------------------
-size ++ 32
- ------------- ------------- ------------- Iteration 19
- ------------- ------------- ------------- 
-x number of mutation 16.38
- numberOfMutation 33
-End GA Time: 3ms
+GA is not optimal anymore
+Switching to ACO...
+GA Time: 10159 ms
+Starting Optimization
+Best Ant: Ant: 1000000.0
+Number of failed constraints: 1000
+Number of failed relations: 1000
+this/Root : [[Root$0]]
+this/Cur : [[Object$4], [Object$12], [Object$24], [Object$27], [Object$29], [Object$40], [Object$42], [Object$43]]
+this/Dir.remainder : [[Object$11], [Object$16], [Object$32], [Object$34]]
+this/File : [[Object$1], [Object$6], [Object$15], [Object$29], [Object$41], [Object$42]]
+this/Name : [[Name$0], [Name$1], [Name$2], [Name$3], [Name$4], [Name$5], [Name$6], [Name$7], [Name$8], [Name$9], [Name$10], [Name$11], [Name$12], [Name$13], [Name$14], [Name$15], [Name$16], [Name$17], [Name$18], [Name$19], [Name$20], [Name$21], [Name$22], [Name$23], [Name$24], [Name$25], [Name$26], [Name$27], [Name$28], [Name$29], [Name$30], [Name$31], [Name$32], [Name$33], [Name$34], [Name$35], [Name$36], [Name$37], [Name$38], [Name$39], [Name$40], [Name$41], [Name$42], [Name$43], [Name$44]]
+this/DirEntry.name : [[DirEntry$0, Name$3], [DirEntry$0, Name$5], [DirEntry$0, Name$6], [DirEntry$0, Name$7], [DirEntry$0, Name$8], [DirEntry$0, Name$11], [DirEntry$0, Name$14], [DirEntry$0, Name$19], [DirEntry$0, Name$21], [DirEntry$0, Name$22], [DirEntry$0, Name$23], [DirEntry$0, Name$24], [DirEntry$0, Name$26], [DirEntry$0, Name$27], [DirEntry$0, Name$28], [DirEntry$0, Name$29], [DirEntry$0, Name$31], [DirEntry$0, Name$33], [DirEntry$0, Name$34], [DirEntry$0, Name$38], [DirEntry$0, Name$40], [DirEntry$0, Name$42], [DirEntry$1, Name$0], [DirEntry$1, Name$1], [DirEntry$1, Name$2], [DirEntry$1, Name$4], [DirEntry$1, Name$5], [DirEntry$1, Name$6], [DirEntry$1, Name$9], [DirEntry$1, Name$11], [DirEntry$1, Name$12], [DirEntry$1, Name$16], [DirEntry$1, Name$17], [DirEntry$1, Name$19], [DirEntry$1, Name$23], [DirEntry$1, Name$24], [DirEntry$1, Name$25], [DirEntry$1, Name$26], [DirEntry$1, Name$27], [DirEntry$1, Name$28], [DirEntry$1, Name$29], [DirEntry$1, Name$30], [DirEntry$1, Name$31], [DirEntry$1, Name$32], [DirEntry$1, Name$37], [DirEntry$1, Name$39], [DirEntry$1, Name$44], [DirEntry$2, Name$0], [DirEntry$2, Name$3], [DirEntry$2, Name$4], [DirEntry$2, Name$7], [DirEntry$2, Name$9], [DirEntry$2, Name$10], [DirEntry$2, Name$12], [DirEntry$2, Name$13], [DirEntry$2, Name$14], [DirEntry$2, Name$16], [DirEntry$2, Name$17], [DirEntry$2, Name$20], [DirEntry$2, Name$21], [DirEntry$2, Name$22], [DirEntry$2, Name$24], [DirEntry$2, Name$28], [DirEntry$2, Name$30], [DirEntry$2, Name$33], [DirEntry$2, Name$34], [DirEntry$2, Name$35], [DirEntry$2, Name$37], [DirEntry$2, Name$38], [DirEntry$2, Name$39], [DirEntry$2, Name$41], [DirEntry$2, Name$42], [DirEntry$2, Name$43], [DirEntry$3, Name$0], [DirEntry$3, Name$2], [DirEntry$3, Name$5], [DirEntry$3, Name$6], [DirEntry$3, Name$8], [DirEntry$3, Name$9], [DirEntry$3, Name$10], [DirEntry$3, Name$14], [DirEntry$3, Name$17], [DirEntry$3, Name$18], [DirEntry$3, Name$23], [DirEntry$3, Name$28], [DirEntry$3, Name$30], [DirEntry$3, Name$32], [DirEntry$3, Name$34], [DirEntry$3, Name$38], [DirEntry$3, Name$41], [DirEntry$3, Name$43], [DirEntry$3, Name$44], [DirEntry$4, Name$2], [DirEntry$4, Name$4], [DirEntry$4, Name$11], [DirEntry$4, Name$12], [DirEntry$4, Name$14], [DirEntry$4, Name$15], [DirEntry$4, Name$16], [DirEntry$4, Name$18], [DirEntry$4, Name$25], [DirEntry$4, Name$26], [DirEntry$4, Name$27], [DirEntry$4, Name$30], [DirEntry$4, Name$31], [DirEntry$4, Name$32], [DirEntry$4, Name$34], [DirEntry$4, Name$41], [DirEntry$4, Name$42], [DirEntry$5, Name$2], [DirEntry$5, Name$3], [DirEntry$5, Name$7], [DirEntry$5, Name$10], [DirEntry$5, Name$18], [DirEntry$5, Name$19], [DirEntry$5, Name$20], [DirEntry$5, Name$21], [DirEntry$5, Name$22], [DirEntry$5, Name$23], [DirEntry$5, Name$26], [DirEntry$5, Name$27], [DirEntry$5, Name$28], [DirEntry$5, Name$29], [DirEntry$5, Name$31], [DirEntry$5, Name$33], [DirEntry$5, Name$34], [DirEntry$5, Name$35], [DirEntry$5, Name$36], [DirEntry$5, Name$38], [DirEntry$5, Name$40], [DirEntry$5, Name$41], [DirEntry$5, Name$42], [DirEntry$5, Name$43], [DirEntry$6, Name$0], [DirEntry$6, Name$1], [DirEntry$6, Name$2], [DirEntry$6, Name$3], [DirEntry$6, Name$6], [DirEntry$6, Name$9], [DirEntry$6, Name$10], [DirEntry$6, Name$13], [DirEntry$6, Name$14], [DirEntry$6, Name$15], [DirEntry$6, Name$16], [DirEntry$6, Name$20], [DirEntry$6, Name$25], [DirEntry$6, Name$27], [DirEntry$6, Name$29], [DirEntry$6, Name$31], [DirEntry$6, Name$34], [DirEntry$6, Name$40], [DirEntry$6, Name$41], [DirEntry$6, Name$42], [DirEntry$6, Name$43], [DirEntry$7, Name$0], [DirEntry$7, Name$1], [DirEntry$7, Name$2], [DirEntry$7, Name$5], [DirEntry$7, Name$10], [DirEntry$7, Name$12], [DirEntry$7, Name$13], [DirEntry$7, Name$14], [DirEntry$7, Name$15], [DirEntry$7, Name$18], [DirEntry$7, Name$19], [DirEntry$7, Name$22], [DirEntry$7, Name$24], [DirEntry$7, Name$26], [DirEntry$7, Name$27], [DirEntry$7, Name$28], [DirEntry$7, Name$30], [DirEntry$7, Name$31], [DirEntry$7, Name$32], [DirEntry$7, Name$34], [DirEntry$7, Name$35], [DirEntry$7, Name$36], [DirEntry$7, Name$38], [DirEntry$7, Name$43], [DirEntry$8, Name$0], [DirEntry$8, Name$1], [DirEntry$8, Name$2], [DirEntry$8, Name$3], [DirEntry$8, Name$5], [DirEntry$8, Name$8], [DirEntry$8, Name$10], [DirEntry$8, Name$15], [DirEntry$8, Name$17], [DirEntry$8, Name$19], [DirEntry$8, Name$20], [DirEntry$8, Name$22], [DirEntry$8, Name$24], [DirEntry$8, Name$25], [DirEntry$8, Name$26], [DirEntry$8, Name$27], [DirEntry$8, Name$28], [DirEntry$8, Name$30], [DirEntry$8, Name$31], [DirEntry$8, Name$33], [DirEntry$8, Name$35], [DirEntry$8, Name$36], [DirEntry$8, Name$37], [DirEntry$8, Name$40], [DirEntry$8, Name$42], [DirEntry$8, Name$43], [DirEntry$9, Name$0], [DirEntry$9, Name$1], [DirEntry$9, Name$2], [DirEntry$9, Name$3], [DirEntry$9, Name$7], [DirEntry$9, Name$8], [DirEntry$9, Name$9], [DirEntry$9, Name$10], [DirEntry$9, Name$12], [DirEntry$9, Name$13], [DirEntry$9, Name$14], [DirEntry$9, Name$15], [DirEntry$9, Name$16], [DirEntry$9, Name$20], [DirEntry$9, Name$22], [DirEntry$9, Name$23], [DirEntry$9, Name$25], [DirEntry$9, Name$26], [DirEntry$9, Name$27], [DirEntry$9, Name$29], [DirEntry$9, Name$30], [DirEntry$9, Name$31], [DirEntry$9, Name$32], [DirEntry$9, Name$34], [DirEntry$9, Name$35], [DirEntry$9, Name$37], [DirEntry$9, Name$38], [DirEntry$9, Name$39], [DirEntry$9, Name$41], [DirEntry$9, Name$42], [DirEntry$9, Name$43], [DirEntry$10, Name$1], [DirEntry$10, Name$2], [DirEntry$10, Name$3], [DirEntry$10, Name$6], [DirEntry$10, Name$9], [DirEntry$10, Name$11], [DirEntry$10, Name$12], [DirEntry$10, Name$19], [DirEntry$10, Name$20], [DirEntry$10, Name$22], [DirEntry$10, Name$25], [DirEntry$10, Name$26], [DirEntry$10, Name$27], [DirEntry$10, Name$31], [DirEntry$10, Name$32], [DirEntry$10, Name$34], [DirEntry$10, Name$37], [DirEntry$10, Name$39], [DirEntry$10, Name$43], [DirEntry$11, Name$1], [DirEntry$11, Name$3], [DirEntry$11, Name$4], [DirEntry$11, Name$5], [DirEntry$11, Name$6], [DirEntry$11, Name$9], [DirEntry$11, Name$13], [DirEntry$11, Name$15], [DirEntry$11, Name$16], [DirEntry$11, Name$17], [DirEntry$11, Name$18], [DirEntry$11, Name$20], [DirEntry$11, Name$21], [DirEntry$11, Name$22], [DirEntry$11, Name$24], [DirEntry$11, Name$25], [DirEntry$11, Name$28], [DirEntry$11, Name$29], [DirEntry$11, Name$31], [DirEntry$11, Name$32], [DirEntry$11, Name$33], [DirEntry$11, Name$34], [DirEntry$11, Name$38], [DirEntry$11, Name$39], [DirEntry$11, Name$41], [DirEntry$11, Name$42], [DirEntry$11, Name$44], [DirEntry$12, Name$1], [DirEntry$12, Name$3], [DirEntry$12, Name$5], [DirEntry$12, Name$6], [DirEntry$12, Name$9], [DirEntry$12, Name$10], [DirEntry$12, Name$11], [DirEntry$12, Name$14], [DirEntry$12, Name$15], [DirEntry$12, Name$17], [DirEntry$12, Name$19], [DirEntry$12, Name$21], [DirEntry$12, Name$22], [DirEntry$12, Name$24], [DirEntry$12, Name$25], [DirEntry$12, Name$26], [DirEntry$12, Name$28], [DirEntry$12, Name$29], [DirEntry$12, Name$31], [DirEntry$12, Name$33], [DirEntry$12, Name$35], [DirEntry$12, Name$36], [DirEntry$12, Name$38], [DirEntry$12, Name$41], [DirEntry$12, Name$42], [DirEntry$13, Name$0], [DirEntry$13, Name$1], [DirEntry$13, Name$2], [DirEntry$13, Name$3], [DirEntry$13, Name$5], [DirEntry$13, Name$7], [DirEntry$13, Name$8], [DirEntry$13, Name$9], [DirEntry$13, Name$11], [DirEntry$13, Name$12], [DirEntry$13, Name$16], [DirEntry$13, Name$17], [DirEntry$13, Name$19], [DirEntry$13, Name$22], [DirEntry$13, Name$26], [DirEntry$13, Name$27], [DirEntry$13, Name$33], [DirEntry$13, Name$34], [DirEntry$13, Name$35], [DirEntry$13, Name$39], [DirEntry$13, Name$42], [DirEntry$13, Name$43], [DirEntry$13, Name$44], [DirEntry$14, Name$1], [DirEntry$14, Name$2], [DirEntry$14, Name$3], [DirEntry$14, Name$5], [DirEntry$14, Name$6], [DirEntry$14, Name$9], [DirEntry$14, Name$10], [DirEntry$14, Name$11], [DirEntry$14, Name$13], [DirEntry$14, Name$15], [DirEntry$14, Name$16], [DirEntry$14, Name$17], [DirEntry$14, Name$21], [DirEntry$14, Name$22], [DirEntry$14, Name$26], [DirEntry$14, Name$27], [DirEntry$14, Name$30], [DirEntry$14, Name$32], [DirEntry$14, Name$34], [DirEntry$14, Name$36], [DirEntry$14, Name$38], [DirEntry$14, Name$40], [DirEntry$14, Name$43], [DirEntry$15, Name$0], [DirEntry$15, Name$3], [DirEntry$15, Name$4], [DirEntry$15, Name$8], [DirEntry$15, Name$10], [DirEntry$15, Name$12], [DirEntry$15, Name$13], [DirEntry$15, Name$14], [DirEntry$15, Name$15], [DirEntry$15, Name$16], [DirEntry$15, Name$20], [DirEntry$15, Name$21], [DirEntry$15, Name$22], [DirEntry$15, Name$25], [DirEntry$15, Name$26], [DirEntry$15, Name$27], [DirEntry$15, Name$29], [DirEntry$15, Name$30], [DirEntry$15, Name$31], [DirEntry$15, Name$32], [DirEntry$15, Name$35], [DirEntry$15, Name$37], [DirEntry$15, Name$38], [DirEntry$15, Name$39], [DirEntry$15, Name$40], [DirEntry$15, Name$41], [DirEntry$15, Name$44], [DirEntry$16, Name$0], [DirEntry$16, Name$3], [DirEntry$16, Name$5], [DirEntry$16, Name$8], [DirEntry$16, Name$9], [DirEntry$16, Name$10], [DirEntry$16, Name$13], [DirEntry$16, Name$14], [DirEntry$16, Name$15], [DirEntry$16, Name$18], [DirEntry$16, Name$21], [DirEntry$16, Name$22], [DirEntry$16, Name$23], [DirEntry$16, Name$28], [DirEntry$16, Name$29], [DirEntry$16, Name$32], [DirEntry$16, Name$34], [DirEntry$16, Name$35], [DirEntry$16, Name$37], [DirEntry$16, Name$38], [DirEntry$16, Name$40], [DirEntry$16, Name$41], [DirEntry$16, Name$43], [DirEntry$17, Name$0], [DirEntry$17, Name$1], [DirEntry$17, Name$2], [DirEntry$17, Name$4], [DirEntry$17, Name$7], [DirEntry$17, Name$8], [DirEntry$17, Name$9], [DirEntry$17, Name$11], [DirEntry$17, Name$12], [DirEntry$17, Name$13], [DirEntry$17, Name$15], [DirEntry$17, Name$22], [DirEntry$17, Name$24], [DirEntry$17, Name$25], [DirEntry$17, Name$26], [DirEntry$17, Name$27], [DirEntry$17, Name$29], [DirEntry$17, Name$31], [DirEntry$17, Name$32], [DirEntry$17, Name$33], [DirEntry$17, Name$34], [DirEntry$17, Name$40], [DirEntry$17, Name$41], [DirEntry$17, Name$42], [DirEntry$17, Name$44], [DirEntry$18, Name$0], [DirEntry$18, Name$1], [DirEntry$18, Name$2], [DirEntry$18, Name$4], [DirEntry$18, Name$5], [DirEntry$18, Name$6], [DirEntry$18, Name$9], [DirEntry$18, Name$10], [DirEntry$18, Name$11], [DirEntry$18, Name$12], [DirEntry$18, Name$17], [DirEntry$18, Name$18], [DirEntry$18, Name$21], [DirEntry$18, Name$23], [DirEntry$18, Name$27], [DirEntry$18, Name$29], [DirEntry$18, Name$31], [DirEntry$18, Name$36], [DirEntry$18, Name$37], [DirEntry$18, Name$39], [DirEntry$18, Name$41], [DirEntry$18, Name$42], [DirEntry$19, Name$0], [DirEntry$19, Name$2], [DirEntry$19, Name$3], [DirEntry$19, Name$5], [DirEntry$19, Name$6], [DirEntry$19, Name$7], [DirEntry$19, Name$10], [DirEntry$19, Name$12], [DirEntry$19, Name$18], [DirEntry$19, Name$19], [DirEntry$19, Name$21], [DirEntry$19, Name$22], [DirEntry$19, Name$24], [DirEntry$19, Name$25], [DirEntry$19, Name$29], [DirEntry$19, Name$30], [DirEntry$19, Name$34], [DirEntry$19, Name$36], [DirEntry$19, Name$41], [DirEntry$19, Name$42], [DirEntry$19, Name$43], [DirEntry$19, Name$44], [DirEntry$20, Name$0], [DirEntry$20, Name$4], [DirEntry$20, Name$5], [DirEntry$20, Name$6], [DirEntry$20, Name$17], [DirEntry$20, Name$18], [DirEntry$20, Name$19], [DirEntry$20, Name$20], [DirEntry$20, Name$21], [DirEntry$20, Name$22], [DirEntry$20, Name$23], [DirEntry$20, Name$25], [DirEntry$20, Name$27], [DirEntry$20, Name$28], [DirEntry$20, Name$34], [DirEntry$20, Name$37], [DirEntry$20, Name$39], [DirEntry$20, Name$43], [DirEntry$21, Name$1], [DirEntry$21, Name$3], [DirEntry$21, Name$4], [DirEntry$21, Name$5], [DirEntry$21, Name$6], [DirEntry$21, Name$7], [DirEntry$21, Name$11], [DirEntry$21, Name$12], [DirEntry$21, Name$13], [DirEntry$21, Name$14], [DirEntry$21, Name$16], [DirEntry$21, Name$17], [DirEntry$21, Name$18], [DirEntry$21, Name$23], [DirEntry$21, Name$24], [DirEntry$21, Name$26], [DirEntry$21, Name$31], [DirEntry$21, Name$32], [DirEntry$21, Name$33], [DirEntry$21, Name$35], [DirEntry$21, Name$36], [DirEntry$21, Name$38], [DirEntry$21, Name$39], [DirEntry$21, Name$41], [DirEntry$21, Name$42], [DirEntry$21, Name$43], [DirEntry$21, Name$44], [DirEntry$22, Name$0], [DirEntry$22, Name$1], [DirEntry$22, Name$3], [DirEntry$22, Name$4], [DirEntry$22, Name$7], [DirEntry$22, Name$10], [DirEntry$22, Name$11], [DirEntry$22, Name$12], [DirEntry$22, Name$13], [DirEntry$22, Name$15], [DirEntry$22, Name$16], [DirEntry$22, Name$20], [DirEntry$22, Name$21], [DirEntry$22, Name$22], [DirEntry$22, Name$24], [DirEntry$22, Name$25], [DirEntry$22, Name$26], [DirEntry$22, Name$27], [DirEntry$22, Name$30], [DirEntry$22, Name$33], [DirEntry$22, Name$36], [DirEntry$22, Name$38], [DirEntry$22, Name$42], [DirEntry$22, Name$44], [DirEntry$23, Name$0], [DirEntry$23, Name$1], [DirEntry$23, Name$2], [DirEntry$23, Name$4], [DirEntry$23, Name$6], [DirEntry$23, Name$7], [DirEntry$23, Name$9], [DirEntry$23, Name$12], [DirEntry$23, Name$14], [DirEntry$23, Name$15], [DirEntry$23, Name$17], [DirEntry$23, Name$18], [DirEntry$23, Name$19], [DirEntry$23, Name$20], [DirEntry$23, Name$21], [DirEntry$23, Name$22], [DirEntry$23, Name$24], [DirEntry$23, Name$26], [DirEntry$23, Name$28], [DirEntry$23, Name$29], [DirEntry$23, Name$30], [DirEntry$23, Name$31], [DirEntry$23, Name$32], [DirEntry$23, Name$37], [DirEntry$23, Name$39], [DirEntry$23, Name$40], [DirEntry$23, Name$41], [DirEntry$23, Name$42], [DirEntry$23, Name$43], [DirEntry$24, Name$1], [DirEntry$24, Name$3], [DirEntry$24, Name$4], [DirEntry$24, Name$7], [DirEntry$24, Name$11], [DirEntry$24, Name$13], [DirEntry$24, Name$16], [DirEntry$24, Name$17], [DirEntry$24, Name$21], [DirEntry$24, Name$22], [DirEntry$24, Name$23], [DirEntry$24, Name$24], [DirEntry$24, Name$26], [DirEntry$24, Name$28], [DirEntry$24, Name$32], [DirEntry$24, Name$33], [DirEntry$24, Name$35], [DirEntry$24, Name$36], [DirEntry$24, Name$37], [DirEntry$24, Name$38], [DirEntry$24, Name$40], [DirEntry$24, Name$41], [DirEntry$24, Name$44], [DirEntry$25, Name$1], [DirEntry$25, Name$3], [DirEntry$25, Name$4], [DirEntry$25, Name$11], [DirEntry$25, Name$12], [DirEntry$25, Name$14], [DirEntry$25, Name$15], [DirEntry$25, Name$18], [DirEntry$25, Name$19], [DirEntry$25, Name$21], [DirEntry$25, Name$23], [DirEntry$25, Name$24], [DirEntry$25, Name$25], [DirEntry$25, Name$26], [DirEntry$25, Name$28], [DirEntry$25, Name$29], [DirEntry$25, Name$32], [DirEntry$25, Name$33], [DirEntry$25, Name$37], [DirEntry$25, Name$38], [DirEntry$25, Name$39], [DirEntry$25, Name$40], [DirEntry$25, Name$43], [DirEntry$25, Name$44], [DirEntry$26, Name$0], [DirEntry$26, Name$1], [DirEntry$26, Name$4], [DirEntry$26, Name$5], [DirEntry$26, Name$8], [DirEntry$26, Name$16], [DirEntry$26, Name$18], [DirEntry$26, Name$20], [DirEntry$26, Name$24], [DirEntry$26, Name$25], [DirEntry$26, Name$26], [DirEntry$26, Name$29], [DirEntry$26, Name$32], [DirEntry$26, Name$33], [DirEntry$26, Name$35], [DirEntry$26, Name$39], [DirEntry$26, Name$40], [DirEntry$26, Name$42], [DirEntry$26, Name$44], [DirEntry$27, Name$1], [DirEntry$27, Name$3], [DirEntry$27, Name$4], [DirEntry$27, Name$5], [DirEntry$27, Name$6], [DirEntry$27, Name$7], [DirEntry$27, Name$8], [DirEntry$27, Name$10], [DirEntry$27, Name$13], [DirEntry$27, Name$15], [DirEntry$27, Name$16], [DirEntry$27, Name$17], [DirEntry$27, Name$19], [DirEntry$27, Name$20], [DirEntry$27, Name$23], [DirEntry$27, Name$27], [DirEntry$27, Name$29], [DirEntry$27, Name$30], [DirEntry$27, Name$31], [DirEntry$27, Name$32], [DirEntry$27, Name$34], [DirEntry$27, Name$37], [DirEntry$27, Name$38], [DirEntry$27, Name$40], [DirEntry$27, Name$41], [DirEntry$27, Name$42], [DirEntry$27, Name$44], [DirEntry$28, Name$1], [DirEntry$28, Name$4], [DirEntry$28, Name$5], [DirEntry$28, Name$8], [DirEntry$28, Name$10], [DirEntry$28, Name$11], [DirEntry$28, Name$12], [DirEntry$28, Name$13], [DirEntry$28, Name$16], [DirEntry$28, Name$18], [DirEntry$28, Name$20], [DirEntry$28, Name$21], [DirEntry$28, Name$22], [DirEntry$28, Name$23], [DirEntry$28, Name$24], [DirEntry$28, Name$25], [DirEntry$28, Name$28], [DirEntry$28, Name$30], [DirEntry$28, Name$34], [DirEntry$28, Name$35], [DirEntry$28, Name$36], [DirEntry$28, Name$39], [DirEntry$28, Name$42], [DirEntry$29, Name$0], [DirEntry$29, Name$2], [DirEntry$29, Name$3], [DirEntry$29, Name$4], [DirEntry$29, Name$6], [DirEntry$29, Name$7], [DirEntry$29, Name$8], [DirEntry$29, Name$10], [DirEntry$29, Name$11], [DirEntry$29, Name$12], [DirEntry$29, Name$13], [DirEntry$29, Name$14], [DirEntry$29, Name$15], [DirEntry$29, Name$17], [DirEntry$29, Name$18], [DirEntry$29, Name$19], [DirEntry$29, Name$20], [DirEntry$29, Name$21], [DirEntry$29, Name$28], [DirEntry$29, Name$30], [DirEntry$29, Name$31], [DirEntry$29, Name$32], [DirEntry$29, Name$34], [DirEntry$29, Name$35], [DirEntry$29, Name$40], [DirEntry$29, Name$42], [DirEntry$29, Name$43], [DirEntry$29, Name$44], [DirEntry$30, Name$0], [DirEntry$30, Name$1], [DirEntry$30, Name$3], [DirEntry$30, Name$7], [DirEntry$30, Name$13], [DirEntry$30, Name$14], [DirEntry$30, Name$15], [DirEntry$30, Name$16], [DirEntry$30, Name$19], [DirEntry$30, Name$21], [DirEntry$30, Name$29], [DirEntry$30, Name$31], [DirEntry$30, Name$32], [DirEntry$30, Name$33], [DirEntry$30, Name$34], [DirEntry$30, Name$35], [DirEntry$30, Name$37], [DirEntry$30, Name$38], [DirEntry$30, Name$39], [DirEntry$30, Name$41], [DirEntry$30, Name$42], [DirEntry$30, Name$43], [DirEntry$31, Name$0], [DirEntry$31, Name$1], [DirEntry$31, Name$2], [DirEntry$31, Name$3], [DirEntry$31, Name$4], [DirEntry$31, Name$5], [DirEntry$31, Name$6], [DirEntry$31, Name$7], [DirEntry$31, Name$8], [DirEntry$31, Name$14], [DirEntry$31, Name$17], [DirEntry$31, Name$21], [DirEntry$31, Name$24], [DirEntry$31, Name$26], [DirEntry$31, Name$29], [DirEntry$31, Name$30], [DirEntry$31, Name$33], [DirEntry$31, Name$37], [DirEntry$31, Name$38], [DirEntry$31, Name$39], [DirEntry$31, Name$41], [DirEntry$31, Name$44], [DirEntry$32, Name$0], [DirEntry$32, Name$2], [DirEntry$32, Name$4], [DirEntry$32, Name$5], [DirEntry$32, Name$7], [DirEntry$32, Name$9], [DirEntry$32, Name$10], [DirEntry$32, Name$13], [DirEntry$32, Name$17], [DirEntry$32, Name$19], [DirEntry$32, Name$21], [DirEntry$32, Name$22], [DirEntry$32, Name$24], [DirEntry$32, Name$25], [DirEntry$32, Name$26], [DirEntry$32, Name$27], [DirEntry$32, Name$29], [DirEntry$32, Name$34], [DirEntry$32, Name$35], [DirEntry$32, Name$36], [DirEntry$32, Name$37], [DirEntry$32, Name$39], [DirEntry$32, Name$41], [DirEntry$32, Name$42], [DirEntry$32, Name$44], [DirEntry$33, Name$0], [DirEntry$33, Name$1], [DirEntry$33, Name$7], [DirEntry$33, Name$8], [DirEntry$33, Name$9], [DirEntry$33, Name$13], [DirEntry$33, Name$15], [DirEntry$33, Name$18], [DirEntry$33, Name$20], [DirEntry$33, Name$21], [DirEntry$33, Name$22], [DirEntry$33, Name$23], [DirEntry$33, Name$24], [DirEntry$33, Name$25], [DirEntry$33, Name$26], [DirEntry$33, Name$27], [DirEntry$33, Name$32], [DirEntry$33, Name$33], [DirEntry$33, Name$35], [DirEntry$33, Name$37], [DirEntry$33, Name$38], [DirEntry$33, Name$39], [DirEntry$33, Name$40], [DirEntry$33, Name$43], [DirEntry$34, Name$4], [DirEntry$34, Name$7], [DirEntry$34, Name$8], [DirEntry$34, Name$10], [DirEntry$34, Name$13], [DirEntry$34, Name$14], [DirEntry$34, Name$15], [DirEntry$34, Name$16], [DirEntry$34, Name$18], [DirEntry$34, Name$19], [DirEntry$34, Name$20], [DirEntry$34, Name$21], [DirEntry$34, Name$23], [DirEntry$34, Name$24], [DirEntry$34, Name$26], [DirEntry$34, Name$27], [DirEntry$34, Name$28], [DirEntry$34, Name$32], [DirEntry$34, Name$34], [DirEntry$34, Name$36], [DirEntry$34, Name$37], [DirEntry$34, Name$43], [DirEntry$35, Name$1], [DirEntry$35, Name$2], [DirEntry$35, Name$5], [DirEntry$35, Name$7], [DirEntry$35, Name$11], [DirEntry$35, Name$17], [DirEntry$35, Name$18], [DirEntry$35, Name$19], [DirEntry$35, Name$23], [DirEntry$35, Name$24], [DirEntry$35, Name$26], [DirEntry$35, Name$27], [DirEntry$35, Name$29], [DirEntry$35, Name$30], [DirEntry$35, Name$31], [DirEntry$35, Name$32], [DirEntry$35, Name$34], [DirEntry$35, Name$37], [DirEntry$35, Name$38], [DirEntry$35, Name$41], [DirEntry$35, Name$42], [DirEntry$35, Name$44], [DirEntry$36, Name$0], [DirEntry$36, Name$1], [DirEntry$36, Name$4], [DirEntry$36, Name$8], [DirEntry$36, Name$9], [DirEntry$36, Name$10], [DirEntry$36, Name$11], [DirEntry$36, Name$12], [DirEntry$36, Name$14], [DirEntry$36, Name$15], [DirEntry$36, Name$16], [DirEntry$36, Name$17], [DirEntry$36, Name$18], [DirEntry$36, Name$19], [DirEntry$36, Name$22], [DirEntry$36, Name$23], [DirEntry$36, Name$26], [DirEntry$36, Name$27], [DirEntry$36, Name$29], [DirEntry$36, Name$31], [DirEntry$36, Name$35], [DirEntry$36, Name$38], [DirEntry$36, Name$39], [DirEntry$36, Name$41], [DirEntry$36, Name$42], [DirEntry$36, Name$43], [DirEntry$37, Name$0], [DirEntry$37, Name$1], [DirEntry$37, Name$5], [DirEntry$37, Name$7], [DirEntry$37, Name$8], [DirEntry$37, Name$10], [DirEntry$37, Name$12], [DirEntry$37, Name$13], [DirEntry$37, Name$15], [DirEntry$37, Name$16], [DirEntry$37, Name$17], [DirEntry$37, Name$19], [DirEntry$37, Name$20], [DirEntry$37, Name$21], [DirEntry$37, Name$24], [DirEntry$37, Name$26], [DirEntry$37, Name$27], [DirEntry$37, Name$31], [DirEntry$37, Name$35], [DirEntry$37, Name$36], [DirEntry$37, Name$37], [DirEntry$37, Name$38], [DirEntry$37, Name$40], [DirEntry$37, Name$41], [DirEntry$37, Name$43], [DirEntry$38, Name$7], [DirEntry$38, Name$10], [DirEntry$38, Name$11], [DirEntry$38, Name$13], [DirEntry$38, Name$14], [DirEntry$38, Name$15], [DirEntry$38, Name$18], [DirEntry$38, Name$20], [DirEntry$38, Name$22], [DirEntry$38, Name$28], [DirEntry$38, Name$29], [DirEntry$38, Name$30], [DirEntry$38, Name$31], [DirEntry$38, Name$33], [DirEntry$38, Name$36], [DirEntry$38, Name$40], [DirEntry$38, Name$41], [DirEntry$38, Name$42], [DirEntry$38, Name$43], [DirEntry$39, Name$0], [DirEntry$39, Name$1], [DirEntry$39, Name$3], [DirEntry$39, Name$4], [DirEntry$39, Name$5], [DirEntry$39, Name$6], [DirEntry$39, Name$7], [DirEntry$39, Name$8], [DirEntry$39, Name$10], [DirEntry$39, Name$13], [DirEntry$39, Name$14], [DirEntry$39, Name$17], [DirEntry$39, Name$18], [DirEntry$39, Name$19], [DirEntry$39, Name$22], [DirEntry$39, Name$24], [DirEntry$39, Name$26], [DirEntry$39, Name$28], [DirEntry$39, Name$29], [DirEntry$39, Name$31], [DirEntry$39, Name$34], [DirEntry$39, Name$35], [DirEntry$39, Name$38], [DirEntry$39, Name$39], [DirEntry$39, Name$41], [DirEntry$39, Name$42], [DirEntry$40, Name$0], [DirEntry$40, Name$4], [DirEntry$40, Name$6], [DirEntry$40, Name$8], [DirEntry$40, Name$9], [DirEntry$40, Name$12], [DirEntry$40, Name$15], [DirEntry$40, Name$16], [DirEntry$40, Name$17], [DirEntry$40, Name$18], [DirEntry$40, Name$19], [DirEntry$40, Name$27], [DirEntry$40, Name$28], [DirEntry$40, Name$29], [DirEntry$40, Name$33], [DirEntry$40, Name$35], [DirEntry$40, Name$36], [DirEntry$40, Name$39], [DirEntry$40, Name$41], [DirEntry$40, Name$43], [DirEntry$41, Name$7], [DirEntry$41, Name$9], [DirEntry$41, Name$11], [DirEntry$41, Name$13], [DirEntry$41, Name$14], [DirEntry$41, Name$17], [DirEntry$41, Name$18], [DirEntry$41, Name$21], [DirEntry$41, Name$22], [DirEntry$41, Name$25], [DirEntry$41, Name$27], [DirEntry$41, Name$28], [DirEntry$41, Name$29], [DirEntry$41, Name$31], [DirEntry$41, Name$32], [DirEntry$41, Name$33], [DirEntry$41, Name$34], [DirEntry$41, Name$35], [DirEntry$41, Name$36], [DirEntry$41, Name$39], [DirEntry$41, Name$41], [DirEntry$41, Name$42], [DirEntry$42, Name$5], [DirEntry$42, Name$6], [DirEntry$42, Name$7], [DirEntry$42, Name$9], [DirEntry$42, Name$11], [DirEntry$42, Name$13], [DirEntry$42, Name$14], [DirEntry$42, Name$15], [DirEntry$42, Name$16], [DirEntry$42, Name$18], [DirEntry$42, Name$19], [DirEntry$42, Name$20], [DirEntry$42, Name$21], [DirEntry$42, Name$22], [DirEntry$42, Name$23], [DirEntry$42, Name$25], [DirEntry$42, Name$26], [DirEntry$42, Name$27], [DirEntry$42, Name$29], [DirEntry$42, Name$31], [DirEntry$42, Name$32], [DirEntry$42, Name$34], [DirEntry$42, Name$35], [DirEntry$42, Name$41], [DirEntry$42, Name$43], [DirEntry$42, Name$44], [DirEntry$43, Name$1], [DirEntry$43, Name$2], [DirEntry$43, Name$4], [DirEntry$43, Name$6], [DirEntry$43, Name$9], [DirEntry$43, Name$11], [DirEntry$43, Name$14], [DirEntry$43, Name$17], [DirEntry$43, Name$18], [DirEntry$43, Name$19], [DirEntry$43, Name$21], [DirEntry$43, Name$22], [DirEntry$43, Name$23], [DirEntry$43, Name$24], [DirEntry$43, Name$25], [DirEntry$43, Name$26], [DirEntry$43, Name$27], [DirEntry$43, Name$30], [DirEntry$43, Name$32], [DirEntry$43, Name$33], [DirEntry$43, Name$35], [DirEntry$43, Name$41], [DirEntry$43, Name$42], [DirEntry$43, Name$43], [DirEntry$44, Name$0], [DirEntry$44, Name$1], [DirEntry$44, Name$3], [DirEntry$44, Name$4], [DirEntry$44, Name$5], [DirEntry$44, Name$7], [DirEntry$44, Name$9], [DirEntry$44, Name$11], [DirEntry$44, Name$13], [DirEntry$44, Name$14], [DirEntry$44, Name$15], [DirEntry$44, Name$18], [DirEntry$44, Name$21], [DirEntry$44, Name$22], [DirEntry$44, Name$23], [DirEntry$44, Name$24], [DirEntry$44, Name$26], [DirEntry$44, Name$28], [DirEntry$44, Name$30], [DirEntry$44, Name$32], [DirEntry$44, Name$34], [DirEntry$44, Name$35], [DirEntry$44, Name$39], [DirEntry$44, Name$41], [DirEntry$44, Name$42]]
+this/DirEntry : []
+this/DirEntry.contents : []
+this/Dir.entries : [[Root$0, DirEntry$0], [Root$0, DirEntry$1], [Root$0, DirEntry$7], [Root$0, DirEntry$12], [Root$0, DirEntry$15], [Root$0, DirEntry$16], [Root$0, DirEntry$17], [Root$0, DirEntry$18], [Root$0, DirEntry$20], [Root$0, DirEntry$21], [Root$0, DirEntry$22], [Root$0, DirEntry$24], [Root$0, DirEntry$33], [Root$0, DirEntry$34], [Root$0, DirEntry$37], [Root$0, DirEntry$40], [Object$0, DirEntry$0], [Object$0, DirEntry$3], [Object$0, DirEntry$4], [Object$0, DirEntry$10], [Object$0, DirEntry$13], [Object$0, DirEntry$18], [Object$0, DirEntry$20], [Object$0, DirEntry$22], [Object$0, DirEntry$23], [Object$0, DirEntry$24], [Object$0, DirEntry$25], [Object$0, DirEntry$26], [Object$0, DirEntry$31], [Object$0, DirEntry$37], [Object$0, DirEntry$38], [Object$0, DirEntry$42], [Object$1, DirEntry$0], [Object$1, DirEntry$7], [Object$1, DirEntry$8], [Object$1, DirEntry$9], [Object$1, DirEntry$10], [Object$1, DirEntry$14], [Object$1, DirEntry$19], [Object$1, DirEntry$20], [Object$1, DirEntry$22], [Object$1, DirEntry$26], [Object$1, DirEntry$29], [Object$1, DirEntry$30], [Object$1, DirEntry$34], [Object$1, DirEntry$43], [Object$1, DirEntry$44], [Object$2, DirEntry$0], [Object$2, DirEntry$2], [Object$2, DirEntry$4], [Object$2, DirEntry$5], [Object$2, DirEntry$7], [Object$2, DirEntry$9], [Object$2, DirEntry$19], [Object$2, DirEntry$20], [Object$2, DirEntry$23], [Object$2, DirEntry$37], [Object$2, DirEntry$39], [Object$2, DirEntry$41], [Object$2, DirEntry$44], [Object$3, DirEntry$0], [Object$3, DirEntry$3], [Object$3, DirEntry$7], [Object$3, DirEntry$9], [Object$3, DirEntry$11], [Object$3, DirEntry$13], [Object$3, DirEntry$18], [Object$3, DirEntry$20], [Object$3, DirEntry$23], [Object$3, DirEntry$26], [Object$3, DirEntry$29], [Object$3, DirEntry$30], [Object$3, DirEntry$43], [Object$4, DirEntry$0], [Object$4, DirEntry$4], [Object$4, DirEntry$13], [Object$4, DirEntry$19], [Object$4, DirEntry$20], [Object$4, DirEntry$21], [Object$4, DirEntry$25], [Object$4, DirEntry$26], [Object$4, DirEntry$28], [Object$4, DirEntry$29], [Object$4, DirEntry$32], [Object$4, DirEntry$37], [Object$4, DirEntry$40], [Object$4, DirEntry$41], [Object$4, DirEntry$42], [Object$5, DirEntry$4], [Object$5, DirEntry$13], [Object$5, DirEntry$15], [Object$5, DirEntry$16], [Object$5, DirEntry$19], [Object$5, DirEntry$20], [Object$5, DirEntry$22], [Object$5, DirEntry$24], [Object$5, DirEntry$25], [Object$5, DirEntry$28], [Object$5, DirEntry$31], [Object$5, DirEntry$32], [Object$5, DirEntry$43], [Object$5, DirEntry$44], [Object$6, DirEntry$8], [Object$6, DirEntry$13], [Object$6, DirEntry$15], [Object$6, DirEntry$18], [Object$6, DirEntry$20], [Object$6, DirEntry$23], [Object$6, DirEntry$27], [Object$6, DirEntry$29], [Object$6, DirEntry$32], [Object$6, DirEntry$33], [Object$6, DirEntry$38], [Object$6, DirEntry$41], [Object$6, DirEntry$44], [Object$7, DirEntry$4], [Object$7, DirEntry$5], [Object$7, DirEntry$11], [Object$7, DirEntry$12], [Object$7, DirEntry$14], [Object$7, DirEntry$19], [Object$7, DirEntry$22], [Object$7, DirEntry$23], [Object$7, DirEntry$27], [Object$7, DirEntry$33], [Object$7, DirEntry$35], [Object$7, DirEntry$37], [Object$7, DirEntry$40], [Object$7, DirEntry$43], [Object$8, DirEntry$1], [Object$8, DirEntry$2], [Object$8, DirEntry$3], [Object$8, DirEntry$6], [Object$8, DirEntry$10], [Object$8, DirEntry$14], [Object$8, DirEntry$21], [Object$8, DirEntry$26], [Object$8, DirEntry$34], [Object$8, DirEntry$35], [Object$8, DirEntry$37], [Object$8, DirEntry$38], [Object$8, DirEntry$44], [Object$9, DirEntry$1], [Object$9, DirEntry$2], [Object$9, DirEntry$5], [Object$9, DirEntry$7], [Object$9, DirEntry$11], [Object$9, DirEntry$12], [Object$9, DirEntry$14], [Object$9, DirEntry$16], [Object$9, DirEntry$21], [Object$9, DirEntry$22], [Object$9, DirEntry$23], [Object$9, DirEntry$27], [Object$9, DirEntry$32], [Object$9, DirEntry$34], [Object$9, DirEntry$40], [Object$10, DirEntry$0], [Object$10, DirEntry$1], [Object$10, DirEntry$2], [Object$10, DirEntry$5], [Object$10, DirEntry$12], [Object$10, DirEntry$17], [Object$10, DirEntry$21], [Object$10, DirEntry$25], [Object$10, DirEntry$26], [Object$10, DirEntry$29], [Object$10, DirEntry$31], [Object$10, DirEntry$35], [Object$10, DirEntry$39], [Object$10, DirEntry$40], [Object$10, DirEntry$41], [Object$11, DirEntry$1], [Object$11, DirEntry$8], [Object$11, DirEntry$9], [Object$11, DirEntry$15], [Object$11, DirEntry$17], [Object$11, DirEntry$19], [Object$11, DirEntry$22], [Object$11, DirEntry$23], [Object$11, DirEntry$24], [Object$11, DirEntry$32], [Object$11, DirEntry$33], [Object$11, DirEntry$34], [Object$11, DirEntry$35], [Object$11, DirEntry$38], [Object$11, DirEntry$43], [Object$11, DirEntry$44], [Object$12, DirEntry$3], [Object$12, DirEntry$6], [Object$12, DirEntry$7], [Object$12, DirEntry$9], [Object$12, DirEntry$10], [Object$12, DirEntry$13], [Object$12, DirEntry$21], [Object$12, DirEntry$23], [Object$12, DirEntry$25], [Object$12, DirEntry$36], [Object$12, DirEntry$37], [Object$12, DirEntry$38], [Object$12, DirEntry$39], [Object$13, DirEntry$3], [Object$13, DirEntry$4], [Object$13, DirEntry$6], [Object$13, DirEntry$10], [Object$13, DirEntry$17], [Object$13, DirEntry$18], [Object$13, DirEntry$28], [Object$13, DirEntry$30], [Object$13, DirEntry$32], [Object$13, DirEntry$33], [Object$13, DirEntry$34], [Object$13, DirEntry$36], [Object$13, DirEntry$38], [Object$13, DirEntry$40], [Object$13, DirEntry$43], [Object$13, DirEntry$44], [Object$14, DirEntry$4], [Object$14, DirEntry$5], [Object$14, DirEntry$7], [Object$14, DirEntry$9], [Object$14, DirEntry$12], [Object$14, DirEntry$14], [Object$14, DirEntry$18], [Object$14, DirEntry$21], [Object$14, DirEntry$26], [Object$14, DirEntry$29], [Object$14, DirEntry$32], [Object$14, DirEntry$33], [Object$14, DirEntry$39], [Object$14, DirEntry$40], [Object$14, DirEntry$42], [Object$14, DirEntry$43], [Object$15, DirEntry$0], [Object$15, DirEntry$1], [Object$15, DirEntry$3], [Object$15, DirEntry$4], [Object$15, DirEntry$8], [Object$15, DirEntry$11], [Object$15, DirEntry$24], [Object$15, DirEntry$26], [Object$15, DirEntry$27], [Object$15, DirEntry$28], [Object$15, DirEntry$29], [Object$15, DirEntry$30], [Object$15, DirEntry$31], [Object$15, DirEntry$39], [Object$15, DirEntry$42], [Object$15, DirEntry$43], [Object$16, DirEntry$0], [Object$16, DirEntry$5], [Object$16, DirEntry$6], [Object$16, DirEntry$8], [Object$16, DirEntry$11], [Object$16, DirEntry$14], [Object$16, DirEntry$16], [Object$16, DirEntry$20], [Object$16, DirEntry$25], [Object$16, DirEntry$26], [Object$16, DirEntry$27], [Object$16, DirEntry$28], [Object$16, DirEntry$30], [Object$16, DirEntry$31], [Object$16, DirEntry$33], [Object$16, DirEntry$35], [Object$16, DirEntry$43], [Object$17, DirEntry$0], [Object$17, DirEntry$7], [Object$17, DirEntry$8], [Object$17, DirEntry$11], [Object$17, DirEntry$12], [Object$17, DirEntry$14], [Object$17, DirEntry$15], [Object$17, DirEntry$17], [Object$17, DirEntry$19], [Object$17, DirEntry$21], [Object$17, DirEntry$22], [Object$17, DirEntry$23], [Object$17, DirEntry$25], [Object$17, DirEntry$26], [Object$17, DirEntry$27], [Object$17, DirEntry$29], [Object$17, DirEntry$30], [Object$17, DirEntry$35], [Object$17, DirEntry$39], [Object$17, DirEntry$42], [Object$18, DirEntry$5], [Object$18, DirEntry$6], [Object$18, DirEntry$7], [Object$18, DirEntry$11], [Object$18, DirEntry$12], [Object$18, DirEntry$15], [Object$18, DirEntry$18], [Object$18, DirEntry$20], [Object$18, DirEntry$22], [Object$18, DirEntry$26], [Object$18, DirEntry$37], [Object$18, DirEntry$41], [Object$18, DirEntry$43], [Object$19, DirEntry$9], [Object$19, DirEntry$12], [Object$19, DirEntry$14], [Object$19, DirEntry$19], [Object$19, DirEntry$20], [Object$19, DirEntry$21], [Object$19, DirEntry$23], [Object$19, DirEntry$27], [Object$19, DirEntry$32], [Object$19, DirEntry$37], [Object$19, DirEntry$38], [Object$19, DirEntry$40], [Object$20, DirEntry$3], [Object$20, DirEntry$4], [Object$20, DirEntry$10], [Object$20, DirEntry$15], [Object$20, DirEntry$16], [Object$20, DirEntry$21], [Object$20, DirEntry$22], [Object$20, DirEntry$24], [Object$20, DirEntry$27], [Object$20, DirEntry$28], [Object$20, DirEntry$30], [Object$20, DirEntry$33], [Object$20, DirEntry$35], [Object$20, DirEntry$38], [Object$20, DirEntry$40], [Object$20, DirEntry$41], [Object$21, DirEntry$1], [Object$21, DirEntry$2], [Object$21, DirEntry$9], [Object$21, DirEntry$15], [Object$21, DirEntry$18], [Object$21, DirEntry$23], [Object$21, DirEntry$33], [Object$21, DirEntry$36], [Object$22, DirEntry$2], [Object$22, DirEntry$3], [Object$22, DirEntry$4], [Object$22, DirEntry$8], [Object$22, DirEntry$11], [Object$22, DirEntry$13], [Object$22, DirEntry$18], [Object$22, DirEntry$20], [Object$22, DirEntry$26], [Object$22, DirEntry$27], [Object$22, DirEntry$28], [Object$22, DirEntry$35], [Object$23, DirEntry$9], [Object$23, DirEntry$12], [Object$23, DirEntry$13], [Object$23, DirEntry$24], [Object$23, DirEntry$26], [Object$23, DirEntry$27], [Object$23, DirEntry$28], [Object$23, DirEntry$29], [Object$23, DirEntry$41], [Object$23, DirEntry$42], [Object$24, DirEntry$0], [Object$24, DirEntry$1], [Object$24, DirEntry$4], [Object$24, DirEntry$8], [Object$24, DirEntry$10], [Object$24, DirEntry$14], [Object$24, DirEntry$18], [Object$24, DirEntry$19], [Object$24, DirEntry$26], [Object$24, DirEntry$33], [Object$24, DirEntry$35], [Object$24, DirEntry$39], [Object$25, DirEntry$5], [Object$25, DirEntry$9], [Object$25, DirEntry$12], [Object$25, DirEntry$13], [Object$25, DirEntry$18], [Object$25, DirEntry$21], [Object$25, DirEntry$22], [Object$25, DirEntry$23], [Object$25, DirEntry$24], [Object$25, DirEntry$25], [Object$25, DirEntry$26], [Object$25, DirEntry$31], [Object$25, DirEntry$33], [Object$25, DirEntry$39], [Object$25, DirEntry$42], [Object$25, DirEntry$44], [Object$26, DirEntry$4], [Object$26, DirEntry$6], [Object$26, DirEntry$7], [Object$26, DirEntry$9], [Object$26, DirEntry$11], [Object$26, DirEntry$15], [Object$26, DirEntry$17], [Object$26, DirEntry$19], [Object$26, DirEntry$20], [Object$26, DirEntry$22], [Object$26, DirEntry$28], [Object$26, DirEntry$33], [Object$26, DirEntry$34], [Object$26, DirEntry$36], [Object$26, DirEntry$42], [Object$27, DirEntry$2], [Object$27, DirEntry$9], [Object$27, DirEntry$11], [Object$27, DirEntry$22], [Object$27, DirEntry$27], [Object$27, DirEntry$36], [Object$27, DirEntry$38], [Object$28, DirEntry$10], [Object$28, DirEntry$16], [Object$28, DirEntry$22], [Object$28, DirEntry$26], [Object$28, DirEntry$27], [Object$28, DirEntry$40], [Object$28, DirEntry$42], [Object$28, DirEntry$44], [Object$29, DirEntry$1], [Object$29, DirEntry$2], [Object$29, DirEntry$6], [Object$29, DirEntry$9], [Object$29, DirEntry$10], [Object$29, DirEntry$11], [Object$29, DirEntry$16], [Object$29, DirEntry$17], [Object$29, DirEntry$20], [Object$29, DirEntry$23], [Object$29, DirEntry$24], [Object$29, DirEntry$29], [Object$29, DirEntry$34], [Object$29, DirEntry$39], [Object$29, DirEntry$43], [Object$30, DirEntry$0], [Object$30, DirEntry$11], [Object$30, DirEntry$16], [Object$30, DirEntry$17], [Object$30, DirEntry$26], [Object$30, DirEntry$29], [Object$30, DirEntry$30], [Object$30, DirEntry$36], [Object$30, DirEntry$37], [Object$30, DirEntry$40], [Object$30, DirEntry$41], [Object$31, DirEntry$1], [Object$31, DirEntry$2], [Object$31, DirEntry$4], [Object$31, DirEntry$6], [Object$31, DirEntry$11], [Object$31, DirEntry$17], [Object$31, DirEntry$19], [Object$31, DirEntry$24], [Object$31, DirEntry$26], [Object$31, DirEntry$36], [Object$31, DirEntry$41], [Object$31, DirEntry$42], [Object$32, DirEntry$6], [Object$32, DirEntry$8], [Object$32, DirEntry$14], [Object$32, DirEntry$24], [Object$32, DirEntry$26], [Object$32, DirEntry$27], [Object$32, DirEntry$29], [Object$32, DirEntry$32], [Object$32, DirEntry$37], [Object$32, DirEntry$42], [Object$32, DirEntry$44], [Object$33, DirEntry$0], [Object$33, DirEntry$2], [Object$33, DirEntry$4], [Object$33, DirEntry$6], [Object$33, DirEntry$11], [Object$33, DirEntry$14], [Object$33, DirEntry$15], [Object$33, DirEntry$17], [Object$33, DirEntry$18], [Object$33, DirEntry$19], [Object$33, DirEntry$23], [Object$33, DirEntry$24], [Object$33, DirEntry$26], [Object$33, DirEntry$27], [Object$33, DirEntry$29], [Object$33, DirEntry$31], [Object$33, DirEntry$32], [Object$33, DirEntry$36], [Object$33, DirEntry$38], [Object$33, DirEntry$41], [Object$33, DirEntry$43], [Object$33, DirEntry$44], [Object$34, DirEntry$2], [Object$34, DirEntry$10], [Object$34, DirEntry$13], [Object$34, DirEntry$20], [Object$34, DirEntry$24], [Object$34, DirEntry$26], [Object$34, DirEntry$27], [Object$34, DirEntry$33], [Object$34, DirEntry$34], [Object$34, DirEntry$35], [Object$34, DirEntry$44], [Object$35, DirEntry$8], [Object$35, DirEntry$9], [Object$35, DirEntry$11], [Object$35, DirEntry$16], [Object$35, DirEntry$22], [Object$35, DirEntry$23], [Object$35, DirEntry$24], [Object$35, DirEntry$27], [Object$35, DirEntry$28], [Object$35, DirEntry$31], [Object$35, DirEntry$34], [Object$35, DirEntry$36], [Object$35, DirEntry$37], [Object$35, DirEntry$40], [Object$35, DirEntry$41], [Object$35, DirEntry$42], [Object$36, DirEntry$2], [Object$36, DirEntry$5], [Object$36, DirEntry$6], [Object$36, DirEntry$7], [Object$36, DirEntry$10], [Object$36, DirEntry$13], [Object$36, DirEntry$15], [Object$36, DirEntry$19], [Object$36, DirEntry$23], [Object$36, DirEntry$28], [Object$36, DirEntry$29], [Object$36, DirEntry$30], [Object$36, DirEntry$34], [Object$36, DirEntry$41], [Object$36, DirEntry$42], [Object$37, DirEntry$0], [Object$37, DirEntry$3], [Object$37, DirEntry$4], [Object$37, DirEntry$6], [Object$37, DirEntry$8], [Object$37, DirEntry$9], [Object$37, DirEntry$10], [Object$37, DirEntry$13], [Object$37, DirEntry$14], [Object$37, DirEntry$15], [Object$37, DirEntry$17], [Object$37, DirEntry$18], [Object$37, DirEntry$20], [Object$37, DirEntry$22], [Object$37, DirEntry$23], [Object$37, DirEntry$24], [Object$37, DirEntry$28], [Object$37, DirEntry$29], [Object$37, DirEntry$31], [Object$37, DirEntry$34], [Object$37, DirEntry$35], [Object$37, DirEntry$41], [Object$38, DirEntry$2], [Object$38, DirEntry$4], [Object$38, DirEntry$6], [Object$38, DirEntry$7], [Object$38, DirEntry$9], [Object$38, DirEntry$12], [Object$38, DirEntry$14], [Object$38, DirEntry$15], [Object$38, DirEntry$16], [Object$38, DirEntry$17], [Object$38, DirEntry$19], [Object$38, DirEntry$20], [Object$38, DirEntry$22], [Object$38, DirEntry$23], [Object$38, DirEntry$29], [Object$38, DirEntry$30], [Object$38, DirEntry$32], [Object$38, DirEntry$33], [Object$38, DirEntry$41], [Object$38, DirEntry$43], [Object$39, DirEntry$0], [Object$39, DirEntry$3], [Object$39, DirEntry$6], [Object$39, DirEntry$7], [Object$39, DirEntry$8], [Object$39, DirEntry$9], [Object$39, DirEntry$13], [Object$39, DirEntry$16], [Object$39, DirEntry$20], [Object$39, DirEntry$21], [Object$39, DirEntry$25], [Object$39, DirEntry$27], [Object$39, DirEntry$29], [Object$39, DirEntry$30], [Object$39, DirEntry$33], [Object$39, DirEntry$39], [Object$39, DirEntry$41], [Object$40, DirEntry$4], [Object$40, DirEntry$5], [Object$40, DirEntry$6], [Object$40, DirEntry$8], [Object$40, DirEntry$11], [Object$40, DirEntry$12], [Object$40, DirEntry$15], [Object$40, DirEntry$17], [Object$40, DirEntry$18], [Object$40, DirEntry$19], [Object$40, DirEntry$20], [Object$40, DirEntry$22], [Object$40, DirEntry$23], [Object$40, DirEntry$26], [Object$40, DirEntry$28], [Object$40, DirEntry$32], [Object$40, DirEntry$37], [Object$40, DirEntry$40], [Object$40, DirEntry$42], [Object$40, DirEntry$43], [Object$41, DirEntry$1], [Object$41, DirEntry$2], [Object$41, DirEntry$11], [Object$41, DirEntry$14], [Object$41, DirEntry$16], [Object$41, DirEntry$21], [Object$41, DirEntry$24], [Object$41, DirEntry$28], [Object$41, DirEntry$29], [Object$41, DirEntry$30], [Object$41, DirEntry$31], [Object$41, DirEntry$32], [Object$41, DirEntry$37], [Object$41, DirEntry$43], [Object$41, DirEntry$44], [Object$42, DirEntry$2], [Object$42, DirEntry$3], [Object$42, DirEntry$5], [Object$42, DirEntry$10], [Object$42, DirEntry$11], [Object$42, DirEntry$12], [Object$42, DirEntry$13], [Object$42, DirEntry$16], [Object$42, DirEntry$19], [Object$42, DirEntry$20], [Object$42, DirEntry$22], [Object$42, DirEntry$23], [Object$42, DirEntry$26], [Object$42, DirEntry$27], [Object$42, DirEntry$30], [Object$42, DirEntry$32], [Object$42, DirEntry$34], [Object$42, DirEntry$39], [Object$42, DirEntry$43], [Object$43, DirEntry$0], [Object$43, DirEntry$3], [Object$43, DirEntry$5], [Object$43, DirEntry$7], [Object$43, DirEntry$10], [Object$43, DirEntry$11], [Object$43, DirEntry$15], [Object$43, DirEntry$18], [Object$43, DirEntry$19], [Object$43, DirEntry$20], [Object$43, DirEntry$21], [Object$43, DirEntry$23], [Object$43, DirEntry$24], [Object$43, DirEntry$25], [Object$43, DirEntry$28], [Object$43, DirEntry$32], [Object$43, DirEntry$36], [Object$43, DirEntry$37], [Object$43, DirEntry$41], [Object$43, DirEntry$43]]
+this/Dir.parent : []
+
+------------------------- Iteration 0 -------------------------
+------------------
+Relation: this/Root size: 1
+Relation: this/Cur size: 2
+Relation: this/Dir.remainder size: 3
+Relation: this/File size: 3
+Relation: this/Name size: 3
+Relation: this/DirEntry.name size: 4
+Relation: this/DirEntry size: 5
+Relation: this/DirEntry.contents size: 6
+Relation: this/Dir.entries size: 9
+Relation: this/Dir.parent size: 9
+------------------
+Initialize Lower Bounds Start
+Initialize Lower Bounds End: 0 ms
+Moving Ants by Probability Start
+Ant 1 is about to choose 1 best choice.
 evalOptions:
  solver: MiniSatProver
- reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@4e8838f4
+ reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@1c6b5464
  intEncoding: TWOSCOMPLEMENT
  bitwidth: 6
  sharing: 3
@@ -249,15 +135,449 @@ evalOptions:
  skolemDepth: 2
  logTranslation: 2
  coreGranularity: 3
-relations: {Int/next=[], seq/Int=[], String=[], this/File=[], this/Root=[[Root$0]], this/Cur=[], this/Dir.remainder=[], this/Name=[[Name$0], [Name$1], [Name$2], [Name$3], [Name$4], [Name$5], [Name$6], [Name$7], [Name$8], [Name$9], [Name$10], [Name$11], [Name$12], [Name$13], [Name$14], [Name$15], [Name$16], [Name$17], [Name$18], [Name$19], [Name$20], [Name$21], [Name$22], [Name$23], [Name$24]], this/DirEntry=[], this/Dir.entries=[], this/Dir.parent=[], this/DirEntry.name=[], this/DirEntry.contents=[], $d=[]}
+relations: {Int/next=[], seq/Int=[], String=[], this/Root=[[Root$0]], this/Cur=[], this/Dir.remainder=[], this/File=[], this/Name=[], this/DirEntry.name=[], this/DirEntry=[], this/DirEntry.contents=[], this/Dir.entries=[], this/Dir.parent=[], $d=[]}
 ints: []
 Solutions:1
- --- Full Iteration Time: 52 ms.  -- 32
------------- Fitness Data ------------
-Current Fitness: 1.115517258644104
-New Fitness: 1.115517258644104
-Change: 0.0
-------------------------
-solved
-GA Time: 14579 ms
-Total Time: 16592 ms.
+evalOptions:
+ solver: MiniSatProver
+ reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@1c6b5464
+ intEncoding: TWOSCOMPLEMENT
+ bitwidth: 6
+ sharing: 3
+ flatten: false
+ symmetryBreaking: 20
+ noOverflow: true
+ skolemDepth: 2
+ logTranslation: 2
+ coreGranularity: 3
+relations: {Int/next=[], seq/Int=[], String=[], this/Root=[[Root$0]], this/Cur=[], this/Dir.remainder=[], this/File=[], this/Name=[], this/DirEntry.name=[], this/DirEntry=[], this/DirEntry.contents=[], this/Dir.entries=[], this/Dir.parent=[], $d=[]}
+ints: []
+Solutions:1
+evalOptions:
+ solver: MiniSatProver
+ reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@1c6b5464
+ intEncoding: TWOSCOMPLEMENT
+ bitwidth: 6
+ sharing: 3
+ flatten: false
+ symmetryBreaking: 20
+ noOverflow: true
+ skolemDepth: 2
+ logTranslation: 2
+ coreGranularity: 3
+relations: {Int/next=[], seq/Int=[], String=[], this/Root=[[Root$0]], this/Cur=[], this/Dir.remainder=[], this/File=[], this/Name=[], this/DirEntry.name=[], this/DirEntry=[], this/DirEntry.contents=[], this/Dir.entries=[], this/Dir.parent=[], $d=[]}
+ints: []
+Solutions:1
+evalOptions:
+ solver: MiniSatProver
+ reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@1c6b5464
+ intEncoding: TWOSCOMPLEMENT
+ bitwidth: 6
+ sharing: 3
+ flatten: false
+ symmetryBreaking: 20
+ noOverflow: true
+ skolemDepth: 2
+ logTranslation: 2
+ coreGranularity: 3
+relations: {Int/next=[], seq/Int=[], String=[], this/Root=[[Root$0]], this/Cur=[], this/Dir.remainder=[], this/File=[], this/Name=[[Name$0], [Name$1], [Name$2], [Name$3], [Name$4], [Name$5], [Name$6], [Name$7], [Name$8], [Name$9], [Name$10], [Name$11], [Name$12], [Name$13], [Name$14], [Name$15], [Name$16], [Name$17], [Name$18], [Name$19], [Name$20], [Name$21], [Name$22], [Name$23], [Name$24], [Name$25], [Name$26], [Name$27], [Name$28], [Name$29], [Name$30], [Name$31], [Name$32], [Name$33], [Name$34], [Name$35], [Name$36], [Name$37], [Name$38], [Name$39], [Name$40], [Name$41], [Name$42], [Name$43], [Name$44]], this/DirEntry.name=[], this/DirEntry=[], this/DirEntry.contents=[], this/Dir.entries=[], this/Dir.parent=[], $d=[]}
+ints: []
+evalOptions:
+ solver: MiniSatProver
+ reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@1c6b5464
+ intEncoding: TWOSCOMPLEMENT
+ bitwidth: 6
+ sharing: 3
+ flatten: false
+ symmetryBreaking: 20
+ noOverflow: true
+ skolemDepth: 2
+ logTranslation: 2
+ coreGranularity: 3
+relations: {Int/next=[], seq/Int=[], String=[], this/Root=[[Root$0]], this/Cur=[], this/Dir.remainder=[], this/File=[], this/Name=[[Name$0], [Name$2], [Name$3], [Name$4], [Name$5], [Name$6], [Name$7], [Name$9], [Name$10], [Name$11], [Name$12], [Name$13], [Name$14], [Name$15], [Name$17], [Name$18], [Name$19], [Name$20], [Name$21], [Name$23], [Name$24], [Name$28], [Name$29], [Name$30], [Name$32], [Name$33], [Name$35], [Name$37], [Name$39], [Name$40], [Name$41], [Name$43], [Name$44]], this/DirEntry.name=[], this/DirEntry=[], this/DirEntry.contents=[], this/Dir.entries=[], this/Dir.parent=[], $d=[]}
+ints: []
+Solutions:1
+Solutions:1
+evalOptions:
+ solver: MiniSatProver
+ reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@1c6b5464
+ intEncoding: TWOSCOMPLEMENT
+ bitwidth: 6
+ sharing: 3
+ flatten: false
+ symmetryBreaking: 20
+ noOverflow: true
+ skolemDepth: 2
+ logTranslation: 2
+ coreGranularity: 3
+relations: {Int/next=[], seq/Int=[], String=[], this/Root=[[Root$0]], this/Cur=[], this/Dir.remainder=[], this/File=[], this/Name=[[Name$0], [Name$1], [Name$2], [Name$3], [Name$4], [Name$6], [Name$7], [Name$9], [Name$10], [Name$11], [Name$12], [Name$13], [Name$14], [Name$15], [Name$16], [Name$17], [Name$19], [Name$22], [Name$23], [Name$24], [Name$25], [Name$26], [Name$27], [Name$28], [Name$29], [Name$30], [Name$31], [Name$32], [Name$33], [Name$34], [Name$36], [Name$37], [Name$38], [Name$39], [Name$41], [Name$44]], this/DirEntry.name=[], this/DirEntry=[], this/DirEntry.contents=[], this/Dir.entries=[], this/Dir.parent=[], $d=[]}
+ints: []
+evalOptions:
+ solver: MiniSatProver
+ reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@1c6b5464
+ intEncoding: TWOSCOMPLEMENT
+ bitwidth: 6
+ sharing: 3
+ flatten: false
+ symmetryBreaking: 20
+ noOverflow: true
+ skolemDepth: 2
+ logTranslation: 2
+ coreGranularity: 3
+relations: {Int/next=[], seq/Int=[], String=[], this/Root=[[Root$0]], this/Cur=[], this/Dir.remainder=[], this/File=[], this/Name=[], this/DirEntry.name=[], this/DirEntry=[], this/DirEntry.contents=[], this/Dir.entries=[], this/Dir.parent=[], $d=[]}
+ints: []
+Solutions:1
+Solutions:1
+evalOptions:
+ solver: MiniSatProver
+ reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@1c6b5464
+ intEncoding: TWOSCOMPLEMENT
+ bitwidth: 6
+ sharing: 3
+ flatten: false
+ symmetryBreaking: 20
+ noOverflow: true
+ skolemDepth: 2
+ logTranslation: 2
+ coreGranularity: 3
+relations: {Int/next=[], seq/Int=[], String=[], this/Root=[[Root$0]], this/Cur=[], this/Dir.remainder=[], this/File=[], this/Name=[[Name$0], [Name$1], [Name$2], [Name$3], [Name$4], [Name$6], [Name$7], [Name$9], [Name$10], [Name$11], [Name$12], [Name$13], [Name$14], [Name$15], [Name$16], [Name$17], [Name$19], [Name$22], [Name$23], [Name$24], [Name$25], [Name$26], [Name$27], [Name$28], [Name$29], [Name$30], [Name$31], [Name$32], [Name$33], [Name$34], [Name$36], [Name$37], [Name$38], [Name$39], [Name$41], [Name$44]], this/DirEntry.name=[], this/DirEntry=[], this/DirEntry.contents=[], this/Dir.entries=[], this/Dir.parent=[], $d=[]}
+ints: []
+Solutions:1
+evalOptions:
+ solver: MiniSatProver
+ reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@1c6b5464
+ intEncoding: TWOSCOMPLEMENT
+ bitwidth: 6
+ sharing: 3
+ flatten: false
+ symmetryBreaking: 20
+ noOverflow: true
+ skolemDepth: 2
+ logTranslation: 2
+ coreGranularity: 3
+relations: {Int/next=[], seq/Int=[], String=[], this/Root=[[Root$0]], this/Cur=[], this/Dir.remainder=[], this/File=[], this/Name=[[Name$0], [Name$1], [Name$2], [Name$3], [Name$4], [Name$6], [Name$7], [Name$9], [Name$10], [Name$11], [Name$12], [Name$13], [Name$14], [Name$15], [Name$16], [Name$17], [Name$19], [Name$22], [Name$23], [Name$24], [Name$25], [Name$26], [Name$27], [Name$28], [Name$29], [Name$30], [Name$31], [Name$32], [Name$33], [Name$34], [Name$36], [Name$37], [Name$38], [Name$39], [Name$41], [Name$44]], this/DirEntry.name=[], this/DirEntry=[], this/DirEntry.contents=[], this/Dir.entries=[], this/Dir.parent=[], $d=[]}
+ints: []
+Solutions:1
+Ant 2 is about to choose 5 best choice.
+Ant 3 is about to choose 2 best choice.
+Ant 4 is about to choose 7 best choice.
+Ant 5 is about to choose 2 best choice.
+Ant 6 is about to choose 7 best choice.
+Ant 7 is about to choose 5 best choice.
+Ant 8 is about to choose 6 best choice.
+Ant 9 is about to choose 2 best choice.
+Ant 10 is about to choose 1 best choice.
+evalOptions:
+ solver: MiniSatProver
+ reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@1c6b5464
+ intEncoding: TWOSCOMPLEMENT
+ bitwidth: 6
+ sharing: 3
+ flatten: false
+ symmetryBreaking: 20
+ noOverflow: true
+ skolemDepth: 2
+ logTranslation: 2
+ coreGranularity: 3
+relations: {Int/next=[], seq/Int=[], String=[], this/Root=[[Root$0]], this/Cur=[], this/Dir.remainder=[], this/File=[], this/Name=[], this/DirEntry.name=[], this/DirEntry=[], this/DirEntry.contents=[], this/Dir.entries=[], this/Dir.parent=[], $d=[]}
+ints: []
+Solutions:1
+evalOptions:
+ solver: MiniSatProver
+ reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@1c6b5464
+ intEncoding: TWOSCOMPLEMENT
+ bitwidth: 6
+ sharing: 3
+ flatten: false
+ symmetryBreaking: 20
+ noOverflow: true
+ skolemDepth: 2
+ logTranslation: 2
+ coreGranularity: 3
+relations: {Int/next=[], seq/Int=[], String=[], this/Root=[[Root$0]], this/Cur=[], this/Dir.remainder=[], this/File=[], this/Name=[], this/DirEntry.name=[], this/DirEntry=[], this/DirEntry.contents=[], this/Dir.entries=[], this/Dir.parent=[], $d=[]}
+ints: []
+Solutions:1
+Ant 11 is about to choose 5 best choice.
+Ant 12 is about to choose 0 best choice.
+evalOptions:
+ solver: MiniSatProver
+ reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@1c6b5464
+ intEncoding: TWOSCOMPLEMENT
+ bitwidth: 6
+ sharing: 3
+ flatten: false
+ symmetryBreaking: 20
+ noOverflow: true
+ skolemDepth: 2
+ logTranslation: 2
+ coreGranularity: 3
+relations: {Int/next=[], seq/Int=[], String=[], this/Root=[[Root$0]], this/Cur=[], this/Dir.remainder=[], this/File=[], this/Name=[], this/DirEntry.name=[], this/DirEntry=[], this/DirEntry.contents=[], this/Dir.entries=[], this/Dir.parent=[], $d=[]}
+ints: []
+Solutions:1
+Ant 13 is about to choose 9 best choice.
+Ant 14 is about to choose 6 best choice.
+Ant 15 is about to choose 2 best choice.
+Ant 16 is about to choose 8 best choice.
+Ant 17 is about to choose 5 best choice.
+Ant 18 is about to choose 0 best choice.
+evalOptions:
+ solver: MiniSatProver
+ reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@1c6b5464
+ intEncoding: TWOSCOMPLEMENT
+ bitwidth: 6
+ sharing: 3
+ flatten: false
+ symmetryBreaking: 20
+ noOverflow: true
+ skolemDepth: 2
+ logTranslation: 2
+ coreGranularity: 3
+relations: {Int/next=[], seq/Int=[], String=[], this/Root=[[Root$0]], this/Cur=[], this/Dir.remainder=[], this/File=[], this/Name=[], this/DirEntry.name=[], this/DirEntry=[], this/DirEntry.contents=[], this/Dir.entries=[], this/Dir.parent=[], $d=[]}
+ints: []
+Solutions:1
+evalOptions:
+ solver: MiniSatProver
+ reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@1c6b5464
+ intEncoding: TWOSCOMPLEMENT
+ bitwidth: 6
+ sharing: 3
+ flatten: false
+ symmetryBreaking: 20
+ noOverflow: true
+ skolemDepth: 2
+ logTranslation: 2
+ coreGranularity: 3
+relations: {Int/next=[], seq/Int=[], String=[], this/Root=[[Root$0]], this/Cur=[], this/Dir.remainder=[], this/File=[], this/Name=[], this/DirEntry.name=[], this/DirEntry=[], this/DirEntry.contents=[], this/Dir.entries=[], this/Dir.parent=[], $d=[]}
+ints: []
+Solutions:1
+Ant 19 is about to choose 4 best choice.
+Ant 20 is about to choose 4 best choice.
+Ant 21 is about to choose 0 best choice.
+evalOptions:
+ solver: MiniSatProver
+ reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@1c6b5464
+ intEncoding: TWOSCOMPLEMENT
+ bitwidth: 6
+ sharing: 3
+ flatten: false
+ symmetryBreaking: 20
+ noOverflow: true
+ skolemDepth: 2
+ logTranslation: 2
+ coreGranularity: 3
+relations: {Int/next=[], seq/Int=[], String=[], this/Root=[[Root$0]], this/Cur=[], this/Dir.remainder=[], this/File=[], this/Name=[], this/DirEntry.name=[], this/DirEntry=[], this/DirEntry.contents=[], this/Dir.entries=[], this/Dir.parent=[], $d=[]}
+ints: []
+Solutions:1
+evalOptions:
+ solver: MiniSatProver
+ reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@1c6b5464
+ intEncoding: TWOSCOMPLEMENT
+ bitwidth: 6
+ sharing: 3
+ flatten: false
+ symmetryBreaking: 20
+ noOverflow: true
+ skolemDepth: 2
+ logTranslation: 2
+ coreGranularity: 3
+relations: {Int/next=[], seq/Int=[], String=[], this/Root=[[Root$0]], this/Cur=[], this/Dir.remainder=[], this/File=[], this/Name=[], this/DirEntry.name=[], this/DirEntry=[], this/DirEntry.contents=[], this/Dir.entries=[], this/Dir.parent=[], $d=[]}
+ints: []
+Solutions:1
+Ant 22 is about to choose 1 best choice.
+evalOptions:
+ solver: MiniSatProver
+ reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@1c6b5464
+ intEncoding: TWOSCOMPLEMENT
+ bitwidth: 6
+ sharing: 3
+ flatten: false
+ symmetryBreaking: 20
+ noOverflow: true
+ skolemDepth: 2
+ logTranslation: 2
+ coreGranularity: 3
+relations: {Int/next=[], seq/Int=[], String=[], this/Root=[[Root$0]], this/Cur=[], this/Dir.remainder=[], this/File=[], this/Name=[], this/DirEntry.name=[], this/DirEntry=[], this/DirEntry.contents=[], this/Dir.entries=[], this/Dir.parent=[], $d=[]}
+ints: []
+Solutions:1
+evalOptions:
+ solver: MiniSatProver
+ reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@1c6b5464
+ intEncoding: TWOSCOMPLEMENT
+ bitwidth: 6
+ sharing: 3
+ flatten: false
+ symmetryBreaking: 20
+ noOverflow: true
+ skolemDepth: 2
+ logTranslation: 2
+ coreGranularity: 3
+relations: {Int/next=[], seq/Int=[], String=[], this/Root=[[Root$0]], this/Cur=[], this/Dir.remainder=[], this/File=[], this/Name=[], this/DirEntry.name=[], this/DirEntry=[], this/DirEntry.contents=[], this/Dir.entries=[], this/Dir.parent=[], $d=[]}
+ints: []
+Solutions:1
+Ant 23 is about to choose 0 best choice.
+evalOptions:
+ solver: MiniSatProver
+ reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@1c6b5464
+ intEncoding: TWOSCOMPLEMENT
+ bitwidth: 6
+ sharing: 3
+ flatten: false
+ symmetryBreaking: 20
+ noOverflow: true
+ skolemDepth: 2
+ logTranslation: 2
+ coreGranularity: 3
+relations: {Int/next=[], seq/Int=[], String=[], this/Root=[[Root$0]], this/Cur=[], this/Dir.remainder=[], this/File=[], this/Name=[], this/DirEntry.name=[], this/DirEntry=[], this/DirEntry.contents=[], this/Dir.entries=[], this/Dir.parent=[], $d=[]}
+ints: []
+Solutions:1
+evalOptions:
+ solver: MiniSatProver
+ reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@1c6b5464
+ intEncoding: TWOSCOMPLEMENT
+ bitwidth: 6
+ sharing: 3
+ flatten: false
+ symmetryBreaking: 20
+ noOverflow: true
+ skolemDepth: 2
+ logTranslation: 2
+ coreGranularity: 3
+relations: {Int/next=[], seq/Int=[], String=[], this/Root=[[Root$0]], this/Cur=[], this/Dir.remainder=[], this/File=[], this/Name=[], this/DirEntry.name=[], this/DirEntry=[], this/DirEntry.contents=[], this/Dir.entries=[], this/Dir.parent=[], $d=[]}
+ints: []
+Solutions:1
+Ant 24 is about to choose 0 best choice.
+evalOptions:
+ solver: MiniSatProver
+ reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@1c6b5464
+ intEncoding: TWOSCOMPLEMENT
+ bitwidth: 6
+ sharing: 3
+ flatten: false
+ symmetryBreaking: 20
+ noOverflow: true
+ skolemDepth: 2
+ logTranslation: 2
+ coreGranularity: 3
+relations: {Int/next=[], seq/Int=[], String=[], this/Root=[[Root$0]], this/Cur=[], this/Dir.remainder=[], this/File=[], this/Name=[], this/DirEntry.name=[], this/DirEntry=[], this/DirEntry.contents=[], this/Dir.entries=[], this/Dir.parent=[], $d=[]}
+ints: []
+Solutions:1
+evalOptions:
+ solver: MiniSatProver
+ reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@1c6b5464
+ intEncoding: TWOSCOMPLEMENT
+ bitwidth: 6
+ sharing: 3
+ flatten: false
+ symmetryBreaking: 20
+ noOverflow: true
+ skolemDepth: 2
+ logTranslation: 2
+ coreGranularity: 3
+relations: {Int/next=[], seq/Int=[], String=[], this/Root=[[Root$0]], this/Cur=[], this/Dir.remainder=[], this/File=[], this/Name=[], this/DirEntry.name=[], this/DirEntry=[], this/DirEntry.contents=[], this/Dir.entries=[], this/Dir.parent=[], $d=[]}
+ints: []
+Solutions:1
+Ant 25 is about to choose 6 best choice.
+Ant 26 is about to choose 1 best choice.
+evalOptions:
+ solver: MiniSatProver
+ reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@1c6b5464
+ intEncoding: TWOSCOMPLEMENT
+ bitwidth: 6
+ sharing: 3
+ flatten: false
+ symmetryBreaking: 20
+ noOverflow: true
+ skolemDepth: 2
+ logTranslation: 2
+ coreGranularity: 3
+relations: {Int/next=[], seq/Int=[], String=[], this/Root=[[Root$0]], this/Cur=[], this/Dir.remainder=[], this/File=[], this/Name=[], this/DirEntry.name=[], this/DirEntry=[], this/DirEntry.contents=[], this/Dir.entries=[], this/Dir.parent=[], $d=[]}
+ints: []
+Solutions:1
+evalOptions:
+ solver: MiniSatProver
+ reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@1c6b5464
+ intEncoding: TWOSCOMPLEMENT
+ bitwidth: 6
+ sharing: 3
+ flatten: false
+ symmetryBreaking: 20
+ noOverflow: true
+ skolemDepth: 2
+ logTranslation: 2
+ coreGranularity: 3
+relations: {Int/next=[], seq/Int=[], String=[], this/Root=[[Root$0]], this/Cur=[], this/Dir.remainder=[], this/File=[], this/Name=[], this/DirEntry.name=[], this/DirEntry=[], this/DirEntry.contents=[], this/Dir.entries=[], this/Dir.parent=[], $d=[]}
+ints: []
+Solutions:1
+Ant 27 is about to choose 7 best choice.
+Ant 28 is about to choose 3 best choice.
+Ant 29 is about to choose 0 best choice.
+evalOptions:
+ solver: MiniSatProver
+ reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@1c6b5464
+ intEncoding: TWOSCOMPLEMENT
+ bitwidth: 6
+ sharing: 3
+ flatten: false
+ symmetryBreaking: 20
+ noOverflow: true
+ skolemDepth: 2
+ logTranslation: 2
+ coreGranularity: 3
+relations: {Int/next=[], seq/Int=[], String=[], this/Root=[[Root$0]], this/Cur=[], this/Dir.remainder=[], this/File=[], this/Name=[], this/DirEntry.name=[], this/DirEntry=[], this/DirEntry.contents=[], this/Dir.entries=[], this/Dir.parent=[], $d=[]}
+ints: []
+Solutions:1
+evalOptions:
+ solver: MiniSatProver
+ reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@1c6b5464
+ intEncoding: TWOSCOMPLEMENT
+ bitwidth: 6
+ sharing: 3
+ flatten: false
+ symmetryBreaking: 20
+ noOverflow: true
+ skolemDepth: 2
+ logTranslation: 2
+ coreGranularity: 3
+relations: {Int/next=[], seq/Int=[], String=[], this/Root=[[Root$0]], this/Cur=[], this/Dir.remainder=[], this/File=[], this/Name=[], this/DirEntry.name=[], this/DirEntry=[], this/DirEntry.contents=[], this/Dir.entries=[], this/Dir.parent=[], $d=[]}
+ints: []
+Solutions:1
+Ant 30 is about to choose 9 best choice.
+Ant 31 is about to choose 7 best choice.
+Ant 32 is about to choose 1 best choice.
+evalOptions:
+ solver: MiniSatProver
+ reporter: edu.mit.csail.sdg.alloy4compiler.translator.A4Solution$2@1c6b5464
+ intEncoding: TWOSCOMPLEMENT
+ bitwidth: 6
+ sharing: 3
+ flatten: false
+ symmetryBreaking: 20
+ noOverflow: true
+ skolemDepth: 2
+ logTranslation: 2
+ coreGranularity: 3
+relations: {Int/next=[], seq/Int=[], String=[], this/Root=[[Root$0]], this/Cur=[], this/Dir.remainder=[], this/File=[], this/Name=[], this/DirEntry.name=[], this/DirEntry=[], this/DirEntry.contents=[], this/Dir.entries=[], this/Dir.parent=[], $d=[]}
+ints: []
+Solutions:1
+Evaluate Ants Begin
+ --- Full Iteration Time: 432 ms.  -- 32
+Evaluate Ants End: 433 ms
+Update Pheromones...
+Update best Ant...
+Ant: 3.3775863647460938
+Number of failed constraints: 5
+Number of failed relations: 6
+this/Root : [[Root$0]]
+this/Cur : []
+this/Dir.remainder : [[Object$0], [Object$1], [Object$2], [Object$3], [Object$4], [Object$5], [Object$7], [Object$8], [Object$9], [Object$10], [Object$11], [Object$12], [Object$13], [Object$14], [Object$15], [Object$16], [Object$17], [Object$18], [Object$19], [Object$20], [Object$21], [Object$22], [Object$23], [Object$24], [Object$25], [Object$26], [Object$27], [Object$28], [Object$30], [Object$31], [Object$32], [Object$33], [Object$34], [Object$35], [Object$36], [Object$37], [Object$38], [Object$39], [Object$41], [Object$42], [Object$43]]
+this/File : []
+this/Name : []
+this/DirEntry.name : [[DirEntry$0, Name$3], [DirEntry$0, Name$5], [DirEntry$0, Name$6], [DirEntry$0, Name$7], [DirEntry$0, Name$8], [DirEntry$0, Name$11], [DirEntry$0, Name$14], [DirEntry$0, Name$19], [DirEntry$0, Name$21], [DirEntry$0, Name$22], [DirEntry$0, Name$23], [DirEntry$0, Name$24], [DirEntry$0, Name$26], [DirEntry$0, Name$27], [DirEntry$0, Name$28], [DirEntry$0, Name$29], [DirEntry$0, Name$31], [DirEntry$0, Name$33], [DirEntry$0, Name$34], [DirEntry$0, Name$38], [DirEntry$0, Name$40], [DirEntry$0, Name$42], [DirEntry$1, Name$0], [DirEntry$1, Name$1], [DirEntry$1, Name$2], [DirEntry$1, Name$4], [DirEntry$1, Name$5], [DirEntry$1, Name$6], [DirEntry$1, Name$9], [DirEntry$1, Name$11], [DirEntry$1, Name$12], [DirEntry$1, Name$16], [DirEntry$1, Name$17], [DirEntry$1, Name$19], [DirEntry$1, Name$23], [DirEntry$1, Name$24], [DirEntry$1, Name$25], [DirEntry$1, Name$26], [DirEntry$1, Name$27], [DirEntry$1, Name$28], [DirEntry$1, Name$29], [DirEntry$1, Name$30], [DirEntry$1, Name$31], [DirEntry$1, Name$32], [DirEntry$1, Name$37], [DirEntry$1, Name$39], [DirEntry$1, Name$44], [DirEntry$2, Name$0], [DirEntry$2, Name$3], [DirEntry$2, Name$4], [DirEntry$2, Name$7], [DirEntry$2, Name$9], [DirEntry$2, Name$10], [DirEntry$2, Name$12], [DirEntry$2, Name$13], [DirEntry$2, Name$14], [DirEntry$2, Name$16], [DirEntry$2, Name$17], [DirEntry$2, Name$20], [DirEntry$2, Name$21], [DirEntry$2, Name$22], [DirEntry$2, Name$24], [DirEntry$2, Name$28], [DirEntry$2, Name$30], [DirEntry$2, Name$33], [DirEntry$2, Name$34], [DirEntry$2, Name$35], [DirEntry$2, Name$37], [DirEntry$2, Name$38], [DirEntry$2, Name$39], [DirEntry$2, Name$41], [DirEntry$2, Name$42], [DirEntry$2, Name$43], [DirEntry$3, Name$0], [DirEntry$3, Name$2], [DirEntry$3, Name$5], [DirEntry$3, Name$6], [DirEntry$3, Name$8], [DirEntry$3, Name$9], [DirEntry$3, Name$10], [DirEntry$3, Name$14], [DirEntry$3, Name$17], [DirEntry$3, Name$18], [DirEntry$3, Name$23], [DirEntry$3, Name$28], [DirEntry$3, Name$30], [DirEntry$3, Name$32], [DirEntry$3, Name$34], [DirEntry$3, Name$38], [DirEntry$3, Name$41], [DirEntry$3, Name$43], [DirEntry$3, Name$44], [DirEntry$4, Name$2], [DirEntry$4, Name$4], [DirEntry$4, Name$11], [DirEntry$4, Name$12], [DirEntry$4, Name$14], [DirEntry$4, Name$15], [DirEntry$4, Name$16], [DirEntry$4, Name$18], [DirEntry$4, Name$25], [DirEntry$4, Name$26], [DirEntry$4, Name$27], [DirEntry$4, Name$30], [DirEntry$4, Name$31], [DirEntry$4, Name$32], [DirEntry$4, Name$34], [DirEntry$4, Name$41], [DirEntry$4, Name$42], [DirEntry$5, Name$2], [DirEntry$5, Name$3], [DirEntry$5, Name$7], [DirEntry$5, Name$10], [DirEntry$5, Name$18], [DirEntry$5, Name$19], [DirEntry$5, Name$20], [DirEntry$5, Name$21], [DirEntry$5, Name$22], [DirEntry$5, Name$23], [DirEntry$5, Name$26], [DirEntry$5, Name$27], [DirEntry$5, Name$28], [DirEntry$5, Name$29], [DirEntry$5, Name$31], [DirEntry$5, Name$33], [DirEntry$5, Name$34], [DirEntry$5, Name$35], [DirEntry$5, Name$36], [DirEntry$5, Name$38], [DirEntry$5, Name$40], [DirEntry$5, Name$41], [DirEntry$5, Name$42], [DirEntry$5, Name$43], [DirEntry$6, Name$0], [DirEntry$6, Name$1], [DirEntry$6, Name$2], [DirEntry$6, Name$3], [DirEntry$6, Name$6], [DirEntry$6, Name$9], [DirEntry$6, Name$10], [DirEntry$6, Name$13], [DirEntry$6, Name$14], [DirEntry$6, Name$15], [DirEntry$6, Name$16], [DirEntry$6, Name$20], [DirEntry$6, Name$25], [DirEntry$6, Name$27], [DirEntry$6, Name$29], [DirEntry$6, Name$31], [DirEntry$6, Name$34], [DirEntry$6, Name$40], [DirEntry$6, Name$41], [DirEntry$6, Name$42], [DirEntry$6, Name$43], [DirEntry$7, Name$0], [DirEntry$7, Name$1], [DirEntry$7, Name$2], [DirEntry$7, Name$5], [DirEntry$7, Name$10], [DirEntry$7, Name$12], [DirEntry$7, Name$13], [DirEntry$7, Name$14], [DirEntry$7, Name$15], [DirEntry$7, Name$18], [DirEntry$7, Name$19], [DirEntry$7, Name$22], [DirEntry$7, Name$24], [DirEntry$7, Name$26], [DirEntry$7, Name$27], [DirEntry$7, Name$28], [DirEntry$7, Name$30], [DirEntry$7, Name$31], [DirEntry$7, Name$32], [DirEntry$7, Name$34], [DirEntry$7, Name$35], [DirEntry$7, Name$36], [DirEntry$7, Name$38], [DirEntry$7, Name$43], [DirEntry$8, Name$0], [DirEntry$8, Name$1], [DirEntry$8, Name$2], [DirEntry$8, Name$3], [DirEntry$8, Name$5], [DirEntry$8, Name$8], [DirEntry$8, Name$10], [DirEntry$8, Name$15], [DirEntry$8, Name$17], [DirEntry$8, Name$19], [DirEntry$8, Name$20], [DirEntry$8, Name$22], [DirEntry$8, Name$24], [DirEntry$8, Name$25], [DirEntry$8, Name$26], [DirEntry$8, Name$27], [DirEntry$8, Name$28], [DirEntry$8, Name$30], [DirEntry$8, Name$31], [DirEntry$8, Name$33], [DirEntry$8, Name$35], [DirEntry$8, Name$36], [DirEntry$8, Name$37], [DirEntry$8, Name$40], [DirEntry$8, Name$42], [DirEntry$8, Name$43], [DirEntry$9, Name$0], [DirEntry$9, Name$1], [DirEntry$9, Name$2], [DirEntry$9, Name$3], [DirEntry$9, Name$7], [DirEntry$9, Name$8], [DirEntry$9, Name$9], [DirEntry$9, Name$10], [DirEntry$9, Name$12], [DirEntry$9, Name$13], [DirEntry$9, Name$14], [DirEntry$9, Name$15], [DirEntry$9, Name$16], [DirEntry$9, Name$20], [DirEntry$9, Name$22], [DirEntry$9, Name$23], [DirEntry$9, Name$25], [DirEntry$9, Name$26], [DirEntry$9, Name$27], [DirEntry$9, Name$29], [DirEntry$9, Name$30], [DirEntry$9, Name$31], [DirEntry$9, Name$32], [DirEntry$9, Name$34], [DirEntry$9, Name$35], [DirEntry$9, Name$37], [DirEntry$9, Name$38], [DirEntry$9, Name$39], [DirEntry$9, Name$41], [DirEntry$9, Name$42], [DirEntry$9, Name$43], [DirEntry$10, Name$1], [DirEntry$10, Name$2], [DirEntry$10, Name$3], [DirEntry$10, Name$6], [DirEntry$10, Name$9], [DirEntry$10, Name$11], [DirEntry$10, Name$12], [DirEntry$10, Name$19], [DirEntry$10, Name$20], [DirEntry$10, Name$22], [DirEntry$10, Name$25], [DirEntry$10, Name$26], [DirEntry$10, Name$27], [DirEntry$10, Name$31], [DirEntry$10, Name$32], [DirEntry$10, Name$34], [DirEntry$10, Name$37], [DirEntry$10, Name$39], [DirEntry$10, Name$43], [DirEntry$11, Name$1], [DirEntry$11, Name$3], [DirEntry$11, Name$4], [DirEntry$11, Name$5], [DirEntry$11, Name$6], [DirEntry$11, Name$9], [DirEntry$11, Name$13], [DirEntry$11, Name$15], [DirEntry$11, Name$16], [DirEntry$11, Name$17], [DirEntry$11, Name$18], [DirEntry$11, Name$20], [DirEntry$11, Name$21], [DirEntry$11, Name$22], [DirEntry$11, Name$24], [DirEntry$11, Name$25], [DirEntry$11, Name$28], [DirEntry$11, Name$29], [DirEntry$11, Name$31], [DirEntry$11, Name$32], [DirEntry$11, Name$33], [DirEntry$11, Name$34], [DirEntry$11, Name$38], [DirEntry$11, Name$39], [DirEntry$11, Name$41], [DirEntry$11, Name$42], [DirEntry$11, Name$44], [DirEntry$12, Name$1], [DirEntry$12, Name$3], [DirEntry$12, Name$5], [DirEntry$12, Name$6], [DirEntry$12, Name$9], [DirEntry$12, Name$10], [DirEntry$12, Name$11], [DirEntry$12, Name$14], [DirEntry$12, Name$15], [DirEntry$12, Name$17], [DirEntry$12, Name$19], [DirEntry$12, Name$21], [DirEntry$12, Name$22], [DirEntry$12, Name$24], [DirEntry$12, Name$25], [DirEntry$12, Name$26], [DirEntry$12, Name$28], [DirEntry$12, Name$29], [DirEntry$12, Name$31], [DirEntry$12, Name$33], [DirEntry$12, Name$35], [DirEntry$12, Name$36], [DirEntry$12, Name$38], [DirEntry$12, Name$41], [DirEntry$12, Name$42], [DirEntry$13, Name$0], [DirEntry$13, Name$1], [DirEntry$13, Name$2], [DirEntry$13, Name$3], [DirEntry$13, Name$5], [DirEntry$13, Name$7], [DirEntry$13, Name$8], [DirEntry$13, Name$9], [DirEntry$13, Name$11], [DirEntry$13, Name$12], [DirEntry$13, Name$16], [DirEntry$13, Name$17], [DirEntry$13, Name$19], [DirEntry$13, Name$22], [DirEntry$13, Name$26], [DirEntry$13, Name$27], [DirEntry$13, Name$33], [DirEntry$13, Name$34], [DirEntry$13, Name$35], [DirEntry$13, Name$39], [DirEntry$13, Name$42], [DirEntry$13, Name$43], [DirEntry$13, Name$44], [DirEntry$14, Name$1], [DirEntry$14, Name$2], [DirEntry$14, Name$3], [DirEntry$14, Name$5], [DirEntry$14, Name$6], [DirEntry$14, Name$9], [DirEntry$14, Name$10], [DirEntry$14, Name$11], [DirEntry$14, Name$13], [DirEntry$14, Name$15], [DirEntry$14, Name$16], [DirEntry$14, Name$17], [DirEntry$14, Name$21], [DirEntry$14, Name$22], [DirEntry$14, Name$26], [DirEntry$14, Name$27], [DirEntry$14, Name$30], [DirEntry$14, Name$32], [DirEntry$14, Name$34], [DirEntry$14, Name$36], [DirEntry$14, Name$38], [DirEntry$14, Name$40], [DirEntry$14, Name$43], [DirEntry$15, Name$0], [DirEntry$15, Name$3], [DirEntry$15, Name$4], [DirEntry$15, Name$8], [DirEntry$15, Name$10], [DirEntry$15, Name$12], [DirEntry$15, Name$13], [DirEntry$15, Name$14], [DirEntry$15, Name$15], [DirEntry$15, Name$16], [DirEntry$15, Name$20], [DirEntry$15, Name$21], [DirEntry$15, Name$22], [DirEntry$15, Name$25], [DirEntry$15, Name$26], [DirEntry$15, Name$27], [DirEntry$15, Name$29], [DirEntry$15, Name$30], [DirEntry$15, Name$31], [DirEntry$15, Name$32], [DirEntry$15, Name$35], [DirEntry$15, Name$37], [DirEntry$15, Name$38], [DirEntry$15, Name$39], [DirEntry$15, Name$40], [DirEntry$15, Name$41], [DirEntry$15, Name$44], [DirEntry$16, Name$0], [DirEntry$16, Name$3], [DirEntry$16, Name$5], [DirEntry$16, Name$8], [DirEntry$16, Name$9], [DirEntry$16, Name$10], [DirEntry$16, Name$13], [DirEntry$16, Name$14], [DirEntry$16, Name$15], [DirEntry$16, Name$18], [DirEntry$16, Name$21], [DirEntry$16, Name$22], [DirEntry$16, Name$23], [DirEntry$16, Name$28], [DirEntry$16, Name$29], [DirEntry$16, Name$32], [DirEntry$16, Name$34], [DirEntry$16, Name$35], [DirEntry$16, Name$37], [DirEntry$16, Name$38], [DirEntry$16, Name$40], [DirEntry$16, Name$41], [DirEntry$16, Name$43], [DirEntry$17, Name$0], [DirEntry$17, Name$1], [DirEntry$17, Name$2], [DirEntry$17, Name$4], [DirEntry$17, Name$7], [DirEntry$17, Name$8], [DirEntry$17, Name$9], [DirEntry$17, Name$11], [DirEntry$17, Name$12], [DirEntry$17, Name$13], [DirEntry$17, Name$15], [DirEntry$17, Name$22], [DirEntry$17, Name$24], [DirEntry$17, Name$25], [DirEntry$17, Name$26], [DirEntry$17, Name$27], [DirEntry$17, Name$29], [DirEntry$17, Name$31], [DirEntry$17, Name$32], [DirEntry$17, Name$33], [DirEntry$17, Name$34], [DirEntry$17, Name$40], [DirEntry$17, Name$41], [DirEntry$17, Name$42], [DirEntry$17, Name$44], [DirEntry$18, Name$0], [DirEntry$18, Name$1], [DirEntry$18, Name$2], [DirEntry$18, Name$4], [DirEntry$18, Name$5], [DirEntry$18, Name$6], [DirEntry$18, Name$9], [DirEntry$18, Name$10], [DirEntry$18, Name$11], [DirEntry$18, Name$12], [DirEntry$18, Name$17], [DirEntry$18, Name$18], [DirEntry$18, Name$21], [DirEntry$18, Name$23], [DirEntry$18, Name$27], [DirEntry$18, Name$29], [DirEntry$18, Name$31], [DirEntry$18, Name$36], [DirEntry$18, Name$37], [DirEntry$18, Name$39], [DirEntry$18, Name$41], [DirEntry$18, Name$42], [DirEntry$19, Name$0], [DirEntry$19, Name$2], [DirEntry$19, Name$3], [DirEntry$19, Name$5], [DirEntry$19, Name$6], [DirEntry$19, Name$7], [DirEntry$19, Name$10], [DirEntry$19, Name$12], [DirEntry$19, Name$18], [DirEntry$19, Name$19], [DirEntry$19, Name$21], [DirEntry$19, Name$22], [DirEntry$19, Name$24], [DirEntry$19, Name$25], [DirEntry$19, Name$29], [DirEntry$19, Name$30], [DirEntry$19, Name$34], [DirEntry$19, Name$36], [DirEntry$19, Name$41], [DirEntry$19, Name$42], [DirEntry$19, Name$43], [DirEntry$19, Name$44], [DirEntry$20, Name$0], [DirEntry$20, Name$4], [DirEntry$20, Name$5], [DirEntry$20, Name$6], [DirEntry$20, Name$17], [DirEntry$20, Name$18], [DirEntry$20, Name$19], [DirEntry$20, Name$20], [DirEntry$20, Name$21], [DirEntry$20, Name$22], [DirEntry$20, Name$23], [DirEntry$20, Name$25], [DirEntry$20, Name$27], [DirEntry$20, Name$28], [DirEntry$20, Name$34], [DirEntry$20, Name$37], [DirEntry$20, Name$39], [DirEntry$20, Name$43], [DirEntry$21, Name$1], [DirEntry$21, Name$3], [DirEntry$21, Name$4], [DirEntry$21, Name$5], [DirEntry$21, Name$6], [DirEntry$21, Name$7], [DirEntry$21, Name$11], [DirEntry$21, Name$12], [DirEntry$21, Name$13], [DirEntry$21, Name$14], [DirEntry$21, Name$16], [DirEntry$21, Name$17], [DirEntry$21, Name$18], [DirEntry$21, Name$23], [DirEntry$21, Name$24], [DirEntry$21, Name$26], [DirEntry$21, Name$31], [DirEntry$21, Name$32], [DirEntry$21, Name$33], [DirEntry$21, Name$35], [DirEntry$21, Name$36], [DirEntry$21, Name$38], [DirEntry$21, Name$39], [DirEntry$21, Name$41], [DirEntry$21, Name$42], [DirEntry$21, Name$43], [DirEntry$21, Name$44], [DirEntry$22, Name$0], [DirEntry$22, Name$1], [DirEntry$22, Name$3], [DirEntry$22, Name$4], [DirEntry$22, Name$7], [DirEntry$22, Name$10], [DirEntry$22, Name$11], [DirEntry$22, Name$12], [DirEntry$22, Name$13], [DirEntry$22, Name$15], [DirEntry$22, Name$16], [DirEntry$22, Name$20], [DirEntry$22, Name$21], [DirEntry$22, Name$22], [DirEntry$22, Name$24], [DirEntry$22, Name$25], [DirEntry$22, Name$26], [DirEntry$22, Name$27], [DirEntry$22, Name$30], [DirEntry$22, Name$33], [DirEntry$22, Name$36], [DirEntry$22, Name$38], [DirEntry$22, Name$42], [DirEntry$22, Name$44], [DirEntry$23, Name$0], [DirEntry$23, Name$1], [DirEntry$23, Name$2], [DirEntry$23, Name$4], [DirEntry$23, Name$6], [DirEntry$23, Name$7], [DirEntry$23, Name$9], [DirEntry$23, Name$12], [DirEntry$23, Name$14], [DirEntry$23, Name$15], [DirEntry$23, Name$17], [DirEntry$23, Name$18], [DirEntry$23, Name$19], [DirEntry$23, Name$20], [DirEntry$23, Name$21], [DirEntry$23, Name$22], [DirEntry$23, Name$24], [DirEntry$23, Name$26], [DirEntry$23, Name$28], [DirEntry$23, Name$29], [DirEntry$23, Name$30], [DirEntry$23, Name$31], [DirEntry$23, Name$32], [DirEntry$23, Name$37], [DirEntry$23, Name$39], [DirEntry$23, Name$40], [DirEntry$23, Name$41], [DirEntry$23, Name$42], [DirEntry$23, Name$43], [DirEntry$24, Name$1], [DirEntry$24, Name$3], [DirEntry$24, Name$4], [DirEntry$24, Name$7], [DirEntry$24, Name$11], [DirEntry$24, Name$13], [DirEntry$24, Name$16], [DirEntry$24, Name$17], [DirEntry$24, Name$21], [DirEntry$24, Name$22], [DirEntry$24, Name$23], [DirEntry$24, Name$24], [DirEntry$24, Name$26], [DirEntry$24, Name$28], [DirEntry$24, Name$32], [DirEntry$24, Name$33], [DirEntry$24, Name$35], [DirEntry$24, Name$36], [DirEntry$24, Name$37], [DirEntry$24, Name$38], [DirEntry$24, Name$40], [DirEntry$24, Name$41], [DirEntry$24, Name$44], [DirEntry$25, Name$1], [DirEntry$25, Name$3], [DirEntry$25, Name$4], [DirEntry$25, Name$11], [DirEntry$25, Name$12], [DirEntry$25, Name$14], [DirEntry$25, Name$15], [DirEntry$25, Name$18], [DirEntry$25, Name$19], [DirEntry$25, Name$21], [DirEntry$25, Name$23], [DirEntry$25, Name$24], [DirEntry$25, Name$25], [DirEntry$25, Name$26], [DirEntry$25, Name$28], [DirEntry$25, Name$29], [DirEntry$25, Name$32], [DirEntry$25, Name$33], [DirEntry$25, Name$37], [DirEntry$25, Name$38], [DirEntry$25, Name$39], [DirEntry$25, Name$40], [DirEntry$25, Name$43], [DirEntry$25, Name$44], [DirEntry$26, Name$0], [DirEntry$26, Name$1], [DirEntry$26, Name$4], [DirEntry$26, Name$5], [DirEntry$26, Name$8], [DirEntry$26, Name$16], [DirEntry$26, Name$18], [DirEntry$26, Name$20], [DirEntry$26, Name$24], [DirEntry$26, Name$25], [DirEntry$26, Name$26], [DirEntry$26, Name$29], [DirEntry$26, Name$32], [DirEntry$26, Name$33], [DirEntry$26, Name$35], [DirEntry$26, Name$39], [DirEntry$26, Name$40], [DirEntry$26, Name$42], [DirEntry$26, Name$44], [DirEntry$27, Name$1], [DirEntry$27, Name$3], [DirEntry$27, Name$4], [DirEntry$27, Name$5], [DirEntry$27, Name$6], [DirEntry$27, Name$7], [DirEntry$27, Name$8], [DirEntry$27, Name$10], [DirEntry$27, Name$13], [DirEntry$27, Name$15], [DirEntry$27, Name$16], [DirEntry$27, Name$17], [DirEntry$27, Name$19], [DirEntry$27, Name$20], [DirEntry$27, Name$23], [DirEntry$27, Name$27], [DirEntry$27, Name$29], [DirEntry$27, Name$30], [DirEntry$27, Name$31], [DirEntry$27, Name$32], [DirEntry$27, Name$34], [DirEntry$27, Name$37], [DirEntry$27, Name$38], [DirEntry$27, Name$40], [DirEntry$27, Name$41], [DirEntry$27, Name$42], [DirEntry$27, Name$44], [DirEntry$28, Name$1], [DirEntry$28, Name$4], [DirEntry$28, Name$5], [DirEntry$28, Name$8], [DirEntry$28, Name$10], [DirEntry$28, Name$11], [DirEntry$28, Name$12], [DirEntry$28, Name$13], [DirEntry$28, Name$16], [DirEntry$28, Name$18], [DirEntry$28, Name$20], [DirEntry$28, Name$21], [DirEntry$28, Name$22], [DirEntry$28, Name$23], [DirEntry$28, Name$24], [DirEntry$28, Name$25], [DirEntry$28, Name$28], [DirEntry$28, Name$30], [DirEntry$28, Name$34], [DirEntry$28, Name$35], [DirEntry$28, Name$36], [DirEntry$28, Name$39], [DirEntry$28, Name$42], [DirEntry$29, Name$0], [DirEntry$29, Name$2], [DirEntry$29, Name$3], [DirEntry$29, Name$4], [DirEntry$29, Name$6], [DirEntry$29, Name$7], [DirEntry$29, Name$8], [DirEntry$29, Name$10], [DirEntry$29, Name$11], [DirEntry$29, Name$12], [DirEntry$29, Name$13], [DirEntry$29, Name$14], [DirEntry$29, Name$15], [DirEntry$29, Name$17], [DirEntry$29, Name$18], [DirEntry$29, Name$19], [DirEntry$29, Name$20], [DirEntry$29, Name$21], [DirEntry$29, Name$28], [DirEntry$29, Name$30], [DirEntry$29, Name$31], [DirEntry$29, Name$32], [DirEntry$29, Name$34], [DirEntry$29, Name$35], [DirEntry$29, Name$40], [DirEntry$29, Name$42], [DirEntry$29, Name$43], [DirEntry$29, Name$44], [DirEntry$30, Name$0], [DirEntry$30, Name$1], [DirEntry$30, Name$3], [DirEntry$30, Name$7], [DirEntry$30, Name$13], [DirEntry$30, Name$14], [DirEntry$30, Name$15], [DirEntry$30, Name$16], [DirEntry$30, Name$19], [DirEntry$30, Name$21], [DirEntry$30, Name$29], [DirEntry$30, Name$31], [DirEntry$30, Name$32], [DirEntry$30, Name$33], [DirEntry$30, Name$34], [DirEntry$30, Name$35], [DirEntry$30, Name$37], [DirEntry$30, Name$38], [DirEntry$30, Name$39], [DirEntry$30, Name$41], [DirEntry$30, Name$42], [DirEntry$30, Name$43], [DirEntry$31, Name$0], [DirEntry$31, Name$1], [DirEntry$31, Name$2], [DirEntry$31, Name$3], [DirEntry$31, Name$4], [DirEntry$31, Name$5], [DirEntry$31, Name$6], [DirEntry$31, Name$7], [DirEntry$31, Name$8], [DirEntry$31, Name$14], [DirEntry$31, Name$17], [DirEntry$31, Name$21], [DirEntry$31, Name$24], [DirEntry$31, Name$26], [DirEntry$31, Name$29], [DirEntry$31, Name$30], [DirEntry$31, Name$33], [DirEntry$31, Name$37], [DirEntry$31, Name$38], [DirEntry$31, Name$39], [DirEntry$31, Name$41], [DirEntry$31, Name$44], [DirEntry$32, Name$0], [DirEntry$32, Name$2], [DirEntry$32, Name$4], [DirEntry$32, Name$5], [DirEntry$32, Name$7], [DirEntry$32, Name$9], [DirEntry$32, Name$10], [DirEntry$32, Name$13], [DirEntry$32, Name$17], [DirEntry$32, Name$19], [DirEntry$32, Name$21], [DirEntry$32, Name$22], [DirEntry$32, Name$24], [DirEntry$32, Name$25], [DirEntry$32, Name$26], [DirEntry$32, Name$27], [DirEntry$32, Name$29], [DirEntry$32, Name$34], [DirEntry$32, Name$35], [DirEntry$32, Name$36], [DirEntry$32, Name$37], [DirEntry$32, Name$39], [DirEntry$32, Name$41], [DirEntry$32, Name$42], [DirEntry$32, Name$44], [DirEntry$33, Name$0], [DirEntry$33, Name$1], [DirEntry$33, Name$7], [DirEntry$33, Name$8], [DirEntry$33, Name$9], [DirEntry$33, Name$13], [DirEntry$33, Name$15], [DirEntry$33, Name$18], [DirEntry$33, Name$20], [DirEntry$33, Name$21], [DirEntry$33, Name$22], [DirEntry$33, Name$23], [DirEntry$33, Name$24], [DirEntry$33, Name$25], [DirEntry$33, Name$26], [DirEntry$33, Name$27], [DirEntry$33, Name$32], [DirEntry$33, Name$33], [DirEntry$33, Name$35], [DirEntry$33, Name$37], [DirEntry$33, Name$38], [DirEntry$33, Name$39], [DirEntry$33, Name$40], [DirEntry$33, Name$43], [DirEntry$34, Name$4], [DirEntry$34, Name$7], [DirEntry$34, Name$8], [DirEntry$34, Name$10], [DirEntry$34, Name$13], [DirEntry$34, Name$14], [DirEntry$34, Name$15], [DirEntry$34, Name$16], [DirEntry$34, Name$18], [DirEntry$34, Name$19], [DirEntry$34, Name$20], [DirEntry$34, Name$21], [DirEntry$34, Name$23], [DirEntry$34, Name$24], [DirEntry$34, Name$26], [DirEntry$34, Name$27], [DirEntry$34, Name$28], [DirEntry$34, Name$32], [DirEntry$34, Name$34], [DirEntry$34, Name$36], [DirEntry$34, Name$37], [DirEntry$34, Name$43], [DirEntry$35, Name$1], [DirEntry$35, Name$2], [DirEntry$35, Name$5], [DirEntry$35, Name$7], [DirEntry$35, Name$11], [DirEntry$35, Name$17], [DirEntry$35, Name$18], [DirEntry$35, Name$19], [DirEntry$35, Name$23], [DirEntry$35, Name$24], [DirEntry$35, Name$26], [DirEntry$35, Name$27], [DirEntry$35, Name$29], [DirEntry$35, Name$30], [DirEntry$35, Name$31], [DirEntry$35, Name$32], [DirEntry$35, Name$34], [DirEntry$35, Name$37], [DirEntry$35, Name$38], [DirEntry$35, Name$41], [DirEntry$35, Name$42], [DirEntry$35, Name$44], [DirEntry$36, Name$0], [DirEntry$36, Name$1], [DirEntry$36, Name$4], [DirEntry$36, Name$8], [DirEntry$36, Name$9], [DirEntry$36, Name$10], [DirEntry$36, Name$11], [DirEntry$36, Name$12], [DirEntry$36, Name$14], [DirEntry$36, Name$15], [DirEntry$36, Name$16], [DirEntry$36, Name$17], [DirEntry$36, Name$18], [DirEntry$36, Name$19], [DirEntry$36, Name$22], [DirEntry$36, Name$23], [DirEntry$36, Name$26], [DirEntry$36, Name$27], [DirEntry$36, Name$29], [DirEntry$36, Name$31], [DirEntry$36, Name$35], [DirEntry$36, Name$38], [DirEntry$36, Name$39], [DirEntry$36, Name$41], [DirEntry$36, Name$42], [DirEntry$36, Name$43], [DirEntry$37, Name$0], [DirEntry$37, Name$1], [DirEntry$37, Name$5], [DirEntry$37, Name$7], [DirEntry$37, Name$8], [DirEntry$37, Name$10], [DirEntry$37, Name$12], [DirEntry$37, Name$13], [DirEntry$37, Name$15], [DirEntry$37, Name$16], [DirEntry$37, Name$17], [DirEntry$37, Name$19], [DirEntry$37, Name$20], [DirEntry$37, Name$21], [DirEntry$37, Name$24], [DirEntry$37, Name$26], [DirEntry$37, Name$27], [DirEntry$37, Name$31], [DirEntry$37, Name$35], [DirEntry$37, Name$36], [DirEntry$37, Name$37], [DirEntry$37, Name$38], [DirEntry$37, Name$40], [DirEntry$37, Name$41], [DirEntry$37, Name$43], [DirEntry$38, Name$7], [DirEntry$38, Name$10], [DirEntry$38, Name$11], [DirEntry$38, Name$13], [DirEntry$38, Name$14], [DirEntry$38, Name$15], [DirEntry$38, Name$18], [DirEntry$38, Name$20], [DirEntry$38, Name$22], [DirEntry$38, Name$28], [DirEntry$38, Name$29], [DirEntry$38, Name$30], [DirEntry$38, Name$31], [DirEntry$38, Name$33], [DirEntry$38, Name$36], [DirEntry$38, Name$40], [DirEntry$38, Name$41], [DirEntry$38, Name$42], [DirEntry$38, Name$43], [DirEntry$39, Name$0], [DirEntry$39, Name$1], [DirEntry$39, Name$3], [DirEntry$39, Name$4], [DirEntry$39, Name$5], [DirEntry$39, Name$6], [DirEntry$39, Name$7], [DirEntry$39, Name$8], [DirEntry$39, Name$10], [DirEntry$39, Name$13], [DirEntry$39, Name$14], [DirEntry$39, Name$17], [DirEntry$39, Name$18], [DirEntry$39, Name$19], [DirEntry$39, Name$22], [DirEntry$39, Name$24], [DirEntry$39, Name$26], [DirEntry$39, Name$28], [DirEntry$39, Name$29], [DirEntry$39, Name$31], [DirEntry$39, Name$34], [DirEntry$39, Name$35], [DirEntry$39, Name$38], [DirEntry$39, Name$39], [DirEntry$39, Name$41], [DirEntry$39, Name$42], [DirEntry$40, Name$0], [DirEntry$40, Name$4], [DirEntry$40, Name$6], [DirEntry$40, Name$8], [DirEntry$40, Name$9], [DirEntry$40, Name$12], [DirEntry$40, Name$15], [DirEntry$40, Name$16], [DirEntry$40, Name$17], [DirEntry$40, Name$18], [DirEntry$40, Name$19], [DirEntry$40, Name$27], [DirEntry$40, Name$28], [DirEntry$40, Name$29], [DirEntry$40, Name$33], [DirEntry$40, Name$35], [DirEntry$40, Name$36], [DirEntry$40, Name$39], [DirEntry$40, Name$41], [DirEntry$40, Name$43], [DirEntry$41, Name$7], [DirEntry$41, Name$9], [DirEntry$41, Name$11], [DirEntry$41, Name$13], [DirEntry$41, Name$14], [DirEntry$41, Name$17], [DirEntry$41, Name$18], [DirEntry$41, Name$21], [DirEntry$41, Name$22], [DirEntry$41, Name$25], [DirEntry$41, Name$27], [DirEntry$41, Name$28], [DirEntry$41, Name$29], [DirEntry$41, Name$31], [DirEntry$41, Name$32], [DirEntry$41, Name$33], [DirEntry$41, Name$34], [DirEntry$41, Name$35], [DirEntry$41, Name$36], [DirEntry$41, Name$39], [DirEntry$41, Name$41], [DirEntry$41, Name$42], [DirEntry$42, Name$5], [DirEntry$42, Name$6], [DirEntry$42, Name$7], [DirEntry$42, Name$9], [DirEntry$42, Name$11], [DirEntry$42, Name$13], [DirEntry$42, Name$14], [DirEntry$42, Name$15], [DirEntry$42, Name$16], [DirEntry$42, Name$18], [DirEntry$42, Name$19], [DirEntry$42, Name$20], [DirEntry$42, Name$21], [DirEntry$42, Name$22], [DirEntry$42, Name$23], [DirEntry$42, Name$25], [DirEntry$42, Name$26], [DirEntry$42, Name$27], [DirEntry$42, Name$29], [DirEntry$42, Name$31], [DirEntry$42, Name$32], [DirEntry$42, Name$34], [DirEntry$42, Name$35], [DirEntry$42, Name$41], [DirEntry$42, Name$43], [DirEntry$42, Name$44], [DirEntry$43, Name$1], [DirEntry$43, Name$2], [DirEntry$43, Name$4], [DirEntry$43, Name$6], [DirEntry$43, Name$9], [DirEntry$43, Name$11], [DirEntry$43, Name$14], [DirEntry$43, Name$17], [DirEntry$43, Name$18], [DirEntry$43, Name$19], [DirEntry$43, Name$21], [DirEntry$43, Name$22], [DirEntry$43, Name$23], [DirEntry$43, Name$24], [DirEntry$43, Name$25], [DirEntry$43, Name$26], [DirEntry$43, Name$27], [DirEntry$43, Name$30], [DirEntry$43, Name$32], [DirEntry$43, Name$33], [DirEntry$43, Name$35], [DirEntry$43, Name$41], [DirEntry$43, Name$42], [DirEntry$43, Name$43], [DirEntry$44, Name$0], [DirEntry$44, Name$1], [DirEntry$44, Name$3], [DirEntry$44, Name$4], [DirEntry$44, Name$5], [DirEntry$44, Name$7], [DirEntry$44, Name$9], [DirEntry$44, Name$11], [DirEntry$44, Name$13], [DirEntry$44, Name$14], [DirEntry$44, Name$15], [DirEntry$44, Name$18], [DirEntry$44, Name$21], [DirEntry$44, Name$22], [DirEntry$44, Name$23], [DirEntry$44, Name$24], [DirEntry$44, Name$26], [DirEntry$44, Name$28], [DirEntry$44, Name$30], [DirEntry$44, Name$32], [DirEntry$44, Name$34], [DirEntry$44, Name$35], [DirEntry$44, Name$39], [DirEntry$44, Name$41], [DirEntry$44, Name$42]]
+this/DirEntry : []
+this/DirEntry.contents : []
+this/Dir.entries : [[Root$0, DirEntry$0], [Root$0, DirEntry$1], [Root$0, DirEntry$7], [Root$0, DirEntry$12], [Root$0, DirEntry$15], [Root$0, DirEntry$16], [Root$0, DirEntry$17], [Root$0, DirEntry$18], [Root$0, DirEntry$20], [Root$0, DirEntry$21], [Root$0, DirEntry$22], [Root$0, DirEntry$24], [Root$0, DirEntry$33], [Root$0, DirEntry$34], [Root$0, DirEntry$37], [Root$0, DirEntry$40], [Object$0, DirEntry$0], [Object$0, DirEntry$3], [Object$0, DirEntry$4], [Object$0, DirEntry$10], [Object$0, DirEntry$13], [Object$0, DirEntry$18], [Object$0, DirEntry$20], [Object$0, DirEntry$22], [Object$0, DirEntry$23], [Object$0, DirEntry$24], [Object$0, DirEntry$25], [Object$0, DirEntry$26], [Object$0, DirEntry$31], [Object$0, DirEntry$37], [Object$0, DirEntry$38], [Object$0, DirEntry$42], [Object$1, DirEntry$0], [Object$1, DirEntry$7], [Object$1, DirEntry$8], [Object$1, DirEntry$9], [Object$1, DirEntry$10], [Object$1, DirEntry$14], [Object$1, DirEntry$19], [Object$1, DirEntry$20], [Object$1, DirEntry$22], [Object$1, DirEntry$26], [Object$1, DirEntry$29], [Object$1, DirEntry$30], [Object$1, DirEntry$34], [Object$1, DirEntry$43], [Object$1, DirEntry$44], [Object$2, DirEntry$0], [Object$2, DirEntry$2], [Object$2, DirEntry$4], [Object$2, DirEntry$5], [Object$2, DirEntry$7], [Object$2, DirEntry$9], [Object$2, DirEntry$19], [Object$2, DirEntry$20], [Object$2, DirEntry$23], [Object$2, DirEntry$37], [Object$2, DirEntry$39], [Object$2, DirEntry$41], [Object$2, DirEntry$44], [Object$3, DirEntry$0], [Object$3, DirEntry$3], [Object$3, DirEntry$7], [Object$3, DirEntry$9], [Object$3, DirEntry$11], [Object$3, DirEntry$13], [Object$3, DirEntry$18], [Object$3, DirEntry$20], [Object$3, DirEntry$23], [Object$3, DirEntry$26], [Object$3, DirEntry$29], [Object$3, DirEntry$30], [Object$3, DirEntry$43], [Object$4, DirEntry$0], [Object$4, DirEntry$4], [Object$4, DirEntry$13], [Object$4, DirEntry$19], [Object$4, DirEntry$20], [Object$4, DirEntry$21], [Object$4, DirEntry$25], [Object$4, DirEntry$26], [Object$4, DirEntry$28], [Object$4, DirEntry$29], [Object$4, DirEntry$32], [Object$4, DirEntry$37], [Object$4, DirEntry$40], [Object$4, DirEntry$41], [Object$4, DirEntry$42], [Object$5, DirEntry$4], [Object$5, DirEntry$13], [Object$5, DirEntry$15], [Object$5, DirEntry$16], [Object$5, DirEntry$19], [Object$5, DirEntry$20], [Object$5, DirEntry$22], [Object$5, DirEntry$24], [Object$5, DirEntry$25], [Object$5, DirEntry$28], [Object$5, DirEntry$31], [Object$5, DirEntry$32], [Object$5, DirEntry$43], [Object$5, DirEntry$44], [Object$6, DirEntry$8], [Object$6, DirEntry$13], [Object$6, DirEntry$15], [Object$6, DirEntry$18], [Object$6, DirEntry$20], [Object$6, DirEntry$23], [Object$6, DirEntry$27], [Object$6, DirEntry$29], [Object$6, DirEntry$32], [Object$6, DirEntry$33], [Object$6, DirEntry$38], [Object$6, DirEntry$41], [Object$6, DirEntry$44], [Object$7, DirEntry$4], [Object$7, DirEntry$5], [Object$7, DirEntry$11], [Object$7, DirEntry$12], [Object$7, DirEntry$14], [Object$7, DirEntry$19], [Object$7, DirEntry$22], [Object$7, DirEntry$23], [Object$7, DirEntry$27], [Object$7, DirEntry$33], [Object$7, DirEntry$35], [Object$7, DirEntry$37], [Object$7, DirEntry$40], [Object$7, DirEntry$43], [Object$8, DirEntry$1], [Object$8, DirEntry$2], [Object$8, DirEntry$3], [Object$8, DirEntry$6], [Object$8, DirEntry$10], [Object$8, DirEntry$14], [Object$8, DirEntry$21], [Object$8, DirEntry$26], [Object$8, DirEntry$34], [Object$8, DirEntry$35], [Object$8, DirEntry$37], [Object$8, DirEntry$38], [Object$8, DirEntry$44], [Object$9, DirEntry$1], [Object$9, DirEntry$2], [Object$9, DirEntry$5], [Object$9, DirEntry$7], [Object$9, DirEntry$11], [Object$9, DirEntry$12], [Object$9, DirEntry$14], [Object$9, DirEntry$16], [Object$9, DirEntry$21], [Object$9, DirEntry$22], [Object$9, DirEntry$23], [Object$9, DirEntry$27], [Object$9, DirEntry$32], [Object$9, DirEntry$34], [Object$9, DirEntry$40], [Object$10, DirEntry$0], [Object$10, DirEntry$1], [Object$10, DirEntry$2], [Object$10, DirEntry$5], [Object$10, DirEntry$12], [Object$10, DirEntry$17], [Object$10, DirEntry$21], [Object$10, DirEntry$25], [Object$10, DirEntry$26], [Object$10, DirEntry$29], [Object$10, DirEntry$31], [Object$10, DirEntry$35], [Object$10, DirEntry$39], [Object$10, DirEntry$40], [Object$10, DirEntry$41], [Object$11, DirEntry$1], [Object$11, DirEntry$8], [Object$11, DirEntry$9], [Object$11, DirEntry$15], [Object$11, DirEntry$17], [Object$11, DirEntry$19], [Object$11, DirEntry$22], [Object$11, DirEntry$23], [Object$11, DirEntry$24], [Object$11, DirEntry$32], [Object$11, DirEntry$33], [Object$11, DirEntry$34], [Object$11, DirEntry$35], [Object$11, DirEntry$38], [Object$11, DirEntry$43], [Object$11, DirEntry$44], [Object$12, DirEntry$3], [Object$12, DirEntry$6], [Object$12, DirEntry$7], [Object$12, DirEntry$9], [Object$12, DirEntry$10], [Object$12, DirEntry$13], [Object$12, DirEntry$21], [Object$12, DirEntry$23], [Object$12, DirEntry$25], [Object$12, DirEntry$36], [Object$12, DirEntry$37], [Object$12, DirEntry$38], [Object$12, DirEntry$39], [Object$13, DirEntry$3], [Object$13, DirEntry$4], [Object$13, DirEntry$6], [Object$13, DirEntry$10], [Object$13, DirEntry$17], [Object$13, DirEntry$18], [Object$13, DirEntry$28], [Object$13, DirEntry$30], [Object$13, DirEntry$32], [Object$13, DirEntry$33], [Object$13, DirEntry$34], [Object$13, DirEntry$36], [Object$13, DirEntry$38], [Object$13, DirEntry$40], [Object$13, DirEntry$43], [Object$13, DirEntry$44], [Object$14, DirEntry$4], [Object$14, DirEntry$5], [Object$14, DirEntry$7], [Object$14, DirEntry$9], [Object$14, DirEntry$12], [Object$14, DirEntry$14], [Object$14, DirEntry$18], [Object$14, DirEntry$21], [Object$14, DirEntry$26], [Object$14, DirEntry$29], [Object$14, DirEntry$32], [Object$14, DirEntry$33], [Object$14, DirEntry$39], [Object$14, DirEntry$40], [Object$14, DirEntry$42], [Object$14, DirEntry$43], [Object$15, DirEntry$0], [Object$15, DirEntry$1], [Object$15, DirEntry$3], [Object$15, DirEntry$4], [Object$15, DirEntry$8], [Object$15, DirEntry$11], [Object$15, DirEntry$24], [Object$15, DirEntry$26], [Object$15, DirEntry$27], [Object$15, DirEntry$28], [Object$15, DirEntry$29], [Object$15, DirEntry$30], [Object$15, DirEntry$31], [Object$15, DirEntry$39], [Object$15, DirEntry$42], [Object$15, DirEntry$43], [Object$16, DirEntry$0], [Object$16, DirEntry$5], [Object$16, DirEntry$6], [Object$16, DirEntry$8], [Object$16, DirEntry$11], [Object$16, DirEntry$14], [Object$16, DirEntry$16], [Object$16, DirEntry$20], [Object$16, DirEntry$25], [Object$16, DirEntry$26], [Object$16, DirEntry$27], [Object$16, DirEntry$28], [Object$16, DirEntry$30], [Object$16, DirEntry$31], [Object$16, DirEntry$33], [Object$16, DirEntry$35], [Object$16, DirEntry$43], [Object$17, DirEntry$0], [Object$17, DirEntry$7], [Object$17, DirEntry$8], [Object$17, DirEntry$11], [Object$17, DirEntry$12], [Object$17, DirEntry$14], [Object$17, DirEntry$15], [Object$17, DirEntry$17], [Object$17, DirEntry$19], [Object$17, DirEntry$21], [Object$17, DirEntry$22], [Object$17, DirEntry$23], [Object$17, DirEntry$25], [Object$17, DirEntry$26], [Object$17, DirEntry$27], [Object$17, DirEntry$29], [Object$17, DirEntry$30], [Object$17, DirEntry$35], [Object$17, DirEntry$39], [Object$17, DirEntry$42], [Object$18, DirEntry$5], [Object$18, DirEntry$6], [Object$18, DirEntry$7], [Object$18, DirEntry$11], [Object$18, DirEntry$12], [Object$18, DirEntry$15], [Object$18, DirEntry$18], [Object$18, DirEntry$20], [Object$18, DirEntry$22], [Object$18, DirEntry$26], [Object$18, DirEntry$37], [Object$18, DirEntry$41], [Object$18, DirEntry$43], [Object$19, DirEntry$9], [Object$19, DirEntry$12], [Object$19, DirEntry$14], [Object$19, DirEntry$19], [Object$19, DirEntry$20], [Object$19, DirEntry$21], [Object$19, DirEntry$23], [Object$19, DirEntry$27], [Object$19, DirEntry$32], [Object$19, DirEntry$37], [Object$19, DirEntry$38], [Object$19, DirEntry$40], [Object$20, DirEntry$3], [Object$20, DirEntry$4], [Object$20, DirEntry$10], [Object$20, DirEntry$15], [Object$20, DirEntry$16], [Object$20, DirEntry$21], [Object$20, DirEntry$22], [Object$20, DirEntry$24], [Object$20, DirEntry$27], [Object$20, DirEntry$28], [Object$20, DirEntry$30], [Object$20, DirEntry$33], [Object$20, DirEntry$35], [Object$20, DirEntry$38], [Object$20, DirEntry$40], [Object$20, DirEntry$41], [Object$21, DirEntry$1], [Object$21, DirEntry$2], [Object$21, DirEntry$9], [Object$21, DirEntry$15], [Object$21, DirEntry$18], [Object$21, DirEntry$23], [Object$21, DirEntry$33], [Object$21, DirEntry$36], [Object$22, DirEntry$2], [Object$22, DirEntry$3], [Object$22, DirEntry$4], [Object$22, DirEntry$8], [Object$22, DirEntry$11], [Object$22, DirEntry$13], [Object$22, DirEntry$18], [Object$22, DirEntry$20], [Object$22, DirEntry$26], [Object$22, DirEntry$27], [Object$22, DirEntry$28], [Object$22, DirEntry$35], [Object$23, DirEntry$9], [Object$23, DirEntry$12], [Object$23, DirEntry$13], [Object$23, DirEntry$24], [Object$23, DirEntry$26], [Object$23, DirEntry$27], [Object$23, DirEntry$28], [Object$23, DirEntry$29], [Object$23, DirEntry$41], [Object$23, DirEntry$42], [Object$24, DirEntry$0], [Object$24, DirEntry$1], [Object$24, DirEntry$4], [Object$24, DirEntry$8], [Object$24, DirEntry$10], [Object$24, DirEntry$14], [Object$24, DirEntry$18], [Object$24, DirEntry$19], [Object$24, DirEntry$26], [Object$24, DirEntry$33], [Object$24, DirEntry$35], [Object$24, DirEntry$39], [Object$25, DirEntry$5], [Object$25, DirEntry$9], [Object$25, DirEntry$12], [Object$25, DirEntry$13], [Object$25, DirEntry$18], [Object$25, DirEntry$21], [Object$25, DirEntry$22], [Object$25, DirEntry$23], [Object$25, DirEntry$24], [Object$25, DirEntry$25], [Object$25, DirEntry$26], [Object$25, DirEntry$31], [Object$25, DirEntry$33], [Object$25, DirEntry$39], [Object$25, DirEntry$42], [Object$25, DirEntry$44], [Object$26, DirEntry$4], [Object$26, DirEntry$6], [Object$26, DirEntry$7], [Object$26, DirEntry$9], [Object$26, DirEntry$11], [Object$26, DirEntry$15], [Object$26, DirEntry$17], [Object$26, DirEntry$19], [Object$26, DirEntry$20], [Object$26, DirEntry$22], [Object$26, DirEntry$28], [Object$26, DirEntry$33], [Object$26, DirEntry$34], [Object$26, DirEntry$36], [Object$26, DirEntry$42], [Object$27, DirEntry$2], [Object$27, DirEntry$9], [Object$27, DirEntry$11], [Object$27, DirEntry$22], [Object$27, DirEntry$27], [Object$27, DirEntry$36], [Object$27, DirEntry$38], [Object$28, DirEntry$10], [Object$28, DirEntry$16], [Object$28, DirEntry$22], [Object$28, DirEntry$26], [Object$28, DirEntry$27], [Object$28, DirEntry$40], [Object$28, DirEntry$42], [Object$28, DirEntry$44], [Object$29, DirEntry$1], [Object$29, DirEntry$2], [Object$29, DirEntry$6], [Object$29, DirEntry$9], [Object$29, DirEntry$10], [Object$29, DirEntry$11], [Object$29, DirEntry$16], [Object$29, DirEntry$17], [Object$29, DirEntry$20], [Object$29, DirEntry$23], [Object$29, DirEntry$24], [Object$29, DirEntry$29], [Object$29, DirEntry$34], [Object$29, DirEntry$39], [Object$29, DirEntry$43], [Object$30, DirEntry$0], [Object$30, DirEntry$11], [Object$30, DirEntry$16], [Object$30, DirEntry$17], [Object$30, DirEntry$26], [Object$30, DirEntry$29], [Object$30, DirEntry$30], [Object$30, DirEntry$36], [Object$30, DirEntry$37], [Object$30, DirEntry$40], [Object$30, DirEntry$41], [Object$31, DirEntry$1], [Object$31, DirEntry$2], [Object$31, DirEntry$4], [Object$31, DirEntry$6], [Object$31, DirEntry$11], [Object$31, DirEntry$17], [Object$31, DirEntry$19], [Object$31, DirEntry$24], [Object$31, DirEntry$26], [Object$31, DirEntry$36], [Object$31, DirEntry$41], [Object$31, DirEntry$42], [Object$32, DirEntry$6], [Object$32, DirEntry$8], [Object$32, DirEntry$14], [Object$32, DirEntry$24], [Object$32, DirEntry$26], [Object$32, DirEntry$27], [Object$32, DirEntry$29], [Object$32, DirEntry$32], [Object$32, DirEntry$37], [Object$32, DirEntry$42], [Object$32, DirEntry$44], [Object$33, DirEntry$0], [Object$33, DirEntry$2], [Object$33, DirEntry$4], [Object$33, DirEntry$6], [Object$33, DirEntry$11], [Object$33, DirEntry$14], [Object$33, DirEntry$15], [Object$33, DirEntry$17], [Object$33, DirEntry$18], [Object$33, DirEntry$19], [Object$33, DirEntry$23], [Object$33, DirEntry$24], [Object$33, DirEntry$26], [Object$33, DirEntry$27], [Object$33, DirEntry$29], [Object$33, DirEntry$31], [Object$33, DirEntry$32], [Object$33, DirEntry$36], [Object$33, DirEntry$38], [Object$33, DirEntry$41], [Object$33, DirEntry$43], [Object$33, DirEntry$44], [Object$34, DirEntry$2], [Object$34, DirEntry$10], [Object$34, DirEntry$13], [Object$34, DirEntry$20], [Object$34, DirEntry$24], [Object$34, DirEntry$26], [Object$34, DirEntry$27], [Object$34, DirEntry$33], [Object$34, DirEntry$34], [Object$34, DirEntry$35], [Object$34, DirEntry$44], [Object$35, DirEntry$8], [Object$35, DirEntry$9], [Object$35, DirEntry$11], [Object$35, DirEntry$16], [Object$35, DirEntry$22], [Object$35, DirEntry$23], [Object$35, DirEntry$24], [Object$35, DirEntry$27], [Object$35, DirEntry$28], [Object$35, DirEntry$31], [Object$35, DirEntry$34], [Object$35, DirEntry$36], [Object$35, DirEntry$37], [Object$35, DirEntry$40], [Object$35, DirEntry$41], [Object$35, DirEntry$42], [Object$36, DirEntry$2], [Object$36, DirEntry$5], [Object$36, DirEntry$6], [Object$36, DirEntry$7], [Object$36, DirEntry$10], [Object$36, DirEntry$13], [Object$36, DirEntry$15], [Object$36, DirEntry$19], [Object$36, DirEntry$23], [Object$36, DirEntry$28], [Object$36, DirEntry$29], [Object$36, DirEntry$30], [Object$36, DirEntry$34], [Object$36, DirEntry$41], [Object$36, DirEntry$42], [Object$37, DirEntry$0], [Object$37, DirEntry$3], [Object$37, DirEntry$4], [Object$37, DirEntry$6], [Object$37, DirEntry$8], [Object$37, DirEntry$9], [Object$37, DirEntry$10], [Object$37, DirEntry$13], [Object$37, DirEntry$14], [Object$37, DirEntry$15], [Object$37, DirEntry$17], [Object$37, DirEntry$18], [Object$37, DirEntry$20], [Object$37, DirEntry$22], [Object$37, DirEntry$23], [Object$37, DirEntry$24], [Object$37, DirEntry$28], [Object$37, DirEntry$29], [Object$37, DirEntry$31], [Object$37, DirEntry$34], [Object$37, DirEntry$35], [Object$37, DirEntry$41], [Object$38, DirEntry$2], [Object$38, DirEntry$4], [Object$38, DirEntry$6], [Object$38, DirEntry$7], [Object$38, DirEntry$9], [Object$38, DirEntry$12], [Object$38, DirEntry$14], [Object$38, DirEntry$15], [Object$38, DirEntry$16], [Object$38, DirEntry$17], [Object$38, DirEntry$19], [Object$38, DirEntry$20], [Object$38, DirEntry$22], [Object$38, DirEntry$23], [Object$38, DirEntry$29], [Object$38, DirEntry$30], [Object$38, DirEntry$32], [Object$38, DirEntry$33], [Object$38, DirEntry$41], [Object$38, DirEntry$43], [Object$39, DirEntry$0], [Object$39, DirEntry$3], [Object$39, DirEntry$6], [Object$39, DirEntry$7], [Object$39, DirEntry$8], [Object$39, DirEntry$9], [Object$39, DirEntry$13], [Object$39, DirEntry$16], [Object$39, DirEntry$20], [Object$39, DirEntry$21], [Object$39, DirEntry$25], [Object$39, DirEntry$27], [Object$39, DirEntry$29], [Object$39, DirEntry$30], [Object$39, DirEntry$33], [Object$39, DirEntry$39], [Object$39, DirEntry$41], [Object$40, DirEntry$4], [Object$40, DirEntry$5], [Object$40, DirEntry$6], [Object$40, DirEntry$8], [Object$40, DirEntry$11], [Object$40, DirEntry$12], [Object$40, DirEntry$15], [Object$40, DirEntry$17], [Object$40, DirEntry$18], [Object$40, DirEntry$19], [Object$40, DirEntry$20], [Object$40, DirEntry$22], [Object$40, DirEntry$23], [Object$40, DirEntry$26], [Object$40, DirEntry$28], [Object$40, DirEntry$32], [Object$40, DirEntry$37], [Object$40, DirEntry$40], [Object$40, DirEntry$42], [Object$40, DirEntry$43], [Object$41, DirEntry$1], [Object$41, DirEntry$2], [Object$41, DirEntry$11], [Object$41, DirEntry$14], [Object$41, DirEntry$16], [Object$41, DirEntry$21], [Object$41, DirEntry$24], [Object$41, DirEntry$28], [Object$41, DirEntry$29], [Object$41, DirEntry$30], [Object$41, DirEntry$31], [Object$41, DirEntry$32], [Object$41, DirEntry$37], [Object$41, DirEntry$43], [Object$41, DirEntry$44], [Object$42, DirEntry$2], [Object$42, DirEntry$3], [Object$42, DirEntry$5], [Object$42, DirEntry$10], [Object$42, DirEntry$11], [Object$42, DirEntry$12], [Object$42, DirEntry$13], [Object$42, DirEntry$16], [Object$42, DirEntry$19], [Object$42, DirEntry$20], [Object$42, DirEntry$22], [Object$42, DirEntry$23], [Object$42, DirEntry$26], [Object$42, DirEntry$27], [Object$42, DirEntry$30], [Object$42, DirEntry$32], [Object$42, DirEntry$34], [Object$42, DirEntry$39], [Object$42, DirEntry$43], [Object$43, DirEntry$0], [Object$43, DirEntry$3], [Object$43, DirEntry$5], [Object$43, DirEntry$7], [Object$43, DirEntry$10], [Object$43, DirEntry$11], [Object$43, DirEntry$15], [Object$43, DirEntry$18], [Object$43, DirEntry$19], [Object$43, DirEntry$20], [Object$43, DirEntry$21], [Object$43, DirEntry$23], [Object$43, DirEntry$24], [Object$43, DirEntry$25], [Object$43, DirEntry$28], [Object$43, DirEntry$32], [Object$43, DirEntry$36], [Object$43, DirEntry$37], [Object$43, DirEntry$41], [Object$43, DirEntry$43]]
+this/Dir.parent : []
+
+End Iteration: 8534 ms
+ACO Time: 8537 ms
+Total Time: 23972 ms.

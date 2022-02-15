@@ -1,6 +1,6 @@
 <alloy builddate="unknown">
 
-<instance bitwidth="0" maxseq="0" command="Run run$1 for 25" filename="">
+<instance bitwidth="0" maxseq="0" command="Run run$1 for 45" filename="">
 
 <sig label="seq/Int" ID="0" parentID="1" builtin="yes">
 </sig>
@@ -36,31 +36,6 @@
 </sig>
 
 <sig label="this/Name" ID="12" parentID="2">
-   <atom label="Name$0"/>
-   <atom label="Name$1"/>
-   <atom label="Name$2"/>
-   <atom label="Name$3"/>
-   <atom label="Name$4"/>
-   <atom label="Name$5"/>
-   <atom label="Name$6"/>
-   <atom label="Name$7"/>
-   <atom label="Name$8"/>
-   <atom label="Name$9"/>
-   <atom label="Name$10"/>
-   <atom label="Name$11"/>
-   <atom label="Name$12"/>
-   <atom label="Name$13"/>
-   <atom label="Name$14"/>
-   <atom label="Name$15"/>
-   <atom label="Name$16"/>
-   <atom label="Name$17"/>
-   <atom label="Name$18"/>
-   <atom label="Name$19"/>
-   <atom label="Name$20"/>
-   <atom label="Name$21"/>
-   <atom label="Name$22"/>
-   <atom label="Name$23"/>
-   <atom label="Name$24"/>
 </sig>
 
 <sig label="this/DirEntry" ID="10" parentID="2">

@@ -433,11 +433,11 @@ public class Main {
 
                         quickSortPopulation(originPopulation);
 
-//                        if (numOfZeroFitnessChange >= 3) {
-//                            System.out.println("GA is not optimal anymore");
-//                            System.out.println("Switching to ACO...");
-//                            break;
-//                        }
+                        if (numOfZeroFitnessChange >= 3) {
+                            System.out.println("GA is not optimal anymore");
+                            System.out.println("Switching to ACO...");
+                            break;
+                        }
 
                         double currentFitness = originPopulation.get(0).fitness;
 
@@ -889,11 +889,13 @@ public class Main {
     public static AntColonyAlgorithm createAntColonyInstanceByChromosomes(A4Solution notSolvedSolution, ArrayList<Choromosome> choromosomes) {
         HashMap<Relation, ArrayList<TupleSet>> relationTuples = new HashMap<Relation, ArrayList<TupleSet>>();
         ArrayList<Relation> unimportantRelations = new ArrayList<>();
+        int numOfRelations = 0;
 
         for (Relation relation : notSolvedSolution.bounds.relations()) {
             if (isUnimportant(relation)) {
                 unimportantRelations.add(relation);
             } else {
+                numOfRelations++;
                 ArrayList<TupleSet> tupleSets = new ArrayList<>();
                 for (Choromosome choromosome : choromosomes) {
                     TupleSet chromosomeTuples = choromosome.chromosomeBounds.uppers.get(relation);
@@ -907,6 +909,7 @@ public class Main {
         antColonyAlgorithm.setUnimportantRelations(unimportantRelations);
         antColonyAlgorithm.setNotSolvedSolution(notSolvedSolution);
         antColonyAlgorithm.initializeNodes(relationTuples);
+        antColonyAlgorithm.setNumOfRelations(numOfRelations);
 
         return antColonyAlgorithm;
     }

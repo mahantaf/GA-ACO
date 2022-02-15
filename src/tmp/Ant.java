@@ -50,6 +50,10 @@ public class Ant {
         nodes.set(index, node);
     }
 
+    public AntNode getNode(int index) {
+        return nodes.get(index);
+    }
+
     public void addNode(AntNode node) {
         nodes.add(node);
     }
@@ -68,8 +72,8 @@ public class Ant {
         printed.append("Number of failed constraints: ").append(failedConstraintsNumber).append("\n");
         printed.append("Number of failed relations: ").append(failedRelationNumber).append("\n");
         // TODO: Uncomment following lines later
-//        for (AntNode node : nodes)
-//            printed.append(node.relation).append(" : ").append(node.tuples.toString()).append("\n");
+        for (AntNode node : nodes)
+            printed.append(node.relation).append(" : ").append(node.tuples.toString()).append("\n");
         return printed.toString();
     }
 }
