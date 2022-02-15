@@ -1,6 +1,5 @@
 package tmp;
 
-import kodkod.instance.Tuple;
 import kodkod.ast.Relation;
 import kodkod.instance.TupleSet;
 
@@ -12,7 +11,6 @@ public class AntNode {
     public double pheromone;
     public double probability = 0.0;
     public double tempHeuristic = 0.0;
-
 
     public AntNode(Relation relation, TupleSet tuples, double pheromone) {
         this.relation = relation;

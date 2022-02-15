@@ -1,6 +1,6 @@
 <alloy builddate="unknown">
 
-<instance bitwidth="0" maxseq="0" command="Run IsValidFS for 105" filename="">
+<instance bitwidth="0" maxseq="0" command="Run Square for 45 Point, 3 State expect 1" filename="">
 
 <sig label="seq/Int" ID="0" parentID="1" builtin="yes">
 </sig>
@@ -11,23 +11,45 @@
 <sig label="String" ID="3" parentID="2" builtin="yes">
 </sig>
 
-<sig label="this/RootName" ID="4" parentID="5" one="yes">
-   <atom label="RootName$0"/>
+<sig label="this/Root" ID="4" parentID="5" one="yes">
+   <atom label="Root$0"/>
 </sig>
 
-<sig label="this/Name" ID="5" parentID="2">
+<sig label="this/Point" ID="5" parentID="2">
 </sig>
 
-<field label="children" ID="6" parentID="5">
+<field label="right" ID="6" parentID="5">
    <types> <type ID="5"/> <type ID="5"/> </types>
 </field>
 
-<sig label="this/Dir" ID="7" parentID="8" one="yes">
-   <atom label="Dir$0"/>
+<field label="below" ID="7" parentID="5">
+   <types> <type ID="5"/> <type ID="5"/> </types>
+</field>
+
+<sig label="this/State" ID="8" parentID="2">
+   <atom label="State$0"/>
+   <atom label="State$1"/>
+   <atom label="State$2"/>
 </sig>
 
-<sig label="this/FileContents" ID="8" parentID="2">
+<field label="live" ID="9" parentID="8">
+   <types> <type ID="8"/> <type ID="5"/> </types>
+</field>
+
+<sig label="ord/Ord" ID="10" parentID="2" one="yes" private="yes">
+   <atom label="ord/Ord$0"/>
 </sig>
+
+<field label="First" ID="11" parentID="10" private="yes">
+   <tuple> <atom label="ord/Ord$0"/> <atom label="State$1"/> </tuple>
+   <types> <type ID="10"/> <type ID="8"/> </types>
+</field>
+
+<field label="Next" ID="12" parentID="10" private="yes">
+   <tuple> <atom label="ord/Ord$0"/> <atom label="State$1"/> <atom label="State$2"/> </tuple>
+   <tuple> <atom label="ord/Ord$0"/> <atom label="State$2"/> <atom label="State$0"/> </tuple>
+   <types> <type ID="10"/> <type ID="8"/> <type ID="8"/> </types>
+</field>
 
 <sig label="univ" ID="2" builtin="yes">
 </sig>

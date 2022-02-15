@@ -433,11 +433,11 @@ public class Main {
 
                         quickSortPopulation(originPopulation);
 
-//                        if (numOfZeroFitnessChange >= 3) {
-//                            System.out.println("GA is not optimal anymore");
-//                            System.out.println("Switching to ACO...");
-//                            break;
-//                        }
+                        if (numOfZeroFitnessChange >= 3) {
+                            System.out.println("GA is not optimal anymore");
+                            System.out.println("Switching to ACO...");
+                            break;
+                        }
 
                         double currentFitness = originPopulation.get(0).fitness;
 
@@ -516,7 +516,7 @@ public class Main {
                         System.out.println("Change: " + (currentFitness - newFitness));
                         System.out.println("------------------------");
 
-                        if (currentFitness - newFitness <= 0.05)
+                        if (currentFitness - newFitness <= 0.01)
                             numOfZeroFitnessChange++;
                         else
                             numOfZeroFitnessChange = 0;
@@ -530,7 +530,7 @@ public class Main {
                 // Added by Mahan
                 if (!foundSolution) {
                     long startAntColony = System.currentTimeMillis();
-                    AntColonyAlgorithm antColonyAlgorithm = createAntColonyInstanceByChromosomes(unsolvedSolution, originPopulation);
+                    PartialAntColonyAlgorithm antColonyAlgorithm = (PartialAntColonyAlgorithm) createAntColonyInstanceByChromosomes(unsolvedSolution, originPopulation);
 
                     for (Choromosome choromosome : originPopulation)
                         antColonyAlgorithm.updatePheromonesByGASolution(choromosome.chromosomeBounds, choromosome.fitness);
@@ -601,17 +601,40 @@ public class Main {
         return low;
     }
 
+    private static void generateRandomChromosomes(
+            ThreadPoolExecutor executorPool)
+    {
+        int randomChromosomesSize = 30;
+
+        originPopulation = new ArrayList<>();
+        for (int j = 0; j < randomChromosomesSize; ++j)
+            originPopulation.add(null);
+
+        latch = new CountDownLatch(randomChromosomesSize);
+
+        for (int iter = 0; iter < randomChromosomesSize; ++iter) {
+            Choromosome generatedChromo = new Choromosome(iter);
+            Runnable generateRandomChromosomeThread = new GenerateRandomChromosomeThread(generatedChromo, iter);
+            executorPool.execute(generateRandomChromosomeThread);
+        }
+
+        try {
+            latch.await();
+        } catch (InterruptedException ignored) {}
+        ++iterations;
+    }
+
     private static void generateOriginalPopulationOfChromosome_multithread(Command cmd, A4Reporter rep, ConstList<Sig> sigsS, A4Options opt, ArrayList<Choromosome> generatedPopulationByGA, ThreadPoolExecutor executorPool) throws Err, CloneNotSupportedException, IOException, InterruptedException, ClassNotFoundException {
         long start = System.currentTimeMillis();
         new ArrayList();
         originPopulation = new ArrayList();
 
-        for(int j = 0; j < population; ++j)
+        for (int j = 0; j < population; ++j)
             originPopulation.add(null);
 
         latch = new CountDownLatch(population);
 
-        for(int iter = 0; iter < population; ++iter) {
+        for (int iter = 0; iter < population; ++iter) {
             long startIter = System.currentTimeMillis();
             Choromosome generatedChromo;
             if (isOriginalPopulation) {
@@ -765,7 +788,6 @@ public class Main {
             ArrayList<Choromosome> generatedPopulationByGA,
             ThreadPoolExecutor executorPool
     ) throws Err, CloneNotSupportedException, IOException, InterruptedException, ClassNotFoundException {
-
         originPopulation = new ArrayList<>();
 
         for(int j = 0; j < generatedPopulationByGA.size(); ++j)
@@ -808,11 +830,11 @@ public class Main {
         ant.failedRelationNumber = evaluatedChromosome.failedRelationNumber;
     }
 
-    public static void evaluateAntsPartialSolutionsMultiThread(AntColonyAlgorithm antColonyAlgorithmInstance, ArrayList<Ant> ants) {
+    public static void evaluateAntsPartialSolutionsMultiThread(ArrayList<Relation> unimportantRelations, ArrayList<Ant> ants) {
         ArrayList<Choromosome> antChromosomePopulation = new ArrayList<>();
         int index = 0;
         for (Ant ant : ants) {
-            antChromosomePopulation.add(translateAntToChromosome(ant, antColonyAlgorithmInstance.unimportantRelations, index));
+            antChromosomePopulation.add(translateAntToChromosome(ant, unimportantRelations, index));
             ++index;
         }
 
@@ -826,14 +848,17 @@ public class Main {
         }
 
         index = 0;
-        for (Ant ant: ants) {
-            Choromosome evaluatedChromosome = originPopulation.get(index);
-
-            ant.fitness = evaluatedChromosome.fitness;
-            ant.failedConstraintsNumber = evaluatedChromosome.failedConstraintsNumber;
-            ant.totalConstraintsNumber = evaluatedChromosome.totalConstraintsNumber;
-            ant.failedRelationNumber = evaluatedChromosome.failedRelationNumber;
-            ++index;
+        try {
+            for (Ant ant : ants) {
+                Choromosome evaluatedChromosome = originPopulation.get(index);
+                ant.fitness = evaluatedChromosome.fitness;
+                ant.failedConstraintsNumber = evaluatedChromosome.failedConstraintsNumber;
+                ant.totalConstraintsNumber = evaluatedChromosome.totalConstraintsNumber;
+                ant.failedRelationNumber = evaluatedChromosome.failedRelationNumber;
+                ++index;
+            }
+        } catch (NullPointerException e) {
+            e.printStackTrace();
         }
     }
 
@@ -849,13 +874,16 @@ public class Main {
         Command cmd = world.getAllCommands().get(0);
         ConstList<Sig> sigsS = world.getAllReachableSigs();
 
-        Random random = new Random(System.currentTimeMillis());
-        int mutationProbability = random.nextInt(100);
+//        Random random = new Random(System.currentTimeMillis());
+//        int mutationProbability = random.nextInt(100);
+//
+//        if (mutationProbability <= 10) {
+//            System.out.println("Adding Random Mutation");
+//            antChromosomePopulation = GeneticAlgorithm.mutation_tupleLevel(antChromosomePopulation);
+//        }
 
-        if (mutationProbability <= 10) {
-            System.out.println("Adding Random Mutation");
-            antChromosomePopulation = GeneticAlgorithm.mutation_tupleLevel(antChromosomePopulation);
-        }
+//        System.out.println("Adding Random Mutation");
+//        antChromosomePopulation = GeneticAlgorithm.mutation_tupleLevel(antChromosomePopulation);
 
         try {
             generateOriginalPopulationOfChromosome_multithread(cmd, rep, sigsS, opt, antChromosomePopulation, executorPool);
@@ -873,9 +901,16 @@ public class Main {
             ant.totalConstraintsNumber = evaluatedChromosome.totalConstraintsNumber;
             ant.failedRelationNumber = evaluatedChromosome.failedRelationNumber;
 
-            antColonyAlgorithmInstance.updateNodesByChromosome(evaluatedChromosome.chromosomeBounds);
+//            antColonyAlgorithmInstance.updateNodesByChromosome(evaluatedChromosome.chromosomeBounds);
             ++index;
         }
+
+        // Added by Mahan
+        System.out.println("Generating Random Chromosomes");
+        generateRandomChromosomes(executorPool);
+        for (Choromosome choromosome : originPopulation)
+            antColonyAlgorithmInstance.updateNodesByChromosome(choromosome.chromosomeBounds);
+        System.out.println(originPopulation.size() + " Random Chromosomes Added");
     }
 
     public static boolean contain(ArrayList<TupleSet> tupleSets, TupleSet tupleSet) {
@@ -903,7 +938,8 @@ public class Main {
                 relationTuples.put(relation, tupleSets);
             }
         }
-        AntColonyAlgorithm antColonyAlgorithm = new AntColonyAlgorithm();
+//        AntColonyAlgorithm antColonyAlgorithm = new AntColonyAlgorithm();
+        AntColonyAlgorithm antColonyAlgorithm = new PartialAntColonyAlgorithm();
         antColonyAlgorithm.setUnimportantRelations(unimportantRelations);
         antColonyAlgorithm.setNotSolvedSolution(notSolvedSolution);
         antColonyAlgorithm.initializeNodes(relationTuples);
