@@ -433,11 +433,11 @@ public class Main {
 
                         quickSortPopulation(originPopulation);
 
-//                        if (numOfZeroFitnessChange >= 3) {
-//                            System.out.println("GA is not optimal anymore");
-//                            System.out.println("Switching to ACO...");
-//                            break;
-//                        }
+                        if (numOfZeroFitnessChange >= 3) {
+                            System.out.println("GA is not optimal anymore");
+                            System.out.println("Switching to ACO...");
+                            break;
+                        }
 
                         double currentFitness = originPopulation.get(0).fitness;
 
@@ -595,6 +595,9 @@ public class Main {
     }
 
     private static void generateOriginalPopulationOfChromosome_multithread(Command cmd, A4Reporter rep, ConstList<Sig> sigsS, A4Options opt, ArrayList<Choromosome> generatedPopulationByGA, ThreadPoolExecutor executorPool) throws Err, CloneNotSupportedException, IOException, InterruptedException, ClassNotFoundException {
+        if (!isOriginalPopulation) {
+            population = generatedPopulationByGA.size();
+        }
         long start = System.currentTimeMillis();
         new ArrayList();
         originPopulation = new ArrayList();
@@ -890,7 +893,7 @@ public class Main {
             ant.totalConstraintsNumber = evaluatedChromosome.totalConstraintsNumber;
             ant.failedRelationNumber = evaluatedChromosome.failedRelationNumber;
 
-//            antColonyAlgorithmInstance.updateNodesByChromosome(evaluatedChromosome.chromosomeBounds);
+            antColonyAlgorithmInstance.updateNodesByChromosome(evaluatedChromosome.chromosomeBounds);
             ++index;
         }
 

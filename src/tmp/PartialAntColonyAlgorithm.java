@@ -40,6 +40,12 @@ public class PartialAntColonyAlgorithm extends AntColonyAlgorithm {
             SubAntNode antNode = (SubAntNode) bestAnt.getNode(entry.getKey());
             sortedBestAnt.addNode(antNode);
         }
+
+        sortedBestAnt.fitness = bestAnt.fitness;
+        sortedBestAnt.failedRelationNumber = bestAnt.failedRelationNumber;
+        sortedBestAnt.failedConstraintsNumber = bestAnt.failedConstraintsNumber;
+        sortedBestAnt.totalConstraintsNumber = bestAnt.totalConstraintsNumber;
+
         bestAnt = sortedBestAnt;
     }
 
@@ -86,7 +92,7 @@ public class PartialAntColonyAlgorithm extends AntColonyAlgorithm {
             int relationIndex = 0;
 
             Random random = new Random(System.currentTimeMillis());
-            int numOfBestChoice = random.nextInt(numOfRelations);
+            int numOfBestChoice = random.nextInt(numOfRelations - 1);
 
             ArrayList<Integer> relationChoice = new ArrayList<>();
             int numOfBestChoiceTemp = numOfBestChoice;
@@ -163,7 +169,7 @@ public class PartialAntColonyAlgorithm extends AntColonyAlgorithm {
 
             if (node == null)
 //                relationNodes.get(relation).add(new SubAntNode(relation, chromosomeTuples, defaultPheromone));
-                relationNodes.get(relation).add(new SubAntNode(relation, chromosomeTuples, defaultPheromone));
+                relationNodes.get(relation).add(new SubAntNode(relation, chromosomeTuples, defaultPheromone * 4));
         }
     }
 

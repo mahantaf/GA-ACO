@@ -21,8 +21,8 @@ public class Ant {
     }
 
     public double getDistance() {
-        return this.failedRelationNumber + this.failedConstraintsNumber;
-//        return 0.45F * (float)this.failedConstraintsNumber / (float)this.totalConstraintsNumber + 0.55F * (float)this.failedRelationNumber;
+//        return this.failedRelationNumber + this.failedConstraintsNumber;
+        return 0.45F * (float)this.failedConstraintsNumber / (float)this.totalConstraintsNumber + 0.55F * (float)this.failedRelationNumber;
     }
 
     public Ant() {

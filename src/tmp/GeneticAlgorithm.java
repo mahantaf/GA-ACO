@@ -17,9 +17,10 @@ import java.util.*;
 public class GeneticAlgorithm {
     public static int numberOfTournamentSelect = 3;
     public static double mutationRate = 0.08D;
-    public static int deleteRelationMutationRate = 10;
+    public static int deleteRelationMutationRate = 20;
+//    public static int deleteRelationMutationRate = 10;
     public static int changeRelationMutationRate = 30;
-    public static int addRelationMutationRate = 30;
+    public static int addRelationMutationRate = 40;
     public static int oneTupleMutationRate;
     public static int unbiasedPickBetterRate;
     public static HashMap<String, Integer> atomsNameAndScope;

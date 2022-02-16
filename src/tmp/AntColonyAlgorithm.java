@@ -12,8 +12,8 @@ import java.util.concurrent.TimeUnit;
 
 public class AntColonyAlgorithm {
 
-    public static double pheromoneWeight = 0.4;
-    public static double heuristicWeight = 0.6;
+    public static double pheromoneWeight = 0.3;
+    public static double heuristicWeight = 0.7;
     public int numberOfAnts = 32;
     public double minPheromone = 5;
     public double maxPheromone = 50;
@@ -104,7 +104,6 @@ public class AntColonyAlgorithm {
                 fullSolutionAnt.addNode(setNode);
             }
         }
-//        Main.evaluateAntPartialSolution(fullSolutionAnt, unimportantRelations);
         int index = 0;
         for (int i = 0; i < this.numberOfAnts; ++i) {
             if (initialAnts)
