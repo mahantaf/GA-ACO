@@ -1,6 +1,6 @@
 <alloy builddate="unknown">
 
-<instance bitwidth="0" maxseq="0" command="Run Square for 25 Point, 3 State expect 1" filename="">
+<instance bitwidth="0" maxseq="0" command="Run Square for 45 Point, 3 State expect 1" filename="">
 
 <sig label="seq/Int" ID="0" parentID="1" builtin="yes">
 </sig>

@@ -1,5 +1,6 @@
 package tmp;
 
+import kodkod.ast.Relation;
 import java.util.ArrayList;
 
 public class Ant {
@@ -53,6 +54,13 @@ public class Ant {
 
     public AntNode getNode(int index) {
         return nodes.get(index);
+    }
+
+    public AntNode getNode(Relation relation) {
+        for (AntNode node: nodes)
+            if (node.relation.equals(relation))
+                return node;
+        return null;
     }
 
     public void addNode(AntNode node) {

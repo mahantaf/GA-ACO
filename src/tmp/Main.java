@@ -433,11 +433,11 @@ public class Main {
 
                         quickSortPopulation(originPopulation);
 
-                        if (numOfZeroFitnessChange >= 3) {
-                            System.out.println("GA is not optimal anymore");
-                            System.out.println("Switching to ACO...");
-                            break;
-                        }
+//                        if (numOfZeroFitnessChange >= 3) {
+//                            System.out.println("GA is not optimal anymore");
+//                            System.out.println("Switching to ACO...");
+//                            break;
+//                        }
 
                         double currentFitness = originPopulation.get(0).fitness;
 

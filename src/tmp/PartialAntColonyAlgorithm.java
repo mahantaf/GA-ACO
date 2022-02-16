@@ -34,14 +34,24 @@ public class PartialAntColonyAlgorithm extends AntColonyAlgorithm {
         bestAnt.failedRelationNumber = bestGASolution.failedRelationNumber;
     }
 
+    public void sortBestAntRelations() {
+        Ant sortedBestAnt = new Ant();
+        for (HashMap.Entry<Relation, ArrayList<AntNode>> entry : relationNodes.entrySet()) {
+            SubAntNode antNode = (SubAntNode) bestAnt.getNode(entry.getKey());
+            sortedBestAnt.addNode(antNode);
+        }
+        bestAnt = sortedBestAnt;
+    }
+
     public Ant startOptimization() {
         sortRelationsByNodeSize();
         initializeBestAntByBestChromosome();
         int iter = 0;
         while (iter < numberOfIterations && !Main.foundSolution) {
-//            sortRelationsByNodeSize();
             long startIteration = System.currentTimeMillis();
             System.out.println("------------------------- Iteration " + iter + " -------------------------");
+            sortRelationsByNodeSize();
+            sortBestAntRelations();
             printGraphSize();
             initializeAntsByLowerBounds();
 //            moveAntsMultiThread();
@@ -78,8 +88,6 @@ public class PartialAntColonyAlgorithm extends AntColonyAlgorithm {
             Random random = new Random(System.currentTimeMillis());
             int numOfBestChoice = random.nextInt(numOfRelations);
 
-//            System.out.println("Ant " + antIndex + " is about to choose " + numOfBestChoice + " best choice.");
-
             ArrayList<Integer> relationChoice = new ArrayList<>();
             int numOfBestChoiceTemp = numOfBestChoice;
             while (numOfBestChoice > 0) {
@@ -89,27 +97,20 @@ public class PartialAntColonyAlgorithm extends AntColonyAlgorithm {
                     numOfBestChoice--;
                 }
             }
-//            System.out.print("relations: ");
-//            for (Integer rc : relationChoice) {
-//                System.out.print(rc + " ");
-//            }
-//            System.out.println();
 
             for (HashMap.Entry<Relation, ArrayList<AntNode>> entry : relationNodes.entrySet()) {
-//                if (numOfBestChoice > 0) {
                 if (relationChoice.contains(relationIndex)) {
                     SubAntNode bestAntNode = (SubAntNode) bestAnt.getNode(relationIndex);
                     ant.setNode(bestAntNode, relationIndex);
                     relationIndex++;
                     continue;
                 } else {
-                    // TODO: Select by probability
                     Relation relation = entry.getKey();
                     selectNode(ant, relation, relationIndex);
                 }
                 ++relationIndex;
             }
-            System.out.println("Ant with " + numOfBestChoiceTemp + "best choice " + antIndex + " moving time: " + (System.currentTimeMillis() - cTime2) + " ms");
+            System.out.println("Ant " + antIndex + " with " + numOfBestChoiceTemp + " best choice moving time: " + (System.currentTimeMillis() - cTime2) + " ms");
             if (Main.foundSolution)
                 break;
         }
