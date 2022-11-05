@@ -9,9 +9,10 @@ import edu.mit.csail.sdg.alloy4.A4Reporter;
 import edu.mit.csail.sdg.alloy4.Err;
 import edu.mit.csail.sdg.alloy4compiler.ast.Command;
 import edu.mit.csail.sdg.alloy4compiler.translator.A4Solution;
+import kodkod.ast.Formula;
+
 import java.io.IOException;
 import java.util.ArrayList;
-import kodkod.ast.Formula;
 
 public class GetSolutionThread implements Runnable {
     private A4Solution solution;
@@ -50,26 +51,23 @@ public class GetSolutionThread implements Runnable {
             A4Solution sol = this.solution.solve(this.rep, this.cmd, this.fgoal, this.generatedChromo);
             this.generatedChromo.getFitness();
             if (sol.satisfiable()) {
-                System.out.println("--" + sol + " --" + this.generatedChromo.originalIndex);
-                System.out.print(".\n");
-                this.generatedChromo.printBounds();
+//                System.out.println("--" + sol + " --" + this.generatedChromo.originalIndex);
+//                System.out.print(".\n");
+//                this.generatedChromo.printBounds();
                 ++solNumber;
                 sol.writeXML(Main.output + ".xml");
-                System.out.println("== Solutions:" + solNumber);
+                System.out.println("Solutions:" + solNumber);
             }
 
             if (solNumber > 0) {
-                System.out.println("--Solved : " + this.generatedChromo.originalIndex);
+//                System.out.println("Solved : " + this.generatedChromo.originalIndex);
                 Main.foundSolution = true;
             }
             Main.originPopulation.set(this.taskIndex, this.generatedChromo);
             long time1 = System.currentTimeMillis() - startT;
             Main.latch.countDown();
-        } catch (Err var7) {
+        } catch (Err | IOException var7) {
             var7.printStackTrace();
-        } catch (IOException var8) {
-            var8.printStackTrace();
         }
-
     }
 }

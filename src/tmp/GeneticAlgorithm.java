@@ -5,28 +5,22 @@
 
 package tmp;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Random;
-import java.util.Set;
 import kodkod.ast.Relation;
 import kodkod.instance.Bounds;
 import kodkod.instance.Tuple;
-import kodkod.instance.TupleSet;
 import kodkod.instance.TupleFactory.IntTuple;
+import kodkod.instance.TupleSet;
 import tmp.Main.PrintMode;
+
+import java.util.*;
 
 public class GeneticAlgorithm {
     public static int numberOfTournamentSelect = 3;
     public static double mutationRate = 0.08D;
-    public static int deleteRelationMutationRate = 10;
+    public static int deleteRelationMutationRate = 20;
+//    public static int deleteRelationMutationRate = 10;
     public static int changeRelationMutationRate = 30;
-    public static int addRelationMutationRate = 30;
+    public static int addRelationMutationRate = 40;
     public static int oneTupleMutationRate;
     public static int unbiasedPickBetterRate;
     public static HashMap<String, Integer> atomsNameAndScope;
@@ -721,7 +715,7 @@ public class GeneticAlgorithm {
         Random randomGenerator = new Random(System.currentTimeMillis());
         double x = (double)crossoverPopulation.size() * 0.03D * (double)Main.relations.size();
         if (Main.printMode == PrintMode.DebugMode) {
-            System.out.println("x number of mutation " + x);
+//            System.out.println("x number of mutation " + x);
         }
 
         int totalNumberOfImportantRelations = Main.principleTuplesNumber * crossoverPopulation.size();

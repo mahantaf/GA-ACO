@@ -1,5 +1,6 @@
 package tmp;
 
+import kodkod.ast.Relation;
 import java.util.ArrayList;
 
 public class Ant {
@@ -19,8 +20,9 @@ public class Ant {
         this.totalConstraintsNumber = ant.totalConstraintsNumber;
     }
 
-    public int getDistance() {
-        return this.failedRelationNumber + this.failedConstraintsNumber;
+    public double getDistance() {
+//        return this.failedRelationNumber + this.failedConstraintsNumber;
+        return 0.45F * (float)this.failedConstraintsNumber / (float)this.totalConstraintsNumber + 0.55F * (float)this.failedRelationNumber;
     }
 
     public Ant() {
@@ -50,6 +52,17 @@ public class Ant {
         nodes.set(index, node);
     }
 
+    public AntNode getNode(int index) {
+        return nodes.get(index);
+    }
+
+    public AntNode getNode(Relation relation) {
+        for (AntNode node: nodes)
+            if (node.relation.equals(relation))
+                return node;
+        return null;
+    }
+
     public void addNode(AntNode node) {
         nodes.add(node);
     }
@@ -67,6 +80,7 @@ public class Ant {
         StringBuilder printed = new StringBuilder("Ant: ").append(fitness).append("\n");
         printed.append("Number of failed constraints: ").append(failedConstraintsNumber).append("\n");
         printed.append("Number of failed relations: ").append(failedRelationNumber).append("\n");
+        // TODO: Uncomment following lines later
         for (AntNode node : nodes)
             printed.append(node.relation).append(" : ").append(node.tuples.toString()).append("\n");
         return printed.toString();
